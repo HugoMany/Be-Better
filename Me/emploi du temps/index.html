@@ -12,108 +12,131 @@
 		<thead>
 			<tr>
 				<th></th>
-				<th>Monday</th>
-				<th>Tuesday</th>
+				<th>Monday   </th>
+				<th>Tuesday  </th>
 				<th>Wednesday</th>
-				<th>Thursday</th>
-				<th>Friday</th>
-				<th>Saturday</th>
-				<th>Sunday</th>
+				<th>Thursday </th>
+				<th>Friday   </th>
+				<th>Saturday </th>
+				<th>Sunday   </th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th>9:00am - 10:00am</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="1">
+				<th>09:00am - 10:00am</th>
+				<td id="11"></td>
+				<td id="21"></td>
+				<td id="31"></td>
+				<td id="41"></td>
+				<td id="51"></td>
+				<td id="61"></td>
+				<td id="71"></td>
 			</tr>
-			<tr>
+			<tr id="2">
 				<th>10:00am - 11:00am</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td id="12"></td>
+				<td id="22"></td>
+				<td id="32"></td>
+				<td id="42"></td>
+				<td id="52"></td>
+				<td id="62"></td>
+				<td id="72"></td>
 			</tr>
-			<tr>
+			<tr id="3">
 				<th>11:00am - 12:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td id="13"></td>
+				<td id="23"></td>
+				<td id="33"></td>
+				<td id="43"></td>
+				<td id="53"></td>
+				<td id="63"></td>
+				<td id="73"></td>
 			</tr>
-			<tr>
-				<th>12:00pm - 1:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="4">
+				<th>12:00pm - 01:00pm</th>
+				<td id="14"></td>
+				<td id="24"></td>
+				<td id="34"></td>
+				<td id="44"></td>
+				<td id="54"></td>
+				<td id="64"></td>
+				<td id="74"></td>
 			</tr>
-			<tr>
-				<th>1:00pm - 2:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="5">
+				<th>01:00pm - 02:00pm</th>
+				<td id="15"></td>
+				<td id="25"></td>
+				<td id="35"></td>
+				<td id="45"></td>
+				<td id="55"></td>
+				<td id="65"></td>
+				<td id="75"></td>
 			</tr>
-			<tr>
-				<th>2:00pm - 3:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="6">
+				<th>02:00pm - 03:00pm</th>
+				<td id="16"></td>
+				<td id="26"></td>
+				<td id="36"></td>
+				<td id="46"></td>
+				<td id="56"></td>
+				<td id="66"></td>
+				<td id="76"></td>
 			</tr>
-			<tr>
-				<th>3:00pm - 4:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="7">
+				<th>03:00pm - 04:00pm</th>
+				<td id="17"></td>
+				<td id="27"></td>
+				<td id="37"></td>
+				<td id="47"></td>
+				<td id="57"></td>
+				<td id="67"></td>
+				<td id="77"></td>
 			</tr>
-			<tr>
-				<th>4:00pm - 5:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="8">
+				<th>04:00pm - 05:00pm</th>
+				<td id="18"></td>
+				<td id="28"></td>
+				<td id="38"></td>
+				<td id="48"></td>
+				<td id="58"></td>
+				<td id="68"></td>
+				<td id="78"></td>
 			</tr>
-			<tr>
-				<th>5:00pm - 6:00pm</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr id="9">
+				<th>05:00pm - 06:00pm</th>
+				<td id="19"></td>
+				<td id="29"></td>
+				<td id="39"></td>
+				<td id="49"></td>
+				<td id="59"></td>
+				<td id="69"></td>
+				<td id="79"></td>
 			</tr>
 		</tbody>
 	</table>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<!-- cree un formulaire qui pose 2 question -->
+			<h3>Quel activité souhaitez-vous faire ?</h3>
+			<input type="text" name="question1" placeholder="exemple: sport" id="Q1" />
+			<br />
+			<h3>Pour une durée de combien de temps ?</h3>
+			<select name="question2" id="Q2">
+				<option value="1">1h</option>
+				<option value="2">2h</option>
+				<option value="3">3h</option>
+				<option value="4">4h</option>
+			</select>
+			<br />
+			<button type="submit" class="btn btn-primary" id="btn">Submit</button>
+		</div>
+
+	</div>
 
 	<script src="script.js"></script>
 </body>
