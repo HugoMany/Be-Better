@@ -10,15 +10,17 @@ cells.forEach(cell => {
         var id = cell.id;
         console.log(id);
 
+
         modal.style.display = "block";
         var btn = document.getElementById("btn");
 
         btn.onclick = function () {
             const Q1 = document.getElementById("Q1").value;
             const Q2 = document.getElementById("Q2").value;
+            const Q3 = document.getElementById("Q3").value;
 
             // ecrit dans la case ce que l'utilisateur a entrer
-            console.log(Q1, Q2);
+            console.log(Q1, Q2, Q3);
             id_ = parseInt(id);
             Q2_ = parseInt(Q2);
 
@@ -27,6 +29,15 @@ cells.forEach(cell => {
                 Id = id_ + i;
                 console.log(Id);
                 document.getElementById(Id).textContent = Q1;
+                if (Q3 == 1) {
+                    document.getElementById(Id).style.backgroundColor = "green"
+                }
+                if (Q3 == 2) {
+                    document.getElementById(Id).style.backgroundColor = "orange"
+                }
+                if (Q3 == 3) {
+                    document.getElementById(Id).style.backgroundColor = "crimson"
+                }
             }
 
             //cell.textContent = Q1;
@@ -53,3 +64,12 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
+// creeune connection avec une base de donnee MySQL
+// var mysql = require('mysql');
+// var connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'test'
+// });  

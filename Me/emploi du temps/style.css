@@ -59,7 +59,7 @@ tbody td:hover {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -76,3 +76,23 @@ tbody td:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.btn_btn-primary{
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+#low{
+  background-color: green;
+}
+
+#medium{
+  background-color: orange;
+}
+
+#hard{
+  background-color: crimson;
+}
+

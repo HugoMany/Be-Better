@@ -12,13 +12,13 @@
 		<thead>
 			<tr>
 				<th></th>
-				<th>Monday   </th>
-				<th>Tuesday  </th>
+				<th>Monday </th>
+				<th>Tuesday </th>
 				<th>Wednesday</th>
 				<th>Thursday </th>
-				<th>Friday   </th>
+				<th>Friday </th>
 				<th>Saturday </th>
-				<th>Sunday   </th>
+				<th>Sunday </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -126,14 +126,21 @@
 			<input type="text" name="question1" placeholder="exemple: sport" id="Q1" />
 			<br />
 			<h3>Pour une durée de combien de temps ?</h3>
-			<select name="question2" id="Q2">
+			<select name="question2" id="Q2" class="select">
 				<option value="1">1h</option>
 				<option value="2">2h</option>
 				<option value="3">3h</option>
 				<option value="4">4h</option>
 			</select>
 			<br />
-			<button type="submit" class="btn btn-primary" id="btn">Submit</button>
+			<h3>Importance :</h3>
+			<select name="question3" id="Q3" class="select">
+				<option value="1" id="low">Low</option>
+				<option value="2" id="medium">Medium</option>
+				<option value="3" id="hard">Hard</option>
+			</select>
+			<br />
+			<button type="submit" class="btn_btn-primary" id="btn">Submit</button>
 		</div>
 
 	</div>
