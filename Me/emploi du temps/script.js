@@ -1,3 +1,12 @@
+// cree une connection avec une base de donnee MySQL
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'test',
+    password: 'test',
+    database: 'timetable'
+});
+
 // pemet d'avoir toutes les cases du tableau 
 const cells = document.querySelectorAll('#timetable td');
 var modal = document.getElementById("myModal");
@@ -39,7 +48,8 @@ cells.forEach(cell => {
                     document.getElementById(Id).style.backgroundColor = "crimson"
                 }
             }
-            json();
+            data = json();
+            insertOrUpdate(data);
             //cell.textContent = Q1;
             document.getElementById("Q1").value = '';
             document.getElementById("Q2").value = '1h';
@@ -66,26 +76,46 @@ window.onclick = function (event) {
     }
 }
 
-// creeune connection avec une base de donnee MySQL
-// var mysql = require('mysql');
-// var connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'test'
-// }); 
+this.connection.connect(err => {
+    if (err) throw err;
+    else console.log('connection réussi')
+});
+
+process.on('SIGINT', () => {
+    connection.end();
+    process.exit();
+});
+
+function read() {
+    const sql = "SELECT * FROM utilisateurs";
+    console.log('Connexion établie avec la base de données');
+    this.con.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+    });
+}
+
+function insertOrUpdate(data) {
+    const sql = `INSERT INTO utilisateurs (id, name, edt) VALUES ('${utilisateur.id}', '${utilisateur.name}', '${utilisateur.data}') 
+       ON DUPLICATE KEY UPDATE name = '${utilisateur.name}'`;
+    this.con.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(`Annonce ${utilisateur.id} insérée ou mise à jour avec succès`);
+        this.con.end();
+    });
+}
 
 
-function json(){
+function json() {
     data = [];
-    for(let i = 0;i<10;i++){
-        for (let j = 1;j<7;j++){
-            id=j*10+i;
+    for (let i = 0; i < 10; i++) {
+        for (let j = 1; j < 7; j++) {
+            id = j * 10 + i;
             data_ = document.getElementById(id).innerHTML;
-            data.push({"case":id, "data": data_});
+            data.push({ "case": id, "data": data_ });
         }
     }
-    data=JSON.stringify(data);
+    data = JSON.stringify(data);
     console.log(data);
 }
 
