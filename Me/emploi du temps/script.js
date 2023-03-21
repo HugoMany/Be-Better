@@ -39,13 +39,14 @@ cells.forEach(cell => {
                     document.getElementById(Id).style.backgroundColor = "crimson"
                 }
             }
-
+            json();
             //cell.textContent = Q1;
             document.getElementById("Q1").value = '';
             document.getElementById("Q2").value = '1h';
 
             // on ferme la fenêtre
             modal.style.display = "none";
+
         }
     });
 });
@@ -72,4 +73,19 @@ window.onclick = function (event) {
 //     user: 'root',
 //     password: '',
 //     database: 'test'
-// });  
+// }); 
+
+
+function json(){
+    data = [];
+    for(let i = 0;i<10;i++){
+        for (let j = 1;j<7;j++){
+            id=j*10+i;
+            data_ = document.getElementById(id).innerHTML;
+            data.push({"case":id, "data": data_});
+        }
+    }
+    data=JSON.stringify(data);
+    console.log(data);
+}
+
