@@ -1,12 +1,3 @@
-// cree une connection avec une base de donnee MySQL
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'test',
-    password: 'test',
-    database: 'timetable'
-});
-
 // pemet d'avoir toutes les cases du tableau 
 const cells = document.querySelectorAll('#timetable td');
 var modal = document.getElementById("myModal");
@@ -75,36 +66,6 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-
-this.connection.connect(err => {
-    if (err) throw err;
-    else console.log('connection réussi')
-});
-
-process.on('SIGINT', () => {
-    connection.end();
-    process.exit();
-});
-
-function read() {
-    const sql = "SELECT * FROM utilisateurs";
-    console.log('Connexion établie avec la base de données');
-    this.con.query(sql, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-    });
-}
-
-function insertOrUpdate(data) {
-    const sql = `INSERT INTO utilisateurs (id, name, edt) VALUES ('${utilisateur.id}', '${utilisateur.name}', '${utilisateur.data}') 
-       ON DUPLICATE KEY UPDATE name = '${utilisateur.name}'`;
-    this.con.query(sql, (err, result) => {
-        if (err) throw err;
-        console.log(`Annonce ${utilisateur.id} insérée ou mise à jour avec succès`);
-        this.con.end();
-    });
-}
-
 
 function json() {
     data = [];
