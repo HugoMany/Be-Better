@@ -40,7 +40,6 @@ cells.forEach(cell => {
                 }
             }
             data = json();
-            insertOrUpdate(data);
             //cell.textContent = Q1;
             document.getElementById("Q1").value = '';
             document.getElementById("Q2").value = '1h';
@@ -73,7 +72,8 @@ function json() {
         for (let j = 1; j < 7; j++) {
             id = j * 10 + i;
             data_ = document.getElementById(id).innerHTML;
-            data.push({ "case": id, "data": data_ });
+            importance = document.getElementById(id).style.backgroundColor;
+            data.push({ "case": id, "data": data_ , "importance": importance});
         }
     }
     data = JSON.stringify(data);
