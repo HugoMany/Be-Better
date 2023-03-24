@@ -22,7 +22,7 @@ app.post('/api/user', (req, res, next) => {
    const thing = new userModel({
      ...req.body
    });
-   thing.save()
+   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
@@ -43,13 +43,23 @@ app.get('/api/user', (req, res, next) => {
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
+
  });
+ app.get('/api/alluser', (req, res, next) => {
+    userModel.find()
+      .then(userModel => res.status(200).json(userModel))
+      .catch(error => res.status(400).json({ error }));
+
+ });
+
+
 
  app.use((req, res, next) => {
    res.setHeader('Access-Control-Allow-Origin', '*');
    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
    next();
+   
  });
 
 module.exports = app;
