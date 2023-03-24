@@ -51,6 +51,11 @@ app.get('/api/user', (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
 
  });
+ app.get('/api/oneuser/:id', (req, res, next) => {
+  userModel.findOne({ _id: req.params.id })
+    .then(userModel => res.status(200).json(userModel))
+    .catch(error => res.status(404).json({ error }));
+});
 
 
 
