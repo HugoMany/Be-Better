@@ -1,28 +1,32 @@
-/* CSS for styling */
 html{
     cursor: pointer;
+    background-color: #fff;
 }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #89004f;
 }
 
 header {
-    background-color: #f7f7f7;
+    background-color: white;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    height: 300px;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    padding: 150px;
+    margin-left: 397px;
 }
 
 .logo img {
-    height: 60px;
+    height: 200px;
+    width: 200px;
     margin-right: 10px;
 }
 
@@ -42,7 +46,7 @@ nav li:first-child {
 }
 
 nav a {
-    color: #333;
+    color: #89004f;
     text-decoration: none;
 }
 
@@ -54,6 +58,7 @@ main {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px;
+    background-color: #89004f;
 }
 
 .about {
@@ -71,7 +76,7 @@ main {
 }
 
 .box {
-    background-color: #f7f7f7;
+    background-color: #56b52a;
     padding: 20px;
     flex-basis: calc(33.33% - 20px);
     margin-bottom: 20px;
@@ -99,7 +104,7 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: darkgray;
     color: #fff;
     padding: 20px;
     text-align: center;
