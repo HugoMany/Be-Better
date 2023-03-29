@@ -30,14 +30,13 @@ app.post('/api/user', (req, res, next) => {
 // Get methode
 app.get('/api/user', (req, res, next) => {
    const user = new userModel({
-      userId:1,    
       sex:0,       
       firstName:"Hugo", 
-      email:"hugo@gmail.com",      
+      email:"hugo@gmail.com",     
+      tel:"+336123456789",       
       passw:"coucou",      
       age:19,        
-      weight:178,    
-      height:62000,  
+
   
   });
   user.save()

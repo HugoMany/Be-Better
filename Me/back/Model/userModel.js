@@ -2,14 +2,12 @@ const mongoose = require('mongoose');
 
 
 const userModel = mongoose.Schema({
-    userId:{type: Number, require:true},    // Id
-    sex:{type: Number, require:true},       // 0 Men | 1 Women
+    sex:{type: Number, require:true},       //0 Men | 1 Women
     firstName:{type: String, require:true}, //Name
-    email:{type: String,require:true},      // name@gmail.com
+    email:{type: String,require:true},      //name@gmail.com
+    tel:{type: String,require:false},      //+33 6 34567890
     passw:{type: String,require:true},      //azertghe567
     age:{type: Number,require:true},        //19 y
-    weight:{type: Number,require:true},     //178 cm
-    height:{type: Number,require:true},     //61 000 g
 
 });
 
