@@ -29,12 +29,12 @@ var btn = document.getElementById("register");
 btn.onclick = function () {
     let nom = document.getElementById("nom").value;
     let prenom = document.getElementById("prenom").value;
-    let username = document.getElementById("username").value;
+    let sexe = document.getElementById("sexe").value;
     let email = document.getElementById("email").value;
     let telephone = document.getElementById("telephone").value;
     let password = document.getElementById("password").value;
     data = [];
-    data.push({ "nom": nom, "prenom": prenom, "username": username, "email": email, "telephone": telephone, "password": password });
+    data.push({ "nom": nom, "prenom": prenom, "sexe": sexe, "email": email, "telephone": telephone, "password": password });
     data = JSON.stringify(data);
     console.log(data);
     modal.style.display = "none";
