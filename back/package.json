@@ -1,16 +1,17 @@
 {
   "name": "back",
   "version": "1.0.0",
-  "description": "",
+  "description": "TO execute the server enter the line command:\r nodemon server",
   "main": "serveur.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
     "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22",
     "quick.db": "^9.1.1"
   }
 }

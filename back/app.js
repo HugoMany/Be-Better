@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+// const url = require("url"); 
 //Import models
 
 const userModel=require('./Model/userModel');
@@ -16,34 +16,58 @@ const app = express();
 app.use(express.json());
 
 
+//Requete neccesaire:
+/*
+axios.post('/api/user', {
+  sex: 0,
+  firstName: 'John',
+  email: 'john@example.com',
+  tel: '+33 6 34567890',
+  passw: 'azertghe567',
+  age: 19
+})
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  */
 // Post methde
-app.post('/api/user', (req, res, next) => {
-   delete req.body._id;
-   const thing = new userModel({
-     ...req.body
-   });
-   user.save()
-     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-     .catch(error => res.status(400).json({ error }));
- });
+app.post('/api/user/', async (req, res) => {
+  try {
+    const newUser = new UserModel({
+      sex: req.body.sex,
+      firstName: req.body.firstName,
+      email: req.body.email,
+      tel: req.body.tel,
+      passw: req.body.passw,
+      age: req.body.age
+    });
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 
 // Get methode
-app.get('/api/user', (req, res, next) => {
-   const user = new userModel({
-      sex:0,       
-      firstName:"Hugo", 
-      email:"hugo@gmail.com",     
-      tel:"+336123456789",       
-      passw:"coucou",      
-      age:19,        
-
-  
-  });
+app.get('/api/user/', (req, res, next) => {
+  const user = new userModel({
+    sex: 0,
+    firstName: 'John',
+    email: 'john@example.com',
+    tel: '+33 6 12345678',
+    passw: 'azertghe567',
+    age: 25,    
+});
+  console.log(url.parse(req.url).pathname);
+  // let page = 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
-
  });
+
 
  
  app.get('/api/alluser', (req, res, next) => {
