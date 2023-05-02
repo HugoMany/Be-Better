@@ -93,3 +93,25 @@ app.get('/api/user', (req, res, next) => {
  });
 
 module.exports = app;
+
+
+
+/*------------------------------------------------------------------------------------------------------
+-----------------------------------------------MUSCU----------------------------------------------------
+------------------------------------------------------------------------------------------------------*/
+
+app.get('/api/muscu', (req, res, next) => {
+  const user = new muscuModel({
+     nomExo:"pompes",       
+     niveau:1, 
+     nbRep:6,     
+     photo:" ",       
+       
+
+ 
+ });
+ user.save()
+    .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+    .catch(error => res.status(400).json({ error }));
+
+});
