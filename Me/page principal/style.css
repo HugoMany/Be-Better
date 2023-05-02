@@ -59,6 +59,7 @@ main {
     margin: 0 auto;
     padding: 40px;
     background-color: #89004f;
+    color : white;
 }
 
 .about {
@@ -104,8 +105,8 @@ main {
 }
 
 footer {
-    background-color: darkgray;
-    color: #fff;
+    background-color: white;
+    color: #56b52a;
     padding: 20px;
     text-align: center;
 }

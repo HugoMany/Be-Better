@@ -38,4 +38,6 @@ btn.onclick = function () {
     data = JSON.stringify(data);
     console.log(data);
     modal.style.display = "none";
+    var url = 'localhost:3000/api/user/' + data;
+    window.open(url);
 }
