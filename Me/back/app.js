@@ -44,12 +44,38 @@ app.get('/api/user', (req, res, next) => {
      .catch(error => res.status(400).json({ error }));
 
  });
+
+ 
  app.get('/api/alluser', (req, res, next) => {
     userModel.find()
       .then(userModel => res.status(200).json(userModel))
       .catch(error => res.status(400).json({ error }));
 
  });
+ app.get('/api/nballuser', (req, res, next) => {
+  userModel.find()
+    .then(userModel => {
+
+      // const json = userModel;
+      // const obj = JSON.parse(json);
+      // console.log(obj.id);
+      // console.log(userModel);
+      //const email = JSON.parse(username);
+      let i=0;
+      while(userModel[i].email!=undefined){
+        console.log(userModel[i].email);
+        console.log(i);
+        i++;
+      }
+      res.status(200).json(userModel);
+      
+
+
+    })
+    .catch(error => res.status(400).json({ error }));
+
+});
+
  app.get('/api/oneuser/:id', (req, res, next) => {
   userModel.findOne({ _id: req.params.id })
     .then(userModel => res.status(200).json(userModel))
