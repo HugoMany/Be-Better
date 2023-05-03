@@ -23,9 +23,11 @@ USER:
 
 Sport:
 
-/api/sport/fitness
+/api/sport/fitness Creation d'un activité vide
 
-/api/sport/fitness/:level/:muscularGrou
+/api/sport/fitness/:id Recupere l'activité par l'id
+
+/api/sport/fitness/:level/:muscularGrou Recupere l'activité par le level et muscularGroup
 
 *level : Parametre de Niveau
 *muscularGroup: Parametre de Niveau de groupe

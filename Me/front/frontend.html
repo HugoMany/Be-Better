@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="front.js"></script>
-        <title>Front end App</title>
-    </head>
-    <body>
-        <button onclick="button()">Send </button>
+  <head>
+    <meta charset="UTF-8">
+    <title>Envoi de requête POST</title>
+  </head>
+  <body>
+    <form id="my-form">
+      <label for="username">Nom d'utilisateur:</label>
+      <input type="text" id="username" name="username"><br><br>
+      <label for="password">Mot de passe:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <button type="submit">Se connecter</button>
+    </form>
+    <div id="result"></div>
+    <script>
+      const form = document.getElementById('my-form');
+      const result = document.getElementById('result');
 
-    </body>
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const data = {username: username, password: password};
+        
+        fetch('/api/user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+          result.innerHTML = "Connexion réussie!";
+        })
+        .catch(error => {
+          result.innerHTML = "Erreur de connexion.";
+          console.error('Erreur:', error);
+        });
+      });
+    </script>
+  </body>
 </html>

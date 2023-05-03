@@ -5,17 +5,22 @@ const mongoose = require('mongoose');
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
 
-
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true,
     useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+  .then(() => console.log('La connexion réussie !'))
+  .catch(() => console.log('La connexion échouée !'));
 
 // const 
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 app.post('/api/user/', async (req, res) => {
   try {
@@ -35,14 +40,14 @@ app.post('/api/user/', async (req, res) => {
 });
 
 // Get methode
-app.get('/api/user/', (req, res, next) => {
+app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) => {
   const user = new userModel({
-    sex: 0,
-    firstName: 'John',
-    email: 'john@example.com',
-    tel: '+33 6 12345678',
-    passw: 'azertghe567',
-    age: 25,    
+    sex: req.params.sex,
+    firstName: req.params.firstName ,
+    email: req.params.email,
+    tel: req.params.tel,
+    passw: req.params.passw,
+    age: req.params.age,    
 }); 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
@@ -65,6 +70,22 @@ app.get('/api/sport/fitness', (req, res, next) => {
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
+
+// Ex: http://localhost:3000/api/sport/fitness/all
+app.get('/api/sport/fitness/all', (req, res) => {
+  muscuModel.find()
+  .then(muscuModel => res.status(200).json(muscuModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
+
+// Ex: http://localhost:3000/api/sport/fitness/id
+app.get('/api/sport/fitness/:id', (req, res) => {
+  muscuModel.findOne({ _id:  req.params.id})
+  .then(muscuModel => res.status(200).json(muscuModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
 
 // Ex: http://localhost:3000/api/sport/facile/deltoide
  app.get('/api/sport/fitness/:level/:muscularGroup', (req, res) => {
