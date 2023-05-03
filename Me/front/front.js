@@ -1,4 +1,5 @@
-axios.post('/api/user', {
+function button(){
+axios.post('http://localhost:3000/api/user/', {
     sex: 0,
     firstName: 'John',
     email: 'john@example.com',
@@ -12,4 +13,4 @@ axios.post('/api/user', {
     .catch(function (error) {
       console.log(error);
     });
-    
+}; 

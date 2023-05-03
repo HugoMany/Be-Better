@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 //Import models
 
 const userModel=require('./Model/userModel');
+const muscuModel=require('./Model/muscuModel');
+
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true,
@@ -16,24 +18,6 @@ const app = express();
 app.use(express.json());
 
 
-//Requete neccesaire:
-/*
-axios.post('/api/user', {
-  sex: 0,
-  firstName: 'John',
-  email: 'john@example.com',
-  tel: '+33 6 34567890',
-  passw: 'azertghe567',
-  age: 19
-})
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  */
-// Post methde
 app.post('/api/user/', async (req, res) => {
   try {
     const newUser = new UserModel({
@@ -61,13 +45,29 @@ app.get('/api/user/', (req, res, next) => {
     passw: 'azertghe567',
     age: 25,    
 });
-  console.log(url.parse(req.url).pathname);
+  // console.log(url.parse(req.url).pathname);
   // let page = 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
 
+// Creation Programme sport
+
+app.get('/api/sport/fitness', (req, res, next) => {
+  const user = new muscuModel({
+    exerciceName:"empty",
+    description:"empty",
+    level:0,
+    numberOfRep:0,
+    photo:"empty", 
+});
+  // console.log(url.parse(req.url).pathname);
+  // let page = 
+  user.save()
+     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+     .catch(error => res.status(400).json({ error }));
+ });
 
  
  app.get('/api/alluser', (req, res, next) => {
