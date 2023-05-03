@@ -1,14 +1,31 @@
 API:
 
-
+----------------------------------------------
 POST
+----------------------------------------------
 
 /api/user/ Creer un utilisateur
 
+
+
+----------------------------------------------
 GET
+----------------------------------------------
+
+USER:
+
+/api/user/ Creer un utilisateur Lampda
 
 /api/oneuser/:id Recupere un utilisateur
 
 /api/alluser/ Recupere tout les utilisateur
 
-/api/nballuser/ Recupere le nb total d'utilisateur
+
+Sport:
+
+/api/sport/fitness
+
+/api/sport/fitness/:level/:muscularGrou
+
+*level : Parametre de Niveau
+*muscularGroup: Parametre de Niveau de groupe

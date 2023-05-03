@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const url = require("url"); 
-//Import models
+
 
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
@@ -44,16 +43,16 @@ app.get('/api/user/', (req, res, next) => {
     tel: '+33 6 12345678',
     passw: 'azertghe567',
     age: 25,    
-});
-  // console.log(url.parse(req.url).pathname);
-  // let page = 
+}); 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
 
-// Creation Programme sport
 
+
+
+// Creation Programme sport
 app.get('/api/sport/fitness', (req, res, next) => {
   const user = new muscuModel({
     exerciceName:"empty",
@@ -61,44 +60,33 @@ app.get('/api/sport/fitness', (req, res, next) => {
     level:0,
     numberOfRep:0,
     photo:"empty", 
-});
-  // console.log(url.parse(req.url).pathname);
-  // let page = 
+}); 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
 
- 
+// Ex: http://localhost:3000/api/sport/facile/deltoide
+ app.get('/api/sport/fitness/:level/:muscularGroup', (req, res) => {
+  const levelP = req.params.level;
+  const muscularGroupP = req.params.muscularGroup;
+  console.log(levelP);
+  console.log(muscularGroupP);
+
+  muscuModel.find({ level: levelP, muscularGroup: muscularGroupP})
+  .then(muscuModel => res.status(200).json(muscuModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
+
+
  app.get('/api/alluser', (req, res, next) => {
     userModel.find()
       .then(userModel => res.status(200).json(userModel))
       .catch(error => res.status(400).json({ error }));
 
  });
- app.get('/api/nballuser', (req, res, next) => {
-  userModel.find()
-    .then(userModel => {
 
-      // const json = userModel;
-      // const obj = JSON.parse(json);
-      // console.log(obj.id);
-      // console.log(userModel);
-      //const email = JSON.parse(username);
-      let i=0;
-      while(userModel[i].email!=undefined){
-        console.log(userModel[i].email);
-        console.log(i);
-        i++;
-      }
-      res.status(200).json(userModel);
-      
-
-
-    })
-    .catch(error => res.status(400).json({ error }));
-
-});
 
  app.get('/api/oneuser/:id', (req, res, next) => {
   userModel.findOne({ _id: req.params.id })
