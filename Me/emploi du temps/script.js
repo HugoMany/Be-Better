@@ -8,7 +8,7 @@ cells.forEach(cell => {
 
         // on récupère l'id du td de la cellule
         var id = cell.id;
-        console.log(id);
+        // console.log(id);
 
 
         modal.style.display = "block";
@@ -20,14 +20,14 @@ cells.forEach(cell => {
             const Q3 = document.getElementById("Q3").value;
 
             // ecrit dans la case ce que l'utilisateur a entrer
-            console.log(Q1, Q2, Q3);
+            // console.log(Q1, Q2, Q3);
             id_ = parseInt(id);
             Q2_ = parseInt(Q2);
 
             for (i = 0; i < Q2_; i++) {
                 i_ = i.toString();
                 Id = id_ + i;
-                console.log(Id);
+                // console.log(Id);
                 document.getElementById(Id).textContent = Q1;
                 if (Q3 == 1) {
                     document.getElementById(Id).style.backgroundColor = "green"
@@ -77,6 +77,8 @@ function json() {
         }
     }
     data = JSON.stringify(data);
-    console.log(data);
+    // console.log(data);
+    createTimeTable(getId(),data);
+
 }
 

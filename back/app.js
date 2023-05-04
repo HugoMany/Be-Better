@@ -4,6 +4,8 @@ const fs = require('fs');
 
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
+const timeTableModel = require('./Model/timeTableModel');
+const { log } = require('console');
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true,
@@ -142,7 +144,25 @@ app.get('/api/', (req, res) => {
     .catch(error => res.status(404).json({ error }));
 });
 
+/*
 
+Time Table
+
+*/
+app.post('/api/timetable/create', async (req, res) => {
+  try {
+    const newTimeTableModel = new timeTableModel({
+      id: req.body.id,
+      dateOfMonday: req.body.dateOfMonday,
+      timeTable: req.body.timeTable,
+    });
+    // console.log(req.body.timeTable);
+    const savedTimeTableModel = await newTimeTableModel.save();
+    // res.status(201).json(savedTimeTableModel);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 
 
 
