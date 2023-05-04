@@ -1,0 +1,37 @@
+Be Better API:<br>
+<br>
+----------------------------------------------<br>
+POST<br>
+----------------------------------------------<br>
+<br>
+/api/user/ Creer un utilisateur<br>
+<br>
+<br>
+<br>
+----------------------------------------------<br>
+GET<br>
+----------------------------------------------<br><br>
+General <br>
+
+/api/ Documentation API <br>
+
+<br>
+User:<br>
+
+/api/user/:sex/:firstName/:email/:tel/:passw/:age/ Creer un utilisateur<br>
+<br>
+/api/user/oneuser/:id Recupere un utilisateur<br>
+<br>
+/api/user/alluser/ Recupere tout les utilisateur<br>
+<br>
+
+Sport:<br>
+<br>
+/api/sport/fitness Creation d'un activité vide<br>
+<br>
+/api/sport/fitness/:id Recupere l'activité par l'id<br>
+<br>
+/api/sport/fitness/:level/:muscularGrou Recupere l'activité par le level et muscularGroup<br>
+<br>
+*level : Parametre de Niveau<br>
+*muscularGroup: Parametre de Niveau de groupe<br>

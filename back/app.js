@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const fs = require('fs');
 
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
@@ -22,6 +22,13 @@ app.use((req, res, next) => {
   next();
 });
 
+
+/*
+
+
+POST
+
+*/
 app.post('/api/user/', async (req, res) => {
   try {
     const newUser = new UserModel({
@@ -39,7 +46,13 @@ app.post('/api/user/', async (req, res) => {
   }
 });
 
-// Get methode
+
+/*
+
+
+Get
+
+*/
 app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) => {
   const user = new userModel({
     sex: req.params.sex,
@@ -100,8 +113,22 @@ app.get('/api/sport/fitness/:id', (req, res) => {
   // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
 });
 
+app.get('/api/', (req, res) => {
+  // Ouvre le fichier texte
+  fs.readFile('.docAPI.txt', 'utf8', (err, data) => {
+    if (err) {
+      // Gère les erreurs s'il y en a
+      console.error(err);
+      res.status(500).send('Erreur serveur');
+    } else {
+      // Renvoie les données du fichier texte en réponse à la requête
+      res.send(data);
+    }
+  });
+});
 
- app.get('/api/alluser', (req, res, next) => {
+
+ app.get('/api/user/alluser', (req, res, next) => {
     userModel.find()
       .then(userModel => res.status(200).json(userModel))
       .catch(error => res.status(400).json({ error }));
@@ -109,7 +136,7 @@ app.get('/api/sport/fitness/:id', (req, res) => {
  });
 
 
- app.get('/api/oneuser/:id', (req, res, next) => {
+ app.get('/api/user/oneuser/:id', (req, res, next) => {
   userModel.findOne({ _id: req.params.id })
     .then(userModel => res.status(200).json(userModel))
     .catch(error => res.status(404).json({ error }));
@@ -117,12 +144,6 @@ app.get('/api/sport/fitness/:id', (req, res) => {
 
 
 
- app.use((req, res, next) => {
-   res.setHeader('Access-Control-Allow-Origin', '*');
-   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-   next();
-   
- });
+
 
 module.exports = app;
