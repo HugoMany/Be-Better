@@ -43,9 +43,9 @@ registerBtn.addEventListener('click', (event) => {
   const password = document.querySelector('#password').value;
   const age = document.querySelector('#age').value;
 
+  //http://localhost:3000/api/user/0/bgdu59/hugo@gmail.com/0650281177/helloworld/19
 
   const url = `http://localhost:3000/api/user/${sexeN}/${prenom}/${email}/${telephone}/${password}/${age}`;
-  //http://localhost:3000/api/user/0/bgdu59/hugo@gmail.com/0650281177/helloworld/19
   fetch(url, {
       method: 'GET',
       headers: {

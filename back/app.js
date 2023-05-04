@@ -183,4 +183,11 @@ app.post('/api/timetable/update/:idUser', async (req, res) => {
   }
 });
 
+//Read
+app.get('/api/timetable/one/:idUser', (req, res, next) => {
+  timeTableModel.findOne({ id: req.params.idUser})
+    .then(timeTableModel => res.status(200).json(timeTableModel))
+    .catch(error => res.status(404).json({ error }));
+});
+
 module.exports = app;

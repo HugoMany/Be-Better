@@ -1,25 +1,58 @@
+/*
+Initialisation de la timetable
+*/
+function initTimeTable(){
+    getTimeTableFromId(getId());
+}
 
+/* 
+Recuperation de l'id de l'utilisateur
+*/
 function getId(){
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
-    // console.log(id);
-    if(getTimeTableFromId(id)){
-
+    if(id=="" || urlParams==""){
+        alert("Please login")
     }
-    
+    return id
 }
 
+/*
+Recupere le JSON de timetable de la personne connecter
+*/
 function getTimeTableFromId(id){
-    
+    const url = `http://localhost:3000/api/timetable/one/${id}`;
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
-
-function createTimeTable(id,json){
+/*
+Creation d'un time table
+*/
+function createTimeTable(idUser,json){
     url="http://localhost:3000/api/timeTable/create"
     data = {
-        id:id,
+        id:idUser,
         dateOfMonday:"01/05/2023",
         timeTable:json,
     }
+    console.log(idUser);
+
     const options = {
         method: "POST",
         headers: {
@@ -41,11 +74,11 @@ function createTimeTable(id,json){
     })
     .then(json => {
         // Traitement du JSON retourné par l'API
-        // console.log(json);
+        console.log(json);
     })
     .catch(error => {
         console.error(error);
     });
 }
 
-window.onload = getId();
+window.onload = initTimeTable();
