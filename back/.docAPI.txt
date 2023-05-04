@@ -41,3 +41,5 @@ Sport:<br>
 Timetable<br>
 
 /api/timetable/create Creation de Time table link avec un utilisateur<br>
+<br>
+/api/timetable/update/:idUser Actualisation de la timeTable<br>
