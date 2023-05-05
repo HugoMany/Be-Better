@@ -1,16 +1,16 @@
 
 <br>
-Be Better API:<br>
+<h1>Be Better API:</h1><br>
 <br>
 <hr>
 <br>
 <br>
-General <br>
+<h2>General</h2> <br>
 
 /api/ GET Documentation API <br>
 
 <br>
-User:<br>
+<h2>User:</h2><br>
 /api/user/ POST Creer un utilisateur<br>
 <br>
 /api/user/:sex/:firstName/:email/:tel/:passw/:age/ GET Creer un utilisateur<br>
@@ -19,8 +19,13 @@ User:<br>
 <br>
 /api/user/alluser/ GET Recupere tout les utilisateur<br>
 <br>
+/api/user/caract/:id/:sexe/:newWeigh/:height GET creation caractériqtique d'un user<br>
+<br>
+<br>
+/api/user/caract/:id/:newWeigh Ajout d'une nouvelle mesure de poid avec date et poid ajouter en pushback des autres mesures<br>
+<br>
 <hr>
-Sport:<br>
+<h2>Sport:</h2><br>
 <br>
 /api/sport/fitness GET Creation d'un activité vide<br>
 <br>
@@ -37,7 +42,7 @@ Sport:<br>
 
 <br>
 <hr>
-Timetable<br>
+<h2>Timetable</h2><br>
 <br>
 /api/timetable/create POST Creation de Time table link avec un utilisateur<br>
 <br>
