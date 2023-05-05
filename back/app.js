@@ -5,6 +5,7 @@ const fs = require('fs');
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
 const timeTableModel = require('./Model/timeTableModel');
+const runModel = require('./Model/runModel')
 const { log } = require('console');
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
@@ -190,13 +191,13 @@ Run model
 */
 
 app.get('/api/sport/run', (req, res, next) => {
-  const user = new muscuModel({
+  const run = new runModel({
     exerciceName:"empty",
     description:"empty",
     level:0,
     fract:false,
 }); 
-  user.save()
+run.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
