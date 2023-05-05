@@ -32,6 +32,9 @@ Sport:<br>
 *level : Parametre de Niveau<br>
 *muscularGroup: Parametre de Niveau de groupe<br>
 <br>
+/api/sport/run/ GET créer une activitée de running<br>
+
+<br>
 <hr>
 Timetable<br>
 <br>
