@@ -11,6 +11,7 @@
 
 <br>
 <h2>User:</h2><br>
+<h3>Profile</h3><br>
 /api/user/ POST Creer un utilisateur<br>
 <br>
 /api/user/:sex/:firstName/:email/:tel/:passw/:age/ GET Creer un utilisateur<br>
@@ -19,8 +20,10 @@
 <br>
 /api/user/alluser/ GET Recupere tout les utilisateur<br>
 <br>
-/api/user/caract/:id/:sexe/:newWeigh/:height GET creation caractériqtique d'un user<br>
+
+<h3>Caractéristique</h3>
 <br>
+/api/user/caract/:id/:sexe/:newWeigh/:height GET creation caractéristique d'un user<br>
 <br>
 /api/user/caract/:id/:newWeigh Ajout d'une nouvelle mesure de poid avec date et poid ajouter en pushback des autres mesures<br>
 <br>
