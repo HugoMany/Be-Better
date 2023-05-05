@@ -77,6 +77,7 @@ app.get('/api/sport/fitness', (req, res, next) => {
   const user = new muscuModel({
     exerciceName:"empty",
     description:"empty",
+    muscularGroup:"empty",
     level:0,
     numberOfRep:0,
     photo:"empty", 

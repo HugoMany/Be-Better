@@ -6,36 +6,38 @@
 	<link rel="stylesheet" type="text/css" href=#>
 </head>
 
-<body>
-    <h1>Choose your program</h1>
+<body id="body">
+    <div id="principal">
+        <h1>Choose your program</h1>
 
-    <label for="muscularGroupSelect">What do you want to work:</label>
-    <select name="mg" id="muscularGroupSelect">
-        <option value="">--Please choose an option--</option>
-        <option value="push">Push(chest/shoulders/triceps)</option>
-        <option value="pull">Pull(back/biceps)</option>
-        <option value="leg">Legs</option>
-        <option value="abs">Abs</option>
-    </select>
+        <label for="muscularGroupSelect">What do you want to work:</label>
+        <select name="mg" id="muscularGroupSelect">
+            <option value="">--Please choose an option--</option>
+            <option value="push">Push(chest/shoulders/triceps)</option>
+            <option value="pull">Pull(back/biceps)</option>
+            <option value="leg">Legs</option>
+            <option value="abs">Abs</option>
+        </select>
 
-    <label for="difficultySelect">What difficulty :</label>
-    <select name="difficulty" id="difficultySelect">
-        <option value="">--Please choose an option--</option>
-        <option value="1">easy</option>
-        <option value="2">medium</option>
-        <option value="3">hard</option>
-    </select>
+        <label for="difficultySelect">What difficulty :</label>
+        <select name="difficulty" id="difficultySelect">
+            <option value="">--Please choose an option--</option>
+            <option value="1">easy</option>
+            <option value="2">medium</option>
+            <option value="3">hard</option>
+        </select>
 
-    <label for="timeSelect">How long do you have :</label>
-    <select name="time" id="timeSelect">
-        <option value="">--Please choose an option--</option>
-        <option value="five">5 min</option>
-        <option value="ten">10 min</option>
-        <option value="fifteen">15 min</option>
-        <option value="twenty">20 min</option>
-    </select>
+        <label for="timeSelect">How long do you have :</label>
+        <select name="timeEx" id="timeSelect">
+            <option value="">--Please choose an option--</option>
+            <option value="five">5 min</option>
+            <option value="ten">10 min</option>
+            <option value="fifteen">15 min</option>
+            <option value="twenty">20 min</option>
+        </select>
 
-    <input type="button" value="Generate my program" id="generate" onclick="generateProgram()">
+        <input type="button" value="Generate my program" id="generate" onclick="generateProgram()">        
+
 
 
     <script src="script.js"></script>
