@@ -1,37 +1,48 @@
+
+<br>
 Be Better API:<br>
 <br>
-----------------------------------------------<br>
-POST<br>
-----------------------------------------------<br>
-<br>
-/api/user/ Creer un utilisateur<br>
+<hr>
 <br>
 <br>
-<br>
-----------------------------------------------<br>
-GET<br>
-----------------------------------------------<br><br>
 General <br>
 
-/api/ Documentation API <br>
+/api/ GET Documentation API <br>
 
 <br>
 User:<br>
-
-/api/user/:sex/:firstName/:email/:tel/:passw/:age/ Creer un utilisateur<br>
+/api/user/ POST Creer un utilisateur<br>
 <br>
-/api/user/oneuser/:id Recupere un utilisateur<br>
+/api/user/:sex/:firstName/:email/:tel/:passw/:age/ GET Creer un utilisateur<br>
 <br>
-/api/user/alluser/ Recupere tout les utilisateur<br>
+/api/user/oneuser/:id GET Recupere un utilisateur<br>
 <br>
-
+/api/user/alluser/ GET Recupere tout les utilisateur<br>
+<br>
+<hr>
 Sport:<br>
 <br>
-/api/sport/fitness Creation d'un activité vide<br>
+/api/sport/fitness GET Creation d'un activité vide<br>
 <br>
-/api/sport/fitness/:id Recupere l'activité par l'id<br>
+/api/sport/fitness/:id GET Recupere l'activité par l'id<br>
 <br>
-/api/sport/fitness/:level/:muscularGrou Recupere l'activité par le level et muscularGroup<br>
+/api/sport/fitness/all GET Recupere toutes les activitées<br>
+<br>
+/api/sport/fitness/:level/:muscularGroupe GET Recupere l'activité par le level et muscularGroup<br>
 <br>
 *level : Parametre de Niveau<br>
 *muscularGroup: Parametre de Niveau de groupe<br>
+<br>
+/api/sport/run/ GET créer une activitée de running<br>
+
+<br>
+<hr>
+Timetable<br>
+<br>
+/api/timetable/create POST Creation de Time table link avec un utilisateur<br>
+<br>
+/api/timetable/delete/:idUser GET Supression de toutes les timetable d'un utilisateur<br>
+<br>
+/api/timetable/update/:idUser POST Actualisation de la timeTable<br>
+<br>
+/api/timetable/one/:idUser GET Recupere la time table d'un utilisateurs<br>

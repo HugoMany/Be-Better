@@ -1,23 +1,36 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const url = require("url"); 
-//Import models
+const fs = require('fs');
 
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
-
+const timeTableModel = require('./Model/timeTableModel');
+const { log } = require('console');
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true,
     useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+  .then(() => console.log('La connexion réussie !'))
+  .catch(() => console.log('La connexion échouée !'));
 
 // const 
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,UPTDATE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
+
+/*
+
+
+POST
+
+*/
 app.post('/api/user/', async (req, res) => {
   try {
     const newUser = new UserModel({
@@ -35,25 +48,31 @@ app.post('/api/user/', async (req, res) => {
   }
 });
 
-// Get methode
-app.get('/api/user/', (req, res, next) => {
+
+/*
+
+
+Get
+
+*/
+app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) => {
   const user = new userModel({
-    sex: 0,
-    firstName: 'John',
-    email: 'john@example.com',
-    tel: '+33 6 12345678',
-    passw: 'azertghe567',
-    age: 25,    
-});
-  // console.log(url.parse(req.url).pathname);
-  // let page = 
+    sex: req.params.sex,
+    firstName: req.params.firstName ,
+    email: req.params.email,
+    tel: req.params.tel,
+    passw: req.params.passw,
+    age: req.params.age,    
+}); 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
 
-// Creation Programme sport
 
+
+
+// Creation Programme sport
 app.get('/api/sport/fitness', (req, res, next) => {
   const user = new muscuModel({
     exerciceName:"empty",
@@ -62,59 +81,134 @@ app.get('/api/sport/fitness', (req, res, next) => {
     level:0,
     numberOfRep:0,
     photo:"empty", 
-});
-  // console.log(url.parse(req.url).pathname);
-  // let page = 
+}); 
   user.save()
      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
      .catch(error => res.status(400).json({ error }));
  });
 
- 
- app.get('/api/alluser', (req, res, next) => {
+// Ex: http://localhost:3000/api/sport/fitness/all
+app.get('/api/sport/fitness/all', (req, res) => {
+  muscuModel.find()
+  .then(muscuModel => res.status(200).json(muscuModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
+
+// Ex: http://localhost:3000/api/sport/fitness/id
+app.get('/api/sport/fitness/:id', (req, res) => {
+  muscuModel.findOne({ _id:  req.params.id})
+  .then(muscuModel => res.status(200).json(muscuModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
+
+// Ex: http://localhost:3000/api/sport/facile/deltoide
+ app.get('/api/sport/fitness/:level/:muscularGroup', (req, res) => {
+  const levelP = req.params.level;
+  const muscularGroupP = req.params.muscularGroup;
+  console.log(levelP);
+  console.log(muscularGroupP);
+
+  muscuModel.find({ level: levelP, muscularGroup: muscularGroupP})
+  .then(muscuModel => res.status(200).json(muscuModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
+
+app.get('/api/', (req, res) => {
+  // Ouvre le fichier texte
+  fs.readFile('.docAPI.txt', 'utf8', (err, data) => {
+    if (err) {
+      // Gère les erreurs s'il y en a
+      console.error(err);
+      res.status(500).send('Erreur serveur');
+    } else {
+      // Renvoie les données du fichier texte en réponse à la requête
+      res.send(data);
+    }
+  });
+});
+
+
+ app.get('/api/user/alluser', (req, res, next) => {
     userModel.find()
       .then(userModel => res.status(200).json(userModel))
       .catch(error => res.status(400).json({ error }));
 
  });
- app.get('/api/nballuser', (req, res, next) => {
-  userModel.find()
-    .then(userModel => {
-
-      // const json = userModel;
-      // const obj = JSON.parse(json);
-      // console.log(obj.id);
-      // console.log(userModel);
-      //const email = JSON.parse(username);
-      let i=0;
-      while(userModel[i].email!=undefined){
-        console.log(userModel[i].email);
-        console.log(i);
-        i++;
-      }
-      res.status(200).json(userModel);
-      
 
 
-    })
-    .catch(error => res.status(400).json({ error }));
-
-});
-
- app.get('/api/oneuser/:id', (req, res, next) => {
+ app.get('/api/user/oneuser/:id', (req, res, next) => {
   userModel.findOne({ _id: req.params.id })
     .then(userModel => res.status(200).json(userModel))
     .catch(error => res.status(404).json({ error }));
 });
 
+/*
+
+Time Table
+
+*/
+//Creer
+app.post('/api/timetable/create', async (req, res) => {
+  try {
+    const newTimeTableModel = new timeTableModel({
+      id: req.body.id,
+      dateOfMonday: req.body.dateOfMonday,
+      timeTable: req.body.timeTable,
+    });
+    // console.log(req.body.timeTable);
+    const savedTimeTableModel = await newTimeTableModel.save();
+    // res.status(201).json(savedTimeTableModel);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 
 
- app.use((req, res, next) => {
-   res.setHeader('Access-Control-Allow-Origin', '*');
-   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-   next();
-   
- });
+// Modifier
+app.post('/api/timetable/update/:idUser', async (req, res) => {
+   {
+    const timeTable = await timeTableModel.findOne({ id:  req.params.idUser});
+    if (!timeTable) {
+      res.status(404).send('Aucun emploi du temps trouvé avec cet ID.');
+      return;
+    }
+    timeTable.dateOfMonday = req.body.dateOfMonday;
+    timeTable.timeTable = req.body.timeTable;
+    const savedTimeTableModel = await timeTable.save();
+    res.status(200).json(savedTimeTableModel);
+  }
+  // } catch (err) {
+  //   res.status(400).send(err);
+  // }
+});
+
+//Read
+app.get('/api/timetable/one/:idUser', (req, res, next) => {
+  timeTableModel.findOne({ id: req.params.idUser})
+    .then(timeTableModel => res.status(200).json(timeTableModel))
+    .catch(error => res.status(404).json({ error }));
+});
+
+//Delete
+app.get('/api/timetable/delete/:idUser', async (req, res) => {
+    const idUser = req.params.idUser;
+  
+      // Trouver tous les éléments ayant l'ID spécifié dans la base de données
+      const timeTableModelToDelete = await timeTableModel.find({ id: idUser });
+  
+      // Supprimer les éléments de la base de données
+      await timeTableModel.deleteMany({ id: idUser });
+  
+      // Retourner la liste des éléments supprimés
+      res.status(200).json({
+        message: `Tous les éléments avec l'ID ${idUser} ont été supprimés`,
+        elements: timeTableModelToDelete
+      });
+    
+  });
+  
 
 module.exports = app;

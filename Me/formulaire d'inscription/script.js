@@ -24,18 +24,48 @@ window.onclick = function (event) {
     }
 }
 
-var btn = document.getElementById("register");
+const form = document.querySelector('.form-horizontal');
+const registerBtn = document.querySelector('#register');
 
-btn.onclick = function () {
-    let nom = document.getElementById("nom").value;
-    let prenom = document.getElementById("prenom").value;
-    let sexe = document.getElementById("sexe").value;
-    let email = document.getElementById("email").value;
-    let telephone = document.getElementById("telephone").value;
-    let password = document.getElementById("password").value;
-    data = [];
-    data.push({ "nom": nom, "prenom": prenom, "sexe": sexe, "email": email, "telephone": telephone, "password": password });
-    data = JSON.stringify(data);
-    console.log(data);
-    modal.style.display = "none";
-}
+registerBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const prenom = document.querySelector('#prenom').value;
+  const sexe = document.querySelector('#sexe').value;
+  if(sexe==="homme"){
+    sexeN=0;
+  }
+  else{
+    sexeN=1;
+  }
+  const email = document.querySelector('#email').value;
+  const telephone = document.querySelector('#telephone').value;
+  const password = document.querySelector('#password').value;
+  const age = document.querySelector('#age').value;
+
+  //http://localhost:3000/api/user/0/bgdu59/hugo@gmail.com/0650281177/helloworld/19
+
+  const url = `http://localhost:3000/api/user/${sexeN}/${prenom}/${email}/${telephone}/${password}/${age}`;
+  fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      alert('User enregistré avec succès!');
+      modal.style.display = "none";
+
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Erreur lors de l\'enregistrement de l\'utilisateur!');
+    });
+});
