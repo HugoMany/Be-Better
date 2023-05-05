@@ -167,6 +167,40 @@ app.post('/api/timetable/create', async (req, res) => {
 });
 
 
+//Creer
+app.post('/api/timetable/create', async (req, res) => {
+  try {
+    const newTimeTableModel = new timeTableModel({
+      id: req.body.id,
+      dateOfMonday: req.body.dateOfMonday,
+      timeTable: req.body.timeTable,
+    });
+    // console.log(req.body.timeTable);
+    const savedTimeTableModel = await newTimeTableModel.save();
+    // res.status(201).json(savedTimeTableModel);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+/* 
+
+Run model
+
+*/
+
+app.get('/api/sport/run', (req, res, next) => {
+  const user = new muscuModel({
+    exerciceName:"empty",
+    description:"empty",
+    level:0,
+    fract:false,
+}); 
+  user.save()
+     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+     .catch(error => res.status(400).json({ error }));
+ });
+
 // Modifier
 app.post('/api/timetable/update/:idUser', async (req, res) => {
    {
