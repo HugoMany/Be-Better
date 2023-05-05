@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,UPTDATE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
@@ -168,7 +168,7 @@ app.post('/api/timetable/create', async (req, res) => {
 
 // Modifier
 app.post('/api/timetable/update/:idUser', async (req, res) => {
-  try {
+   {
     const timeTable = await timeTableModel.findOne({ id:  req.params.idUser});
     if (!timeTable) {
       res.status(404).send('Aucun emploi du temps trouvé avec cet ID.');
@@ -178,9 +178,10 @@ app.post('/api/timetable/update/:idUser', async (req, res) => {
     timeTable.timeTable = req.body.timeTable;
     const savedTimeTableModel = await timeTable.save();
     res.status(200).json(savedTimeTableModel);
-  } catch (err) {
-    res.status(400).send(err);
   }
+  // } catch (err) {
+  //   res.status(400).send(err);
+  // }
 });
 
 //Read
@@ -189,5 +190,24 @@ app.get('/api/timetable/one/:idUser', (req, res, next) => {
     .then(timeTableModel => res.status(200).json(timeTableModel))
     .catch(error => res.status(404).json({ error }));
 });
+
+//Delete
+app.get('/api/timetable/delete/:idUser', async (req, res) => {
+    const idUser = req.params.idUser;
+  
+      // Trouver tous les éléments ayant l'ID spécifié dans la base de données
+      const timeTableModelToDelete = await timeTableModel.find({ id: idUser });
+  
+      // Supprimer les éléments de la base de données
+      await timeTableModel.deleteMany({ id: idUser });
+  
+      // Retourner la liste des éléments supprimés
+      res.status(200).json({
+        message: `Tous les éléments avec l'ID ${idUser} ont été supprimés`,
+        elements: timeTableModelToDelete
+      });
+    
+  });
+  
 
 module.exports = app;
