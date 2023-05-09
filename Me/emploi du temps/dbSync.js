@@ -17,12 +17,12 @@ function goReplace(ourJson){
 Recuperation de l'id de l'utilisateur
 */
 function getId(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-    if(id=="" || urlParams==""){
-        alert("Please login")
-    }
-    return id
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const id = urlParams.get('id');
+    // if(id=="" || urlParams==""){
+    //     alert("Please login")
+    // }
+    return getCookie("id");
 }
 
 /*
