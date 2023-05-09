@@ -4,14 +4,98 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" >
-	<script src="meteo.js"></script>
+	
+    <title>evolution du poids</title>
 
 <body>
-    <div id="error">
+  <div>Evolution of weight</div>
+<!--   <div id="error">
     </div>
     <div id="latitude">
     </div>
     <div id="longitude">
     </div>
-    <button onclick="func()">appuie pour ta localisation</button>
+    <div id ="info">    
+    </div>
+    <button onclick="func()">appuie pour ta localisation</button>-->
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        // const ctx = document.getElementById('myChart');
+      
+        // new Chart(ctx, {
+        //   type: 'bar',
+        //   data: {
+        //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        //     datasets: [{
+        //       label: '# of Votes',
+        //       data: [12, 19, 3, 5, 2, 3],
+        //       borderWidth: 1
+        //     }]
+        //   },
+        //   options: {
+        //     scales: {
+        //       y: {
+        //         beginAtZero: true
+        //       }
+        //     }
+        //   }
+        // });
+      </script>
+      <script src="index.js"></script>
+      <div class="field_ameli_paragraph_body text_with_summary"><table><caption><strong>Évolution du temps moyen de sommeil par 24 heures et selon l'âge</strong></caption>
+        <thead><tr><th class="text-align-center" scope="col">0-6 mois</th>
+        <th class="text-align-center" scope="col">3 ans</th>
+        <th class="text-align-center" scope="col">6 ans</th>
+        <th class="text-align-center" scope="col">12 ans</th>
+        <th class="text-align-center" scope="col">À partir de 20 ans</th>
+        </tr></thead><tbody><tr><td class="text-align-center">16-17 heures</td>
+        <td class="text-align-center">13 heures</td>
+        <td class="text-align-center">12 heures</td>
+        <td class="text-align-center">9 heures</td>
+        <td class="text-align-center">8 heures</td>
+        </tr></tbody></table></div>
+        <style>{
+              -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-weight: 400;
+    text-align: left;
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 1.3rem;
+    color: #000;
+    box-sizing: border-box;}
+        </style>
 </body>
