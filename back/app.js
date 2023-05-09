@@ -5,8 +5,9 @@ const fs = require('fs');
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
 const timeTableModel = require('./Model/timeTableModel');
-const runModel = require('./Model/runModel')
-const { log } = require('console');
+const runModel = require('./Model/runModel');
+const userCaractModel = require('./Model/userCaractModel');
+const { log, error } = require('console');
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true,
@@ -70,8 +71,46 @@ app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) =
      .catch(error => res.status(400).json({ error }));
  });
 
+ /* 
+ 
+ 
+Caracteristique
+ 
+ 
+ */
+ //Create a caract Profile
+ app.get('/api/user/caract/:id/:sexe/:newWeigh/:height', (req, res, next) => {
+  const caractUser = new userCaractModel(  {   
+    idUser: req.params.id,
+    sexe: req.params.sexe,
+    allWeigh: [{value:req.params.newWeigh, date:Date.now()}],
+    height: req.params.height,
+}); 
+  caractUser.save()
+     .then(() => res.status(201).json({ message: 'Caractéristique de l"utilisateur '+req.params.id+' ont bien été enregistré'}))
+     .catch(error => res.status(400).json({ error }));
+ });
 
+ app.get('/api/user/caract/:id/:newWeigh', (req, res, next) => {
+  userCaractModel.findOne({idUser:req.params.id})
+  .then(userCaractModel => {
+    res.status(200).json(userCaractModel);
+    userCaractModel["allWeigh"].push({value:req.params.newWeigh,date:Date.now()});
+    console.log(userCaractModel["allWeigh"]);
+    userCaractModel.save();
+  }
+    )
+  .catch(error => res.status(404).json({ error }));
+ });
 
+app.get('/api/user/caract/:id' , (req, res, next) => {
+  userCaractModel.findOne({idUser:req.params.id})
+  .then(userCaractModel => {
+    res.status(201).json(userCaractModel);
+  }).catch(
+    error => res.status(401).json({error})
+  );
+});
 
 // Creation Programme sport
 app.get('/api/sport/fitness', (req, res, next) => {
