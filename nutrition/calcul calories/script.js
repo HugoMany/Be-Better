@@ -11,7 +11,7 @@ async function getNutritionData(query) {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        console.log(result);
+        affichage(result);
     } catch (error) {
         console.error(error);
     }
@@ -20,14 +20,28 @@ async function getNutritionData(query) {
 function repas() {
     var aliment = document.getElementById("aliment").value;
     var poids = document.getElementById("poids").value;
+    if (poids==0){
+        poids = 100;
+    }
     var query = poids + "g " + aliment;
     return query;
+}
+
+function affichage(json) {
+    console.log(json);
+    const data = JSON.parse(json);
+    let calories = data[0].calories;
+    for (let i = 1; i < data.length; i++) {
+        calories += data[i].calories;
+        console.log(calories);
+      }
+    document.getElementById("resultats").innerHTML = calories.toFixed(2);
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     var query = repas();
-    console.log(query); // Afficher le journal dans la console pour tester
-    getNutritionData(query);
+    //console.log(query);
+   getNutritionData(query);
 });
 
