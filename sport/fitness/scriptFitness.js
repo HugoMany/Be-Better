@@ -41,7 +41,7 @@ function muscuProgram(data){
     //On sélectionne 5 exercices différents parmis tous ceux qui sont proposés
     table=[];
     while(table.length!=5){
-        let j=Math.floor(Math.random() * 5)
+        let j=Math.floor(Math.random() * nbExercises)
         if(table.includes(j)==false){
             table.push(j)
         }

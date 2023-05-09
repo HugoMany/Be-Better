@@ -202,6 +202,19 @@ run.save()
      .catch(error => res.status(400).json({ error }));
  });
 
+ // Ex: http://localhost:3000/api/sport/1/yes
+ app.get('/api/sport/run/:level/:fract', (req, res) => {
+  const levelP = req.params.level;
+  const fractP = req.params.fract;
+  console.log(levelP);
+  console.log(fractP);
+
+  runModel.find({ level: levelP, fract: fractP})
+  .then(runModel => res.status(200).json(runModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
+});
+
 // Modifier
 app.post('/api/timetable/update/:idUser', async (req, res) => {
    {
