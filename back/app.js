@@ -49,7 +49,17 @@ app.post('/api/user/', async (req, res) => {
     res.status(400).send(err);
   }
 });
-
+app.post('/api/user/login/', async (req, res) => {
+  try {
+    userModel.findOne({
+      email: req.body.email,
+      passw: req.body.passw,
+    }).then(userModel => res.status(200).json(userModel));
+    
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 
 /*
 
