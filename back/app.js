@@ -7,7 +7,7 @@ const muscuModel=require('./Model/muscuModel');
 const timeTableModel = require('./Model/timeTableModel');
 const runModel = require('./Model/runModel');
 const userCaractModel = require('./Model/userCaractModel');
-const { log } = require('console');
+const { log, error } = require('console');
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true,
@@ -71,6 +71,13 @@ app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) =
      .catch(error => res.status(400).json({ error }));
  });
 
+ /* 
+ 
+ 
+Caracteristique
+ 
+ 
+ */
  //Create a caract Profile
  app.get('/api/user/caract/:id/:sexe/:newWeigh/:height', (req, res, next) => {
   const caractUser = new userCaractModel(  {   
@@ -94,8 +101,16 @@ app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) =
   }
     )
   .catch(error => res.status(404).json({ error }));
-  
  });
+
+app.get('/api/user/caract/:id' , (req, res, next) => {
+  userCaractModel.findOne({idUser:req.params.id})
+  .then(userCaractModel => {
+    res.status(201).json(userCaractModel);
+  }).catch(
+    error => res.status(401).json({error})
+  );
+});
 
 // Creation Programme sport
 app.get('/api/sport/fitness', (req, res, next) => {
