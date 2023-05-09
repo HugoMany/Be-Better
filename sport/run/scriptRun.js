@@ -3,7 +3,6 @@ function generateProgram(){
     const fract=document.getElementById("splitSelect").value;
 
     const url=`http://localhost:3000/api/sport/run/${level}/${fract}`;
-    console.log(url);
     fetch(url, {
         method: 'GET',
         headers: {
@@ -19,7 +18,7 @@ function generateProgram(){
         
     })    
     .then(data => {
-        //Appelle la fonction muscuProgram avec en paramètre data pour pouvoir exploiter le json    
+        //Appelle la fonction runProgram avec en paramètre data pour pouvoir exploiter le json    
         runProgram(data)
     })    
     .catch(error => {    
@@ -54,4 +53,20 @@ function runProgram(data){
         var exDescriptionContent = document.createTextNode(data[indexExo].description);
         exDescription.appendChild(exDescriptionContent);
         programPage.appendChild(exDescription);
+
+        //On crée un bouton finish pour quand l'utilisateur aura fini son programme il pourra revenir au menu
+        //de choix
+        var buttonFinish = document.createElement('input');
+        buttonFinish.setAttribute('type','button')
+        buttonFinish.setAttribute('value','FINISH')
+        buttonFinish.setAttribute('onclick','finishExercise()')
+        programPage.appendChild(buttonFinish);
+}
+
+//Fonction qui va s'activer quand l'utilisateur va appuyer sur le bouton FINISH et qui va supprimer la div
+//contenant le programme pour ensuite reafficher le menu de choix
+function finishExercise(){
+    programPage.remove();
+    const principal=document.getElementById("principal")
+    principal.style.display="block"
 }

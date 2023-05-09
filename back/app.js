@@ -6,6 +6,8 @@ const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
 const timeTableModel = require('./Model/timeTableModel');
 const runModel = require('./Model/runModel')
+const swimModel = require('./Model/swimModel')
+const bikeModel = require('./Model/bikeModel')
 const { log } = require('console');
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
@@ -104,7 +106,7 @@ app.get('/api/sport/fitness/:id', (req, res) => {
   // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
 });
 
-// Ex: http://localhost:3000/api/sport/facile/deltoide
+// Ex: http://localhost:3000/api/sport/fitness/facile/deltoide
  app.get('/api/sport/fitness/:level/:muscularGroup', (req, res) => {
   const levelP = req.params.level;
   const muscularGroupP = req.params.muscularGroup;
@@ -184,37 +186,6 @@ app.post('/api/timetable/create', async (req, res) => {
   }
 });
 
-/* 
-
-Run model
-
-*/
-
-app.get('/api/sport/run', (req, res, next) => {
-  const run = new runModel({
-    exerciceName:"empty",
-    description:"empty",
-    level:0,
-    fract:false,
-}); 
-run.save()
-     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-     .catch(error => res.status(400).json({ error }));
- });
-
- // Ex: http://localhost:3000/api/sport/1/yes
- app.get('/api/sport/run/:level/:fract', (req, res) => {
-  const levelP = req.params.level;
-  const fractP = req.params.fract;
-  console.log(levelP);
-  console.log(fractP);
-
-  runModel.find({ level: levelP, fract: fractP})
-  .then(runModel => res.status(200).json(runModel))
-  .catch(error => res.status(404).json({ error }));
-  // res.send(`Les paramètres sont ${levelP} et ${muscularGroupP}`);
-});
-
 // Modifier
 app.post('/api/timetable/update/:idUser', async (req, res) => {
    {
@@ -257,6 +228,93 @@ app.get('/api/timetable/delete/:idUser', async (req, res) => {
       });
     
   });
+
+
+/* 
+
+Run model
+
+*/
+
+app.get('/api/sport/run', (req, res, next) => {
+  const run = new runModel({
+    exerciceName:"empty",
+    description:"empty",
+    level:0,
+    fract:false,
+}); 
+run.save()
+     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+     .catch(error => res.status(400).json({ error }));
+ });
+
+ // Ex: http://localhost:3000/api/sport/run/1/yes
+ app.get('/api/sport/run/:level/:fract', (req, res) => {
+  const levelP = req.params.level;
+  const fractP = req.params.fract;
+  console.log(levelP);
+  console.log(fractP);
+
+  runModel.find({ level: levelP, fract: fractP})
+  .then(runModel => res.status(200).json(runModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP} et ${fractP}`);
+});
+
+/*
+
+Swim
+
+*/
+
+app.get('/api/sport/swim', (req, res, next) => {
+  const swim = new swimModel({
+    exerciceName:"empty",
+    description:"empty",
+    level:0,
+}); 
+swim.save()
+     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+     .catch(error => res.status(400).json({ error }));
+ });
+
+// Ex: http://localhost:3000/api/sport/swim/1
+app.get('/api/sport/swim/:level', (req, res) => {
+  const levelP = req.params.level;
+  console.log(levelP);
   
+  swimModel.find({ level: levelP})
+  .then(swimModel => res.status(200).json(swimModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP});
+});
+
+/*
+
+Bike
+
+*/
+
+app.get('/api/sport/bike', (req, res, next) => {
+  const bike = new bikeModel({
+    exerciceName:"empty",
+    description:"empty",
+    level:0,
+}); 
+bike.save()
+     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+     .catch(error => res.status(400).json({ error }));
+ });
+
+// Ex: http://localhost:3000/api/sport/bike/1
+app.get('/api/sport/bike/:level', (req, res) => {
+  const levelP = req.params.level;
+  console.log(levelP);
+  
+  bikeModel.find({ level: levelP})
+  .then(bikeModel => res.status(200).json(bikeModel))
+  .catch(error => res.status(404).json({ error }));
+  // res.send(`Les paramètres sont ${levelP});
+});
 
 module.exports = app;

@@ -1,11 +1,27 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-	<title>BeBetter/sport/swimming</title>
+	<title>BeBetter/sport/swim</title>
 	<link rel="stylesheet" type="text/css" href=#>
 </head>
 
-<body>
+<body id="body">
+    <div id="principal">
+        <h1>Choose your program</h1>
+
+        <label for="difficultySelect">What is your level :</label>
+        <select name="difficulty" id="difficultySelect">
+            <option value="">--Please choose an option--</option>
+            <option value="1">Beginner</option>
+            <option value="2">Intermediate</option>
+            <option value="3">Expert</option>
+        </select>
+
+
+        <input type="button" value="Generate my program" id="generate" onclick="generateProgram()">        
+
+
 
     <script src="scriptSwim.js"></script>
 </body>

@@ -34,6 +34,16 @@ Sport:<br>
 *muscularGroup: Parametre de Niveau de groupe<br>
 <br>
 /api/sport/run/ GET créer une activitée de running<br>
+<br>
+/api/sport/run/:level/:fract GET Recupere l'activité par le level et si c'est du fractionné<br>
+<br>
+/api/sport/swim/ GET créer une activitée de swimming<br>
+<br>
+/api/sport/swim/:level GET Recupere l'activité par le level <br>
+<br>
+/api/sport/bike/ GET créer une activitée de biking<br>
+<br>
+/api/sport/bike/:level GET Recupere l'activité par le level <br>
 
 <br>
 <hr>
