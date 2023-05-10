@@ -6,11 +6,21 @@
     <link rel="stylesheet" type="text/css" href="./CSS/styleBeBetter.css">
     <link rel="stylesheet" type="text/css" href="./CSS/indexStyle.css">
     <link rel="stylesheet" href="./CSS/menuStyle.css">
+    <link rel="stylesheet" href="./CSS/animStart.css">
     <script src="./js/cookie.js"></script>
     <script src="./js/menu.js"></script>
+    <script src="./js/transition.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
+<div id="animStart">
+    <img src="img/logo.png">
+
+</div>
+<div id="animEnd">
+    <img src="img/logo.png">
+</div>
 
 <body>
     <h1>Be BeTTeR</h1>
@@ -41,8 +51,6 @@
     <section class="categorie" id="weight">
 
 
-
-
     </section>
 
     <section class="categorie" id="someSport">
@@ -53,10 +61,26 @@
     </section>
 
     <section class="categorie" id="nutrition">
-
-
-
-
+<div class="sousSec" id="calorieCalc">
+    <a href="../nutrition/calcul calories/">
+    <div class="sousDiv">
+    <span class="material-symbols-outlined">
+        balance
+    </span>
+    Calorie in your meal. 
+    </div>
+    </a>
+</div>
+<div class="sousSec" id="mealGen">
+    <a href="../nutrition/recipe/">
+    <div class="sousDiv">
+        <span class="material-symbols-outlined">
+            set_meal
+        </span>
+        Meal generator.
+    </div>
+    </a>
+</div>
     </section>
     
 </body>

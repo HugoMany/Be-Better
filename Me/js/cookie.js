@@ -6,6 +6,11 @@ function setCookie(cname, cvalue, exdays) {
   }
 function deleteCookie(cname){
     document.cookie = cname+"=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    return true
+}
+function disconnect(){
+    deleteCookie("id");
+    return true
 }
 
   function getCookie(cname) {

@@ -5,9 +5,45 @@ body{
     margin: 0px;
 }
 section{
+    display: flex;
     height: 200px;
     width: 90vw;
     border: 1px solid var(--BBgray);
     box-shadow: inset;
     margin: 5vw;
+}
+.categorie{
+    display: flex;
+}
+.sousSec{
+    width: 50%;
+    height: 100%;
+    
+}
+#mealGen{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+.sousDiv{
+    height: fit-content;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+html body .sousDiv span{
+    font-size: 72px;
+}
+#calorieCalc{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+a{
+    text-decoration: none;
 }

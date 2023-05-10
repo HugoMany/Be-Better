@@ -1,12 +1,4 @@
 
-:root {
-    --BBgreen: rgba(22, 52, 1, 1);
-    --BBapple: rgba(138, 221, 96, 1);
-    --BBappleC: rgba(189, 237, 193, 1); 
-    --BBgray: rgb(40, 40, 48);
-    --BBwhite:rgba(242, 242, 242, 1);
-    --BBrose:rgb(253, 181, 181);
-  }
 nav{
     position: fixed;
     bottom: 0px;
@@ -57,5 +49,12 @@ nav{
 #currentPage{
     color:var(--BBrose);
 }
-
+/* 
 @media only screen and (max-width: 768px) {
+  html body nav span.material-symbols-outlined{
+    font-size: 100px;
+  }
+  nav{
+    height: 100px;
+  }
+} */
