@@ -24,18 +24,19 @@ td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
+  background-color: white;
   /* mettre toutes les cases a la meme taille */
   width: 100px;
 }
 
 th {
   background-color: #333;
-  color: #fff;
+  color: white;
 }
 
 tbody td:hover {
   background-color: #333;
-  color: #fff;
+  color: white;
   cursor:pointer;
 }
 
