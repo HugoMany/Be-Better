@@ -106,30 +106,3 @@ function readjson(J) {
 }
 
 
-function weather(latitude,longitude) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&timeformat=unixtime&past_days=7&forecast_days=7`;
-    return fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('La requête a échoué');
-        }
-        return response.json();
-      });
-  }
-
-function actuWeather(json){
-
-}
-
-
-weather()
-.then((response) => {
-    console.log(response);
-    actuWeather(response)
-  // Utilisez la réponse ici
-})
-.catch((error) => {
-  console.log(error);
-  console.log("Weather Error");
-  // Gérez les erreurs ici
-});
