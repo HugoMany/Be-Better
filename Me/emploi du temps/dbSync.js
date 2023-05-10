@@ -18,11 +18,12 @@ Recuperation de l'id de l'utilisateur
 */
 function getId(){
     // const urlParams = new URLSearchParams(window.location.search);
-    // const id = urlParams.get('id');
-    // if(id=="" || urlParams==""){
-    //     alert("Please login")
-    // }
-    return getCookie("id");
+    const id = getCookie("id");
+    if(id==""){
+        alert("Please login")
+        document.location.href=`http://127.0.0.1:5500/Me/login/`;
+    }
+    return id;
 }
 
 /*
