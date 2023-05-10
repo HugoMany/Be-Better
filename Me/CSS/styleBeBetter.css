@@ -3,7 +3,7 @@
     --BBgreen: rgba(22, 52, 1, 1);
     --BBapple: rgba(138, 221, 96, 1);
     --BBappleC: rgba(189, 237, 193, 1); 
-    --BBgray: rgba(114, 117, 156, 1);
+    --BBgray: rgb(40, 40, 48);
     --BBwhite:rgba(242, 242, 242, 1);
   }
 
@@ -27,9 +27,9 @@ hr{
 table{
     background-color: var(--BBwhite);
 }
-nav{
+/* nav{
     display: flex;
     justify-content: space-evenly;
     align-content: center;
 
-}
+} */
