@@ -18,12 +18,22 @@ async function getNutritionData(query) {
 }
 
 function repas() {
-    var aliment = document.getElementById("aliment").value;
-    var poids = document.getElementById("poids").value;
-    if (poids==0){
-        poids = 100;
+    var aliment1 = document.getElementById("aliment1").value;
+    var poids1 = document.getElementById("poids1").value;
+    var aliment2 = document.getElementById("aliment2").value;
+    var poids2 = document.getElementById("poids2").value;
+    var aliment3 = document.getElementById("aliment3").value;
+    var poids3 = document.getElementById("poids3").value;
+    if (poids1==0){
+        poids1 = 100;
     }
-    var query = poids + "g " + aliment;
+    if (poids2==0){
+        poids2 = 100;
+    }
+    if (poids3==0){
+        poids3 = 100;
+    }
+    var query = poids1 + "g " + aliment1 + ", "+ poids2 + "g " + aliment2+", " + poids3 + "g " + aliment3  ;
     return query;
 }
 
@@ -35,7 +45,7 @@ function affichage(json) {
         calories += data[i].calories;
         console.log(calories);
       }
-    document.getElementById("resultats").innerHTML = calories.toFixed(2);
+    document.getElementById("resultats").innerHTML += calories.toFixed(2);
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
