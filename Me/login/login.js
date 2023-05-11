@@ -36,7 +36,7 @@ async function login() {
                 alert("Connected") ;
                 deleteCookie("id");
                 setCookie("id",data["_id"],7);
-
+                document.location="/Me/"
             }
             else {
                 alert("Retry")

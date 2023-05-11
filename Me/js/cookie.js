@@ -1,3 +1,4 @@
+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -6,6 +7,11 @@ function setCookie(cname, cvalue, exdays) {
   }
 function deleteCookie(cname){
     document.cookie = cname+"=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    return true
+}
+function disconnect(){
+    deleteCookie("id");
+    return true;
 }
 
   function getCookie(cname) {
@@ -23,3 +29,17 @@ function deleteCookie(cname){
     }
     return "";
   }
+
+function isConnected(){
+  if(getCookie("id")==""){
+    if(document.location!="http://127.0.0.1:5500/Me/login/"){
+      document.location="/Me/login/";
+    }
+    return false;
+  }
+  else{
+    return getCookie("id");
+  }
+}
+
+const varIsConnected = isConnected();

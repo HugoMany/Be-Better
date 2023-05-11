@@ -1,5 +1,5 @@
 var submit = document.getElementById('submit');
-const id = "642445267d6ced485f7eefa9"
+const id = isConnected();
 
 function Poids() {
     var poid = document.getElementById("poids").value;
@@ -44,6 +44,7 @@ async function sendWeight(query) {
         const result = await response.text();
 
         console.log(result);
+        alert("New updated weight.")
 
     } catch (error) {
 

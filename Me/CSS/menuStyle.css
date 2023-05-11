@@ -1,0 +1,60 @@
+
+nav{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 65px;
+    width: 100vw;
+    display: flex;
+    flex-direction:row;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    /* border: 1px solid var(--BBwhite); */
+    z-index: 20;
+    background-color: var(--BBwhite);
+}
+html nav .material-symbols-outlined {
+    color: var(--BBwhitegray);
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 65px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: 'liga';
+    -moz-osx-font-smoothing: grayscale;
+    transition: 1s;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 40
+}
+.material-symbols-outlined:hover {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 40
+  }
+
+#currentPage{
+    color:var(--BBrose);
+}
+/* 
+@media only screen and (max-width: 768px) {
+  html body nav span.material-symbols-outlined{
+    font-size: 100px;
+  }
+  nav{
+    height: 100px;
+  }
+} */

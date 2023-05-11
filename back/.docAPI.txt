@@ -27,6 +27,8 @@
 <br>
 /api/user/caract/:id/:newWeigh Ajout d'une nouvelle mesure de poid avec date et poid ajouter en pushback des autres mesures<br>
 <br>
+/api/user/caract/:id GET retourne les caractéristique d'un personne!
+<br>
 <hr>
 <h2>Sport:</h2><br>
 <br>

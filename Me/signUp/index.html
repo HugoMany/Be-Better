@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/styleBeBetter.css">
+    <link rel="stylesheet" href="../CSS/login.css">
+
+</head>
+
+<body id="loginBody">
+    <h1>Sign Up</h1>  
+
+    <form class="form-horizontal">
+        
+        <div class="form-group">
+            <label class="label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="input" id="prenom" name="prenom" placeholder="Prenom">
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="label">Gender</label>
+            <br />
+            <select name="sexe" id="sexe" class="select">
+                <option value="Homme" id="Homme">Man</option>
+                <option value="Femme" id="Femme">Woman</option>
+            </select>
+            <br />
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="input" id="email" name="email" placeholder="Email">
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="label">Phone Number</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Telephone">
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="label">Age</label>
+            <div class="col-sm-10">
+                <input type="text" class="number" id="age" name="age" placeholder="Age">
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" name="password"
+                    placeholder="password">
+            </div>
+        </div>
+        <br />
+        <div>
+            <button type="submit" id="register">Sign up</button>
+        </div>
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
