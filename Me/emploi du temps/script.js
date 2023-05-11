@@ -13,7 +13,13 @@ cells.forEach(cell => {
 
         modal.style.display = "block";
         var btn = document.getElementById("btn");
-
+        var supr = document.getElementById("btnDelete");
+        supr.onclick = function(){
+            document.getElementById(id).textContent = "";
+            document.getElementById(id).style.backgroundColor = "";
+            data = json();
+            modal.style.display = "none";
+        }
         btn.onclick = function () {
             const Q1 = document.getElementById("Q1").value;
             const Q2 = document.getElementById("Q2").value;
@@ -104,4 +110,5 @@ function readjson(J) {
         }
     }
 }
+
 

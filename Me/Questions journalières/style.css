@@ -1,0 +1,36 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    overflow: hidden;
+}
+
+.card {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.card h2 {
+    margin: 10px;
+}
+
+.card.like {
+    transform: translateX(300px) rotate(-15deg);
+}
+
+.card.dislike {
+    transform: translateX(-300px) rotate(15deg);
+}
