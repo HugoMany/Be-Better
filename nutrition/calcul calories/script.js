@@ -41,11 +41,19 @@ function affichage(json) {
     console.log(json);
     const data = JSON.parse(json);
     let calories = data[0].calories;
+    let sugar = data[0].sugar_g;
+    let fiber = data[0].fiber_g
+    let protein = data[0].protein_g
     for (let i = 1; i < data.length; i++) {
         calories += data[i].calories;
-        console.log(calories);
+        sugar += data[i].sugar_g;
+        fiber += data[i].fiber_g;
+        protein += data[i].protein_g;
       }
-    document.getElementById("resultats").innerHTML += calories.toFixed(2);
+    document.getElementById("cal").innerHTML += calories.toFixed(2);
+    document.getElementById("prot").innerHTML += protein.toFixed(2);
+    document.getElementById("fib").innerHTML += fiber.toFixed(2);
+    document.getElementById("sug").innerHTML += sugar.toFixed(2);
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
