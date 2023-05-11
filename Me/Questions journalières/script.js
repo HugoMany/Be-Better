@@ -38,7 +38,7 @@ function touchEnd(event) {
     activeCard.removeEventListener("touchend", touchEnd);
     activeCard.removeEventListener("mouseup", touchEnd);
     activeCard.style.transition = "transform 0.5s ease";
-    /*
+    
     if (Math.abs(deltaX) > 100) {
         if (deltaX > 0) {
             activeCard.classList.add("like");
@@ -48,7 +48,7 @@ function touchEnd(event) {
     } else {
         activeCard.style.transform = "";
     }
-    */
+    
     activeCard.addEventListener("transitionend", transitionEnd);
 }
 
@@ -64,4 +64,13 @@ function transitionEnd() {
 
     activeCard.addEventListener("touchstart", touchStart);
     activeCard.addEventListener("mousedown", touchStart);
+}
+
+function reponse(reponse){
+    if(reponse==1){
+
+    }
+    else{
+        
+    }
 }
