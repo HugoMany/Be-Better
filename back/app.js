@@ -13,7 +13,6 @@ const { log } = require('console');
 
 const runModel = require('./Model/runModel');
 const userCaractModel = require('./Model/userCaractModel');
-const { log, error } = require('console');
 
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
