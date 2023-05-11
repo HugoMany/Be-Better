@@ -24,6 +24,9 @@
 
 <body>
     <h1>Be BeTTeR</h1>
+    <div id="account" onclick="transition('/Me/login/')">
+        <img src="./img/emptyProfil.jpg" alt="" srcset="">
+    </div>
     <nav id="menu">
         <a href="emploi du temps/" target="_self"><span class="material-symbols-outlined">
                 event
@@ -31,7 +34,7 @@
         <a href="../nutrition/" target="_self"><span class="material-symbols-outlined">
                 restaurant
             </span></a>
-            <a href="données physique/index.html" target="_self" ><span id="currentPage" class="material-symbols-outlined">
+        <a href="données physique/index.html" target="_self"><span id="currentPage" class="material-symbols-outlined">
                 home
             </span></a>
         <a href="données physique/index.html" target="_self"><span class="material-symbols-outlined">
@@ -47,42 +50,86 @@
 
 
     </section>
-
+<h2> Weight evolution</h2>
     <section class="categorie" id="weight">
-
-
-    </section>
-
-    <section class="categorie" id="someSport">
-
-
-
-
-    </section>
-
-    <section class="categorie" id="nutrition">
-<div class="sousSec" id="calorieCalc">
-    <a href="../nutrition/calcul calories/">
-    <div class="sousDiv">
-    <span class="material-symbols-outlined">
-        balance
-    </span>
-    Calorie in your meal. 
-    </div>
-    </a>
-</div>
-<div class="sousSec" id="mealGen">
-    <a href="../nutrition/recipe/">
-    <div class="sousDiv">
-        <span class="material-symbols-outlined">
-            set_meal
+        <a href="#" onclick="transition('../Me/weightChange/')" ><span class="material-symbols-outlined">
+            balance
         </span>
-        Meal generator.
-    </div>
+        Update your weight
     </a>
-</div>
+
     </section>
+<div id="sport">
+    <div id="bilanSport"></div>
+    <div id="sportGenerator">
+        <h2>Sport generator</h2>
+        <div class="categorie" id="someSport">
+            <div class="sousSec" id="running">
+                <a href="../nutrition/calcul calories/">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            fitness_center
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="sousSec" id="mealGen">
+                <a href="../nutrition/recipe/">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            sprint
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="sousSec" id="mealGen">
+                <a href="../nutrition/recipe/">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            Waves
+                        </span>
+                    </div>
+                </a>
+            </div><div class="sousSec" id="mealGen">
+                <a href="../nutrition/recipe/">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            Directions_Bike
+                        </span>
+                    </div>
+                </a>
+            </div>
+    </div>
     
+
+
+    </div>
+    
+</div>
+   <h2>Nutrition</h2>
+    <section class="categorie" id="nutrition">
+        <div class="sousSec" id="calorieCalc">
+            <a href="../nutrition/calcul calories/">
+                <div class="sousDiv">
+                    <span class="material-symbols-outlined">
+                        balance
+                    </span>
+                    Calorie in your meal.
+                </div>
+            </a>
+        </div>
+        <div class="sousSec" id="mealGen">
+            <a href="../nutrition/recipe/">
+                <div class="sousDiv">
+                    <span class="material-symbols-outlined">
+                        set_meal
+                    </span>
+                    Meal generator.
+                </div>
+            </a>
+        </div>
+    </section>
+
 </body>
 
 </html>

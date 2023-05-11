@@ -5,7 +5,9 @@
     --BBapple: rgba(138, 221, 96, 1);
     --BBappleC: rgba(189, 237, 193, 1); 
     --BBgray: rgb(40, 40, 48);
+    --BBwhitegray:rgb(128, 128, 128);
     --BBwhite:rgba(242, 242, 242, 1);
+    --BBwhiteDemi:rgba(242, 242, 242, 0.5);
     --BBrose:rgb(253, 181, 181);
   }
 
@@ -14,9 +16,10 @@
     color: var(--BBgreen);
     font-size: 18px;
 }
-
 html{
-    background-color: var(--BBappleC);
+}
+html{
+    background-color: var(--BBapple);
 }
 h1{
     text-align: center;

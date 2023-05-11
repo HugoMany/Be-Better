@@ -10,12 +10,12 @@ nav{
     align-content: center;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    border: 1px solid var(--BBwhite);
+    /* border: 1px solid var(--BBwhite); */
     z-index: 20;
-    background-color: var(--BBgray);
+    background-color: var(--BBwhite);
 }
-  html .material-symbols-outlined {
-    color: var(--BBwhite);
+html nav .material-symbols-outlined {
+    color: var(--BBwhitegray);
     font-family: 'Material Symbols Outlined';
     font-weight: normal;
     font-style: normal;

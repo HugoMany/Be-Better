@@ -4,46 +4,84 @@
 body{
     margin: 0px;
 }
+h2{
+    text-align: center;
+}
 section{
     display: flex;
     height: 200px;
     width: 90vw;
-    border: 1px solid var(--BBgray);
+    /* border: 1px solid var(--BBgray); */
     box-shadow: inset;
     margin: 5vw;
 }
 .categorie{
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* width: 50%; */
 }
 .sousSec{
     width: 50%;
     height: 100%;
-    
-}
-#mealGen{
     display: flex;
     align-content: center;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content:center;
     flex-direction: row;
+    
 }
+
 .sousDiv{
     height: fit-content;
     display: flex;
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
+    flex-direction: column;
 }
 html body .sousDiv span{
-    font-size: 72px;
-}
-#calorieCalc{
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    flex-direction: row;
+    font-size: 60px;
 }
 a{
     text-decoration: none;
+    
+}
+#account{
+    transition: 0.7s;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    height: 50px;
+    width: 50px;
+    border: 0px solid;
+    border-radius: 100%;
+    overflow: hidden;
+    transform: scale(1);
+}
+#account:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+#account img{
+    width: 100%;
+    height: auto;
+}
+#sport{
+    width: 100%;
+    display: flex;
+}
+#bilanSport{
+    width: 50%;
+}
+#sportGenerator{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    height: max-content;
+    border: 1px white solid;
+    border-radius: 20px;
+    background-color: var(--BBwhiteDemi);
 }
