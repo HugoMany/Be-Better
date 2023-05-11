@@ -38,7 +38,7 @@ function isConnected(){
     return false;
   }
   else{
-    return true;
+    return getCookie("id");
   }
 }
 

@@ -50,63 +50,58 @@
 
 
     </section>
-<h2> Weight evolution</h2>
-    <section class="categorie" id="weight">
-        <a href="#" onclick="transition('../Me/weightChange/')" ><span class="material-symbols-outlined">
-            balance
-        </span>
-        Update your weight
-    </a>
+   
 
-    </section>
-<div id="sport">
-    <div id="bilanSport"></div>
-    <div id="sportGenerator">
-        <h2>Sport generator</h2>
-        <div class="categorie" id="someSport">
-            <div class="sousSec" id="running">
-                <a href="../nutrition/calcul calories/">
-                    <div class="sousDiv">
-                        <span class="material-symbols-outlined">
-                            fitness_center
-                        </span>
-                    </div>
-                </a>
-            </div>
-            <div class="sousSec" id="mealGen">
-                <a href="../nutrition/recipe/">
-                    <div class="sousDiv">
-                        <span class="material-symbols-outlined">
-                            sprint
-                        </span>
-                    </div>
-                </a>
-            </div>
-            <div class="sousSec" id="mealGen">
-                <a href="../nutrition/recipe/">
-                    <div class="sousDiv">
-                        <span class="material-symbols-outlined">
-                            Waves
-                        </span>
-                    </div>
-                </a>
-            </div><div class="sousSec" id="mealGen">
-                <a href="../nutrition/recipe/">
-                    <div class="sousDiv">
-                        <span class="material-symbols-outlined">
-                            Directions_Bike
-                        </span>
-                    </div>
-                </a>
-            </div>
-    </div>
-    
 
+    <div id="sport">
+        <div id="bilanSport"></div>
+        <div id="sportGenerator">
+            <h2>Sport generator</h2>
+            <div class="categorie" id="someSport">
+                <div class="sousSec" id="running">
+                    <a href="../nutrition/calcul calories/">
+                        <div class="sousDiv">
+                            <span class="material-symbols-outlined">
+                                fitness_center
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="sousSec" id="mealGen">
+                    <a href="../nutrition/recipe/">
+                        <div class="sousDiv">
+                            <span class="material-symbols-outlined">
+                                sprint
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="sousSec" id="mealGen">
+                    <a href="../nutrition/recipe/">
+                        <div class="sousDiv">
+                            <span class="material-symbols-outlined">
+                                Waves
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="sousSec" id="mealGen">
+                    <a href="../nutrition/recipe/">
+                        <div class="sousDiv">
+                            <span class="material-symbols-outlined">
+                                Directions_Bike
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
 
     </div>
-    
-</div>
-   <h2>Nutrition</h2>
+    <h2>Nutrition</h2>
     <section class="categorie" id="nutrition">
         <div class="sousSec" id="calorieCalc">
             <a href="../nutrition/calcul calories/">
@@ -129,7 +124,29 @@
             </a>
         </div>
     </section>
+    <h2> Weight evolution</h2>
+    <div id="weight">
+        <div id="updateWeigh">
+            <a href="#" onclick="transition('../Me/weightChange/')"><span class="material-symbols-outlined">
+                    balance
+                </span>
+                Update your weight
+            </a>
+        </div>
+        <div id="weightCharts">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
 
+
+    <!-- Script  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+
+    </script>
+    <script src="./js/graphicWeight.js"></script>
 </body>
 
 </html>

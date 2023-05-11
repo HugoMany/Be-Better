@@ -4,16 +4,27 @@
         <script src="../js/cookie.js"></script>
         <link rel="stylesheet" type="text/css" href="../CSS/styleBeBetter.css">
         <link rel="stylesheet" href="../CSS/login.css">
+        <link rel="stylesheet" href="../CSS/animStart.css">
+        <script src="../js/transition.js"></script>
     </head>
     <body id="loginBody">
+        <div id="animStart">
+            <img src="img/logo.png">
+        
+        </div>
+        <div id="animEnd">
+            <img src="img/logo.png">
+        </div>
+
         <h1>Login</h1>
         <form id="login" action="">
             <h3>Email</h3>
             <input type="email" name="" id="emailLogin">
             <h3>Password</h3>
             <input type="password" name="" id="passwordLogin">
-    
             <input type="button" onclick="login()" value="Submit">
+            <a href="#" onclick="transition('../signUp')"> If you don't have any account, let's go sign UP and join Be Better community</a>
+
         </form>
         <script src="login.js"></script>
 
