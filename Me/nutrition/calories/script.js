@@ -1,3 +1,4 @@
+
 async function getNutritionData(query) {
     const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + query;
     const options = {
@@ -61,5 +62,72 @@ document.querySelector('form').addEventListener('submit', function (e) {
     var query = repas();
     //console.log(query);
    getNutritionData(query);
+   id = isConnected()
+   getAge(id)
 });
+
+async function getApport(id, age) {
+    const url = 'http://localhost:3000/api/user/caract/'+id;
+    const options = {
+
+        method: 'GET',
+  
+        headers: {
+  
+            'Content-Type': 'application/json'
+  
+        }
+  
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result);
+        var json=JSON.parse(result);
+        console.log(json);
+        var size_ = json["allWeigh"].length;
+        var poids_ =json["allWeigh"][size_ - 1]["value"];
+        console.log(poids_)
+        var taille_ =json["height"];
+        var sexe_ =json["sexe"];
+        if (sexe_ == 0){
+            var apport = 10*poids_ + 6.25*taille_ - 5*age + 5;
+        }
+        else {
+            var apport = 10*poids_ + 6.25*taille_ - 5*age - 161;
+        }
+
+        document.getElementById("apport_neccesaire").innerHTML += apport;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function getAge(id) {
+    const url = 'http://localhost:3000/api/user/oneuser/'+id;
+    console.log(url);
+    const options = {
+
+        method: 'GET',
+  
+        headers: {
+  
+            'Content-Type': 'application/json'
+  
+        }
+  
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        var json = JSON.parse(result);
+        console.log(json)
+        var age = json["age"];
+        getApport(id, age);
+    } catch (error) {
+        console.error(error);
+    }
+}
 

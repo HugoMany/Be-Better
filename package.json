@@ -30,5 +30,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HugoMany/Be-Better.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HugoMany/Be-Better/issues"
+  },
+  "homepage": "https://github.com/HugoMany/Be-Better#readme"
 }

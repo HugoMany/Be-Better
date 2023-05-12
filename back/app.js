@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const puppeteer = require('puppeteer')
 
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
@@ -9,11 +8,9 @@ const timeTableModel = require('./Model/timeTableModel');
 
 const swimModel = require('./Model/swimModel')
 const bikeModel = require('./Model/bikeModel')
-const { log } = require('console');
 
 const runModel = require('./Model/runModel');
 const userCaractModel = require('./Model/userCaractModel');
-const { log, error } = require('console');
 
 
 mongoose.connect("mongodb+srv://BBT:0cka7EfxFSpfDkBk@cluster0.54ar39o.mongodb.net/?retryWrites=true&w=majority",
