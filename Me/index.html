@@ -23,41 +23,42 @@
 </div>
 
 <body>
-    <h1>Be BeTTeR</h1>
-    <h3 id="name">Hello</h3>
-    <div id="account" onclick="transition('/Me/login/')">
-        <img src="./img/emptyProfil.jpg" alt="" srcset="">
-    </div>
-    <nav id="menu">
-        <a href="emploi du temps/" target="_self"><span class="material-symbols-outlined">
-                event
-            </span></a>
-        <a href="../nutrition/" target="_self"><span class="material-symbols-outlined">
-                restaurant
-            </span></a>
-        <a href="données physique/index.html" target="_self"><span id="currentPage" class="material-symbols-outlined">
-                home
-            </span></a>
-        <a href="données physique/index.html" target="_self"><span class="material-symbols-outlined">
-                hotel
-            </span></a>
-        <a href="données physique/index.html" target="_self"><span class="material-symbols-outlined">
-                sprint
-            </span></a>
-    </nav>
+    <header>
+        <div class="roundTopTip" id="notif">
+            <span class="material-symbols-outlined">
+                Notifications
+            </span>
+            <div>
+                <p id="name">Hello </p>
+            </div>
+        </div>
+        <h1>Be BeTTeR</h1>
+
+
+        <div class="roundTopTip" id="account" onclick="transition('/Me/login/')">
+            <span class="material-symbols-outlined">
+                Person
+            </span>
+        </div>
+
+
+    </header>
+
+
     <script src="./js/home.js"></script>
 
-    <section id="weather">
+    <!-- <section id="weather">
 
 
-    </section>
-   
+    </section> -->
 
 
+    <h2>Sports</h2>
     <div id="sport">
         <div id="bilanSport"></div>
+
         <div id="sportGenerator">
-            <h2>Sport generator</h2>
+            <h2>Program generator</h2>
             <div class="categorie" id="someSport">
                 <div class="sousSec" id="running">
                     <a href="./sport/fitness/indexFitness.html">
@@ -138,8 +139,40 @@
             <canvas id="myChart"></canvas>
         </div>
     </div>
+    <h2> Sleep</h2>
 
+    <section id="Sleep">
+    <div class="cat">
 
+    </div>
+
+    <div class="cat" id="Last night">
+        <div> <span class="material-symbols-outlined">
+            bedtime
+        </span>
+            What about your last night ? Submit your last night and analystis it !
+        </div>
+    </div>
+
+    </section>
+
+    <nav id="menu">
+        <a href="#" onclick="transition('/Me/emploi du temps')"><span class="material-symbols-outlined">
+                event
+            </span></a>
+        <a href="#" onclick="transition('/Me/nutrition')"><span class="material-symbols-outlined">
+                restaurant
+            </span></a>
+        <a href="#" onclick="transition('/Me/')"><span id="currentPage" class="material-symbols-outlined">
+                home
+            </span></a>
+        <a href="#" onclick="transition('/Me/Test questions')"><span class="material-symbols-outlined">
+                hotel
+            </span></a>
+        <a href="#" onclick="transition('/Me/sport/')"><span class="material-symbols-outlined">
+                sprint
+            </span></a>
+    </nav>
     <!-- Script  -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

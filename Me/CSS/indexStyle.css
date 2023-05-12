@@ -1,20 +1,22 @@
 /* nav{
     display: flex;
 } */
-html{
+html {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
 }
 
-body{
+body {
     width: 90vw;
 }
-h2{
+
+h2 {
     text-align: center;
 }
-section{
+
+section {
     display: flex;
     height: 200px;
     /* width: 90vw; */
@@ -22,24 +24,33 @@ section{
     box-shadow: inset;
     margin: 5vw;
 }
-.categorie{
+header{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+.categorie {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     /* width: 50%; */
 }
-.sousSec{
+
+.sousSec {
     width: 50%;
     height: 100%;
     display: flex;
     align-content: center;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
     flex-direction: row;
-    
+
 }
 
-.sousDiv{
+.sousDiv {
     height: fit-content;
     display: flex;
     align-content: center;
@@ -47,48 +58,84 @@ section{
     align-items: center;
     flex-direction: column;
 }
-html body .sousDiv span{
+
+html body .sousDiv span {
     font-size: 60px;
 }
-a{
+
+a {
     text-decoration: none;
-    
+
 }
-#account{
+h2{
+    font-size: 40px;
+    font-weight: 600;
+}
+/*
+Round de profile et de notif en haut del page home
+*/
+.roundTopTip {
     transition: 0.7s;
-    position: absolute;
-    top: 50px;
-    right: 100px;
-    height: 50px;
-    width: 50px;
+    background-color: white;
+    height: 65px;
+    width: 65px;
     border: 0px solid;
     border-radius: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
+    
     transform: scale(1);
 }
-#account:hover{
+
+.roundTopTip:hover {
     transform: scale(1.2);
     cursor: pointer;
 }
-#account img{
-    width: 100%;
+
+.roundTopTip img,
+.roundTopTip span {
+    width: 65px;
+    font-size: 65px;
     height: auto;
 }
-#weight{
+#notif{
+    transition: 1s;
+}
+#notif span{
+    color:var(--BBorange);
+    transition: 1s;
+}
+#weight {
     width: 100%;
     display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
     margin: 50px 0px;
 }
-#sport{
+
+#weight div {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+
+#sport {
     width: 100%;
     display: flex;
 }
-#bilanSport{
+
+#bilanSport {
     width: 50%;
 }
-#sportGenerator{
+
+#sportGenerator {
     display: flex;
     width: 50%;
+    padding: 0px 20px 20px 20px;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
@@ -98,16 +145,26 @@ a{
     background-color: var(--BBwhiteDemi);
 }
 
-#updateWeigh{
-    width: 35%;
-}
-#weightCharts{
-    width: 65%;
+
+#weightCharts {
+    width: 100%;
     height: 400px;
 }
-canvas{
+#name{
+    font-size: 26px;
+    width: max-content;
+}
+canvas {
     width: 100%;
     background-color: var(--BBwhiteDemi);
-    border: 1px white solid;
+    /* border: 1px white solid; */
     border-radius: 20px;
+    padding: 20px;
+
+}
+#Sleep{
+    display: flex;
+}
+#Sleep .cat{
+    width: 50%;
 }

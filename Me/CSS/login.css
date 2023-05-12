@@ -2,16 +2,19 @@
     font-size: 32px;
 }
 html h1{
+    top:200px;
     width: 100%;
+    position: absolute;
 }
 #loginBody{
     display: flex;
-    height: 73vh;
+    height: 100vh;
     flex-direction: column;
     align-content: center;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
+
 form{
     width: 80%;
     display: flex;
@@ -21,7 +24,7 @@ form{
     justify-content: space-evenly;
     border: 2px solid var(--BBwhite);
     border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.466);
+    background-color: var(--BBwhiteDemi);
     padding: 50px;
 }
 form input{

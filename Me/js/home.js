@@ -31,8 +31,8 @@ async function whatIsName() {
         const result = await response.text();
         const jsonString = result;
         const jsonRet = JSON.parse(jsonString);
-        createMyCharts(jsonRet);
         console.log(jsonRet);
+        document.getElementById("name").innerHTML+=" "+jsonRet["firstName"]+" welcome back to BeBetter";
         // alert("New updated weight.")
 
     } catch (error) {
@@ -42,3 +42,15 @@ async function whatIsName() {
     }
 
 }
+function notify(){
+    delay(5000).then(() =>
+    {
+        document.getElementById("notif").style["overflow"]="hidden";
+        document.getElementById("notif").children[0].style["color"]="var(--BBDblue)" 
+    }
+    );
+
+}
+
+const helloname = whatIsName();
+const notifyStart=notify();
