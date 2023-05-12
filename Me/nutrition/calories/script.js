@@ -98,7 +98,7 @@ async function getApport(id, age) {
             var apport = 10*poids_ + 6.25*taille_ - 5*age - 161;
         }
 
-        document.getElementById("apport_neccesaire").innerHTML += apport;
+        document.getElementById("apport_neccesaire").innerHTML += apport* 1.3;
     } catch (error) {
         console.error(error);
     }
