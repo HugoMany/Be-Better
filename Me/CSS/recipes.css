@@ -1,0 +1,31 @@
+h1{
+
+}
+body{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    /* height: 200px; */
+    justify-content: flex-end;
+}
+form input{
+    padding: 20px;
+    border: 1px rgb(0, 0, 0) solid;
+}
+#resultats{
+    margin-top: 100px;
+    width: 90vw;
+}
+#resultats h1{
+    text-align: justify;
+}

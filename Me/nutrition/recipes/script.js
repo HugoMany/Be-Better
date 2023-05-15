@@ -11,7 +11,7 @@ async function getRecipe(query, nombre) {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        console.log(result);
+        // console.log(result);
         affichage(result, nombre);
 
     } catch (error) {
@@ -35,14 +35,15 @@ function affichage(json, nombre) {
         titles += data[i].title + ", ";
         ingr = data[i].ingredients;
         instr = data[i].instructions;
-        display += "<br><h1>" + titles + "</h1>";
-        display += "<li>";
+        display += "<br> <h1> " + titles + " </h1> ";
+        display += "<br> The ingredients :<br>";
         display += "<ul>" + ingr + "</ul>";
-        display += "</li>";
+        display += "<br> The Recipe :<br>";
         display += "<p>" + instr + "<p>";
     }
     display = display.replaceAll("|", "<br>-");
     document.getElementById("resultats").innerHTML = display;
+    // strongForNumber();
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
