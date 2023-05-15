@@ -1,4 +1,4 @@
-async function getRecipe(query) {
+async function getRecipe(query, nombre) {
     const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=' + query;
     const options = {
         method: 'GET',
@@ -12,7 +12,7 @@ async function getRecipe(query) {
         const response = await fetch(url, options);
         const result = await response.text();
         console.log(result);
-        affichage(result);
+        affichage(result, nombre);
 
     } catch (error) {
         console.error(error);
@@ -24,14 +24,14 @@ function recipe() {
     return query;
 }
 
-function affichage(json) {
+function affichage(json, nombre) {
     //console.log(json);
     const data = JSON.parse(json);
     let titles = "";
     let ingr = "";
     let display = ""
     document.getElementById("resultats").innerHTML;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < nombre; i++) {
         titles += data[i].title + ", ";
         ingr = data[i].ingredients;
         instr = data[i].instructions;
@@ -46,7 +46,8 @@ function affichage(json) {
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
+    const nombre = document.getElementById('nb');
     e.preventDefault();
     var query = recipe();
-    getRecipe(query);
+    getRecipe(query, nombre);
 });
