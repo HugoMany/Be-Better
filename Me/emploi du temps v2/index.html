@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Timetable</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
+	<script src="dbSync.js"></script>
+	<script src="../js/cookie.js"></script>
+
+</head>
+
+<body>
+    <input type="button" value="Add an activity" id="addActivity" onclick="addActivity()"> 
+	<input type="button" value="Delete an activity" id="delActivity" onclick="delActivity()"> 
+
+    
+    <!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close" id="close">&times;</span>
+
+			<h3>Quel jour :</h3>
+			<select name="question1" id="Q1" class="select">
+                <option value="">--Please choose a day--</option>
+				<option value="" id="day1"></option>
+				<option value="" id="day2"></option>
+				<option value="" id="day3"></option>
+                <option value="" id="day4"></option>
+				<option value="" id="day5"></option>
+				<option value="" id="day6"></option>
+				<option value="" id="day7"></option>
+			</select>
+			<br />
+			<h3>Quel activité souhaitez-vous faire ?</h3>
+			<input type="text" name="question2" placeholder="exemple: sport" id="Q2" />
+			<br />
+			<h3>Heure de début</h3>
+			<select name="question3" id="Q3" class="select">
+                <option value="">--h</option>
+				<option value="08" id="hd1">08</option>
+				<option value="09" id="hd2">09</option>
+				<option value="10" id="hd3">10</option>
+                <option value="11" id="hd4">11</option>
+				<option value="12" id="hd5">12</option>
+				<option value="13" id="hd6">13</option>
+				<option value="14" id="hd7">14</option>
+				<option value="15" id="hd8">15</option>
+				<option value="16" id="hd9">16</option>
+				<option value="17" id="hd10">17</option>
+				<option value="18" id="hd11">18</option>
+				<option value="19" id="hd12">19</option>
+			</select>
+			<select name="question4" id="Q4" class="select">
+                <option value="">--min</option>
+				<option value="00" id="md1">00</option>
+				<option value="05" id="md2">05</option>
+				<option value="10" id="md3">10</option>
+                <option value="15" id="md4">15</option>
+				<option value="20" id="md5">20</option>
+				<option value="25" id="md6">25</option>
+				<option value="30" id="md7">30</option>
+				<option value="35" id="md8">35</option>
+				<option value="40" id="md9">40</option>
+				<option value="45" id="md10">45</option>
+				<option value="50" id="md11">50</option>
+				<option value="55" id="md12">55</option>
+			</select>
+			<br />
+			<h3>Heure de fin</h3>
+			<select name="question5" id="Q5" class="select">
+				<option value="">--h</option>
+				<option value="08" id="hf1">08</option>
+				<option value="09" id="hf2">09</option>
+				<option value="10" id="hf3">10</option>
+                <option value="11" id="hf4">11</option>
+				<option value="12" id="hf5">12</option>
+				<option value="13" id="hf6">13</option>
+				<option value="14" id="hf7">14</option>
+				<option value="15" id="hf8">15</option>
+				<option value="16" id="hf9">16</option>
+				<option value="17" id="hf10">17</option>
+				<option value="18" id="hf11">18</option>
+				<option value="19" id="hf12">19</option>
+			</select>
+			<select name="question6" id="Q6" class="select">
+				<option value="">--min</option>
+				<option value="00" id="mf1">00</option>
+				<option value="05" id="mf2">05</option>
+				<option value="10" id="mf3">10</option>
+                <option value="15" id="mf4">15</option>
+				<option value="20" id="mf5">20</option>
+				<option value="25" id="mf6">25</option>
+				<option value="30" id="mf7">30</option>
+				<option value="35" id="mf8">35</option>
+				<option value="40" id="mf9">40</option>
+				<option value="45" id="mf10">45</option>
+				<option value="50" id="mf11">50</option>
+				<option value="55" id="mf12">55</option>
+			</select>
+			<br />
+			<button type="submit" class="btn_btn-primary" id="btn">Submit</button>
+		</div>		
+	</div>
+
+	<!-- The Modal -->
+	<div id="myModalErr" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			
+			<h3>You have two overlapping activities. Do you want to delete the old activity or the one you just entered ?</h3>
+			<button type="submit" class="btn_btn-primary" id="btnDeleteOld"></button>
+			<button type="submit" class="btn_btn-primary" id="btnDeleteNew">Do not add the new activity</button>
+
+		</div>
+	
+	</div>
+
+	<div id="myModalSupp" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content" id="modalSuppContent">
+			<span class="close" id="close2">&times;</span>
+			
+			<h3>Quel jour :</h3>
+			<select name="question1" id="Q01" class="select">
+                <option value="">--Please choose a day--</option>
+				<option value="" id="day01"></option>
+				<option value="" id="day02"></option>
+				<option value="" id="day03"></option>
+                <option value="" id="day04"></option>
+				<option value="" id="day05"></option>
+				<option value="" id="day06"></option>
+				<option value="" id="day07"></option>
+			</select>
+			<button type="submit" class="btn_btn-primary" id="btnSupp">Select</button>
+
+
+		</div>
+	
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

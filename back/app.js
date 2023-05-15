@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const puppeteer = require('puppeteer')
 
 const userModel=require('./Model/userModel');
 const muscuModel=require('./Model/muscuModel');
@@ -228,7 +227,6 @@ app.post('/api/timetable/create', async (req, res) => {
   try {
     const newTimeTableModel = new timeTableModel({
       id: req.body.id,
-      dateOfMonday: req.body.dateOfMonday,
       timeTable: req.body.timeTable,
     });
     // console.log(req.body.timeTable);

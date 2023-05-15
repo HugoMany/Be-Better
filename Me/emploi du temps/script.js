@@ -19,16 +19,18 @@ cells.forEach(cell => {
         close.onclick=function(){
             modal.style.display="none"
         }
-        // supr.onclick = function(){
-        //     document.getElementById(id).textContent = "";
-        //     document.getElementById(id).style.backgroundColor = "";
-        //     data = json();
-        //     modal.style.display = "none";
-        // }
+        supr.onclick = function(){
+            document.getElementById(id).textContent = "";
+            document.getElementById(id).style.backgroundColor = "";
+            data = json();
+            modal.style.display = "none";
+        }
         btn.onclick = function () {
             const Q1 = document.getElementById("Q1").value;
             const Q2 = document.getElementById("Q2").value;
             const Q3 = document.getElementById("Q3").value;
+
+            console.log(Q1)
 
             console.log(Q1,Q2,Q3)
 
@@ -38,21 +40,21 @@ cells.forEach(cell => {
             Q2_ = parseInt(Q2);
 
 
-            for (i = 0; i < Q2_; i++) {
-                i_ = i.toString();
-                Id = id_ + i_;
-                // console.log(Id);
-                // document.getElementById(Id).textContent = Q1;
-                // if (Q3 == 1) {
-                //     document.getElementById(Id).style.backgroundColor = "green"
-                // }
-                // if (Q3 == 2) {
-                //     document.getElementById(Id).style.backgroundColor = "orange"
-                // }
-                // if (Q3 == 3) {
-                //     document.getElementById(Id).style.backgroundColor = "crimson"
-                // }
-            }
+            // for (i = 0; i < Q2_; i++) {
+            //     i_ = i.toString();
+            //     Id = id_ + i_;
+            //     console.log(Id);
+            //     document.getElementById(Id).textContent = Q1;
+            //     if (Q3 == 1) {
+            //         document.getElementById(Id).style.backgroundColor = "green"
+            //     }
+            //     if (Q3 == 2) {
+            //         document.getElementById(Id).style.backgroundColor = "orange"
+            //     }
+            //     if (Q3 == 3) {
+            //         document.getElementById(Id).style.backgroundColor = "crimson"
+            //     }
+            // }
             // data = json();
             // //cell.textContent = Q1;
             // document.getElementById("Q1").value = '';
