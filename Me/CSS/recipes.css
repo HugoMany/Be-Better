@@ -18,13 +18,20 @@ form{
     /* height: 200px; */
     justify-content: flex-end;
 }
+form label, form input{
+    width: 100%;
+}
 form input{
-    padding: 20px;
+    padding: 5px;
     border: 1px rgb(0, 0, 0) solid;
 }
 #resultats{
     margin-top: 100px;
     width: 90vw;
+    border: 2px solid var(--BBwhite);
+    border-radius: 30px;
+    background-color: var(--BBwhiteDemi);
+    padding: 15px;
 }
 #resultats h1{
     text-align: justify;

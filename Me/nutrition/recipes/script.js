@@ -35,11 +35,11 @@ function affichage(json, nombre) {
         titles += data[i].title + ", ";
         ingr = data[i].ingredients;
         instr = data[i].instructions;
-        display += "<br> <h1> " + titles + " </h1> ";
+        display += "<sections> <br> <h1> " + titles + " </h1> ";
         display += "<br> The ingredients :<br>";
         display += "<ul>" + ingr + "</ul>";
         display += "<br> The Recipe :<br>";
-        display += "<p>" + instr + "<p>";
+        display += "<p>" + instr + "<p> </sections>";
     }
     display = display.replaceAll("|", "<br>-");
     document.getElementById("resultats").innerHTML = display;

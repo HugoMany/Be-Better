@@ -12,7 +12,7 @@
 <br>
 <h2>User:</h2><br>
 <h3>Profile</h3><br>
-/api/user/ POST Creer un utilisateur<br>
+/api/user/create POST Creer un utilisateur<br>
 <br>
 <!-- /api/user/:sex/:firstName/:email/:tel/:passw/:age/ GET Creer un utilisateur<br> -->
 /api/user/oneuser/:id GET Recupere un utilisateur<br>

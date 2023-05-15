@@ -39,9 +39,10 @@ app.use((req, res, next) => {
 POST
 
 */
-app.post('/api/user/', async (req, res) => {
+app.post('/api/user/create', async (req, res) => {
   try {
-    const newUser = new UserModel({
+    // console.log(req);
+    const newUser = new userModel({
       sex: req.body.sex,
       firstName: req.body.firstName,
       email: req.body.email,
@@ -49,7 +50,17 @@ app.post('/api/user/', async (req, res) => {
       passw: req.body.passw,
       age: req.body.age
     });
+    // newUser={
+    //   sex: 0,
+    //   firstName: 'Florianaa',
+    //   email: 'hugo.many@student.junia.com',
+    //   tel: '+3367803790',
+    //   passw: 'ert gjkthekl',
+    //   age: 19
+    // }
+    // console.log(newUser);
     const savedUser = await newUser.save();
+
     res.status(201).json(savedUser);
   } catch (err) {
     res.status(400).send(err);
@@ -127,6 +138,18 @@ app.get('/api/user/caract/:id', (req, res, next) => {
       error => res.status(401).json({ error })
     );
 });
+
+// app.get('/api/user/caract/create/:id/', (req, res, next) => {
+//   const caractUser = new userCaractModel({
+//     idUser: req.params.id,
+//     sexe: req.params.sexe,
+//     allWeigh: [{ value: req.params.newWeigh, date: Date.now() }],
+//     height: req.params.height,
+//   });
+//   caractUser.save()
+//     .then(() => res.status(201).json({ message: 'Caractéristique de l"utilisateur ' + req.params.id + ' ont bien été enregistré' }))
+//     .catch(error => res.status(400).json({ error }));
+// });
 
 // Creation Programme sport
 app.get('/api/sport/fitness', (req, res, next) => {
