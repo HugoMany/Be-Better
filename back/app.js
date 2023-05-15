@@ -398,7 +398,7 @@ app.get('/api/user/sleep/:id/:newSleep', (req, res, next) => {
 app.get('/api/user/date/:id/', (req, res, next) => {
   const co = new coJournaliere({
     idUser: req.params.id,
-    date: Date.now(),
+    date: [{date:Date.now()}],
   });
   co.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
