@@ -36,7 +36,6 @@ app.use((req, res, next) => {
 
 /*
 
-
 POST
 
 */
@@ -74,19 +73,19 @@ app.post('/api/user/login/', async (req, res) => {
 Get
 
 */
-app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) => {
-  const user = new userModel({
-    sex: req.params.sex,
-    firstName: req.params.firstName,
-    email: req.params.email,
-    tel: req.params.tel,
-    passw: req.params.passw,
-    age: req.params.age,
-  });
-  user.save()
-    .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
-    .catch(error => res.status(400).json({ error }));
-});
+// app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) => {
+//   const user = new userModel({
+//     sex: req.params.sex,
+//     firstName: req.params.firstName,
+//     email: req.params.email,
+//     tel: req.params.tel,
+//     passw: req.params.passw,
+//     age: req.params.age,
+//   });
+//   user.save()
+//     .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
+//     .catch(error => res.status(400).json({ error }));
+// });
 
 /* 
  
