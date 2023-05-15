@@ -10,7 +10,10 @@ html {
 
 body {
     width: 90vw;
-}
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;}
 
 h2 {
     text-align: center;
@@ -112,30 +115,45 @@ Round de profile et de notif en haut del page home
     align-items: center;
     flex-direction: column;
     margin: 50px 0px;
+
 }
 
-#weight div {
+#weight div a{
     width: 100%;
     display: flex;
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
     flex-direction: column;
+    text-align: center;
+}
+#weight div span{
+    font-size: 80px;
 }
 
 #sport {
     width: 100%;
     display: flex;
-}
+    align-items: center;
+    justify-content: center;
 
+}
+#nutrition{
+    border: 1px white solid;
+    border-radius: 20px;
+    background-color: var(--BBwhiteDemi);    
+}
 #bilanSport {
-    width: 50%;
+    width: 0%;
+    display: none;
 }
-
+.sousDiv a{
+    text-align: center;
+}
 #sportGenerator {
     display: flex;
     width: 50%;
-    padding: 0px 20px 20px 20px;
+    padding: 0px 30px 30px 30px;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
@@ -153,6 +171,10 @@ Round de profile et de notif en haut del page home
 #name{
     font-size: 26px;
     width: max-content;
+}
+
+span{
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.416);
 }
 canvas {
     width: 100%;

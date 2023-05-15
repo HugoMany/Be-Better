@@ -1,0 +1,13 @@
+#programPage{
+    margin: 0px 25px;
+    border: 2px solid var(--BBwhite);
+    border-radius: 30px;
+    background-color: var(--BBwhiteDemi);
+    padding: 50px;
+    margin: 30px;
+    margin-top: 400px;
+}
+#programPage p:nth-child(2),#programPage p:nth-child(1){
+    font-size: 28px;
+    font-weight: bold;
+}
