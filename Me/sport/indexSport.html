@@ -3,18 +3,91 @@
 
 <head>
 	<title>BeBetter/sports</title>
-	<link rel="stylesheet" type="text/css" href=#>
+    <link rel="stylesheet" type="text/css" href="../CSS/styleBeBetter.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/indexStyle.css">
+    <link rel="stylesheet" href="../CSS/menuStyle.css">
+    <link rel="stylesheet" href="../CSS/animStart.css">
+    <script src="../js/cookie.js"></script>
+    <script src="../js/transition.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+
+            html body {
+                width: 90vw;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                align-items: center;
+                align-content: center;
+            }
+            html body div {
+                width: 70%;
+                height: max-content;
+            }
+            #wantMeteo, #afficheMeteo{
+                display: flex;
+                width: 50%;
+                padding: 0px 30px 30px 30px;
+                flex-direction: column;
+                align-content: center;
+                flex-wrap: wrap;
+                height: max-content;
+                border: 1px white solid;
+                border-radius: 20px;
+                background-color: var(--BBwhiteDemi);
+            }
+            html .sousSec{
+                height: auto;
+            }
+            </style>
 </head>
 
 <body id="body">
-    <div id="sportSelection">
-        <p>Choose your sport</p>
-        <a href="fitness/indexFitness.html" id="fitness">Fitness</a>
-        <a href="run/indexRun.html" id="run">Running</a>
-        <a href="bike/indexBike.html" id="bike">Bike</a>
-        <a href="swim/indexSwim.html" id="swim">Swimming</a>
+    <h1>Sport</h1>
+    <div id="sportGenerator">
+        <h3>Program generator</h3>
+        <div class="categorie" id="someSport">
+            <div class="sousSec" id="running">
+                <a href="./fitness/indexFitness.html">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            fitness_center
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="sousSec" id="mealGen">
+                <a href="./run/indexRun.html">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            sprint
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="sousSec" id="mealGen">
+                <a href="./swim/indexSwim.html">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            Waves
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="sousSec" id="mealGen">
+                <a href="./bike/indexBike.html">
+                    <div class="sousDiv">
+                        <span class="material-symbols-outlined">
+                            Directions_Bike
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-
     <div id="wantMeteo">
         <p>Do you want to know what the weather is like if you want to do your sport activity outside</p>
         <input type="button" value="Yes" id="generateMeteo" onclick="generateMeteo()">

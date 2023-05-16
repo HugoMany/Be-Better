@@ -1,8 +1,13 @@
+html{
+    overflow: hidden;
+}
 #container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 500px;
+    margin-left: auto;
+    margin-right: auto;
     overflow: hidden;
 }
 

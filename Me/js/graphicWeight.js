@@ -69,4 +69,4 @@ function createMyCharts(json){
   
 }
 
-// const started = receiveWeight();
+const started = receiveWeight();
