@@ -8,7 +8,6 @@ const timeTableModel = require('./Model/timeTableModel');
 
 const swimModel = require('./Model/swimModel')
 const bikeModel = require('./Model/bikeModel')
-const { log } = require('console');
 
 const runModel = require('./Model/runModel');
 const userCaractModel = require('./Model/userCaractModel');
@@ -25,6 +24,7 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
+  console.log(req);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,UPTDATE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -207,12 +207,13 @@ Time Table
 */
 //Creer
 app.post('/api/timetable/create', async (req, res) => {
+  console.log(req);
   try {
     const newTimeTableModel = new timeTableModel({
       id: req.body.id,
-      dateOfMonday: req.body.dateOfMonday,
       timeTable: req.body.timeTable,
     });
+    // console.log(newTimeTableModel);
     // console.log(req.body.timeTable);
     const savedTimeTableModel = await newTimeTableModel.save();
     // res.status(201).json(savedTimeTableModel);

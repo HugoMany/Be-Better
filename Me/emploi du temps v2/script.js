@@ -150,7 +150,6 @@ function addActivity() {
                 console.log(jsonTimetable)
                 jsonString=JSON.stringify(jsonTimetable)
                 console.log(jsonString);
-                typeof(jsonString);
                 createTimeTable(getCookie('id'),jsonString);
 
                 

@@ -24,6 +24,7 @@ function getTimeTableFromId(id){
     .catch(error => {
       console.error(error);
     });
+    
 }
 /*
 Supprimmer une table
@@ -55,40 +56,43 @@ function deleteTimeTableFromId(id,json){
 /* 
 Creer une table
 */
-function createTimeTable(idUser,json){
-    url="http://localhost:3000/api/timeTable/create"
-    data = {
-        id:idUser,
-        timeTable:json,
-    }
-    console.log(data);
+function createTimeTable(idUser, json) {
+  console.log(json);
+  const url = "http://localhost:3000/api/timetable/create";
+  const data = {
+      id: idUser,
+      timeTable: json,
+  };
+  console.log(data);
 
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: data
-    };
-    // console.log("Json send"+ JSON.stringify(data))
+  const options = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*", 
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, UPDATE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+      body: JSON.stringify(data),
+  };
+  console.log(options);
 
-    fetch(url, options)
-    .then(response => {
-        // Vérification du code de réponse HTTP
-        if (response.ok) {
-            // Traitement de la réponse
-            return response.json();
-        }
-        throw new Error("Erreur lors de l'appel à l'API : code " + response.status);
-    })
-    .then(json => {
-        // Traitement du JSON retourné par l'API
-        console.log(json);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+  fetch(url, options)
+      .then(response => {
+          // Vérification du code de réponse HTTP
+          if (response.ok) {
+              // Traitement de la réponse
+              return response.json();
+          }
+          throw new Error("Erreur lors de l'appel à l'API : code " + response.status);
+      })
+      .then(json => {
+          // Traitement du JSON retourné par l'API
+          console.log(json);
+      })
+      .catch(error => {
+          console.error(error);
+      });
 }
 
 
