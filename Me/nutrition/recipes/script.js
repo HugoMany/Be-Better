@@ -1,4 +1,8 @@
-async function getRecipe(query, nombre) {
+//import { jsPDF } from "jspdf";
+let display = "";
+let start = 0;
+
+async function getRecipe(query, start) {
     const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=' + query;
     const options = {
         method: 'GET',
@@ -11,8 +15,8 @@ async function getRecipe(query, nombre) {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        // console.log(result);
-        affichage(result, nombre);
+        console.log(result);
+        affichage(result, start);
 
     } catch (error) {
         console.error(error);
@@ -24,15 +28,15 @@ function recipe() {
     return query;
 }
 
-function affichage(json, nombre) {
+function affichage(json, start) {
     //console.log(json);
     const data = JSON.parse(json);
     let titles = "";
     let ingr = "";
-    let display = ""
+    // let display = ""
     document.getElementById("resultats").innerHTML;
-    for (let i = 0; i < nombre; i++) {
-        titles += data[i].title + ", ";
+    for (let i = start; i < start + 5; i++) {
+        titles = data[i].title + ", ";
         ingr = data[i].ingredients;
         instr = data[i].instructions;
         display += "<sections> <br> <h1> " + titles + " </h1> ";
@@ -47,8 +51,40 @@ function affichage(json, nombre) {
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
-    const nombre = document.getElementById('nb');
     e.preventDefault();
     var query = recipe();
-    getRecipe(query, nombre);
+    getRecipe(query, start);
 });
+
+function generatePDF() {
+    var nom_fichier = prompt("Nom du fichier PDF :");
+    const doc = new jsPDF();
+    var txt = document.getElementById("resultats").innerText;
+
+    var lignes = doc.splitTextToSize(txt, 180);
+    var ligneIndex = 0;
+    var pageHeight = doc.internal.pageSize.getHeight();
+
+    while (ligneIndex < lignes.length) {
+        if (ligneIndex !== 0) {
+            doc.addPage();
+        }
+
+        var pageLignes = lignes.slice(ligneIndex, ligneIndex + pageHeight / 10);
+        for (var i = 0; i < pageLignes.length; i++) {
+            doc.text(pageLignes[i], 10, 10 + (i * 10));
+        }
+
+        ligneIndex += pageLignes.length;
+    }
+
+    doc.save(nom_fichier + ".pdf");
+}
+
+
+function showMore() {
+    start += 5;
+    display = "";
+    var query = recipe();
+    getRecipe(query, start);
+}
