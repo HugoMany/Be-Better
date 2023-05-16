@@ -1,6 +1,10 @@
+//On récupère les données de l'emploie du temps dans la base de donnée
+var jsonTimetable=getTimeTableFromId(getCookie('id'));
 
-//var jsonTimetable=getTimeTableFromId(getCookie('id'));
-//console.log(jsonTimetable)
+//Si la donnée n'existe pas on crée un tableau
+if(jsonTimetable==undefined){
+    jsonTimetable=[]
+}
 
 const currDate = moment(); // get current date
 const datePlus1 = moment().add(1, 'days'); //date de demain
@@ -32,8 +36,7 @@ document.getElementById("day5").value = datePlus4.format("DDMMYYYY");
 document.getElementById("day6").value = datePlus5.format("DDMMYYYY");
 document.getElementById("day7").value = datePlus6.format("DDMMYYYY");
 
-//création du json
-var jsonTimetable=[]
+
 
 //fonction qui va se déclancher quand l'utilisateur va vouloir ajouter une activité au planning
 function addActivity() {
@@ -104,6 +107,9 @@ function addActivity() {
 
                     // on ferme la fenêtre
                     modal.style.display = "none";
+
+                    //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
                 }
 
                 //Si chevauchement 2 possibilités
@@ -139,20 +145,19 @@ function addActivity() {
                         }
                         jsonTimetable[index]['activity'].push({ activityName: activiteChoisie, activityStart: debutActivite, activityEnd: finActivite })
                         modalErr.style.display = 'none'
+
+                        //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
+                        deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
                     }
 
                     //Si on appuie sur deleteNew on n'ajoute simplement pas l'activité
                     btnDeleteNew.onclick = function () {
                         modalErr.style.display = 'none'
+
+                        //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
+                        deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
                     }
-
-                }
-                console.log(jsonTimetable)
-                jsonString=JSON.stringify(jsonTimetable)
-                console.log(jsonString);
-                createTimeTable(getCookie('id'),jsonString);
-
-                
+                }            
             }
 
             //Message d'erreur
@@ -165,9 +170,7 @@ function addActivity() {
         else {
             alert('Please fill in all the information before validating');
         }
-
     }
-
 }
 
 
@@ -234,6 +237,7 @@ function delActivity(){
 
             var defaultOption=document.createElement('option');
             var defaultOptionContent = document.createTextNode("--Please choose an activity--");
+            defaultOption.setAttribute("value","")
             defaultOption.appendChild(defaultOptionContent);
             activitySuppChoix.appendChild(defaultOption);
 
@@ -264,20 +268,27 @@ function delActivity(){
             //Si l'utilisateur appuie sur le bouton supprimer alors on enlève l'activité de la liste et on ferme la page en supprimant 
             //le nouveau formulaire
             btnSuppActivity.onclick=function(){
-                activiteASupp=document.getElementById("Q02").value
-                allActivite.splice(activiteASupp,1);
-                //Si suite à la suppression de l'activité il n'y en a plus dans le jour on supprime le jour du json
-                if(allActivite.length==0){
-                    jsonTimetable.splice(index2,1)
-                }
-                activitySuppChoix.remove();
-                activityTitle.remove()
-                btnSuppActivity.remove();
-                modalSupp.style.display="none";
-            }
 
+                if(activitySuppChoix.value==""){
+                    alert("Please select the activity to be deleted")
+                }
+                else{
+                    activiteASupp=document.getElementById("Q02").value
+                    allActivite.splice(activiteASupp,1);
+                    //Si suite à la suppression de l'activité il n'y en a plus dans le jour on supprime le jour du json
+                    if(allActivite.length==0){
+                        jsonTimetable.splice(index2,1)
+                    }
+                    activitySuppChoix.remove();
+                    activityTitle.remove()
+                    btnSuppActivity.remove();
+                    modalSupp.style.display="none";
+
+                    //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));                    
+                }
+            }
         }
     }
-
 }
 

@@ -24,7 +24,7 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-  console.log(req);
+  // console.log(req);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,UPTDATE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -232,7 +232,7 @@ app.post('/api/timetable/create', async (req, res) => {
     });
     // console.log(req.body.timeTable);
     const savedTimeTableModel = await newTimeTableModel.save();
-    // res.status(201).json(savedTimeTableModel);
+    res.status(201).json(savedTimeTableModel);
   } catch (err) {
     res.status(400).send(err);
   }

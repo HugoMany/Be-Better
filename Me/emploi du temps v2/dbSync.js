@@ -2,9 +2,8 @@
 Recupere le JSON de timetable de la personne connecter
 */
 function getTimeTableFromId(id){
-    const url = `http://localhost:3000/api/timetable/one/${id}`;
-    fetch(url, 
-      {
+    const url = `http://127.0.0.1:3000/api/timetable/one/${id}`;
+    fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -17,20 +16,18 @@ function getTimeTableFromId(id){
       return response.json();
     })
     .then(data => {
-      //console.log(data);
-    //   goReplace(data);
-      return data;
+      dataRecup(data);
+      return JSON.parse(data.timeTable);
     })
     .catch(error => {
       console.error(error);
     });
-    
 }
 /*
 Supprimmer une table
 */
 function deleteTimeTableFromId(id,json){
-    const url = `http://localhost:3000/api/timetable/delete/${id}`;
+    const url = `http://127.0.0.1:3000/api/timetable/delete/${id}`;
     fetch(url, {
       method: 'GET',
       headers: {
@@ -57,25 +54,19 @@ function deleteTimeTableFromId(id,json){
 Creer une table
 */
 function createTimeTable(idUser, json) {
-  console.log(json);
-  const url = "http://localhost:3000/api/timetable/create";
+  const url = "http://127.0.0.1:3000/api/timetable/create";
   const data = {
       id: idUser,
       timeTable: json,
   };
-  console.log(data);
 
   const options = {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*", 
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, UPDATE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
       body: JSON.stringify(data),
   };
-  console.log(options);
 
   fetch(url, options)
       .then(response => {
@@ -95,33 +86,8 @@ function createTimeTable(idUser, json) {
       });
 }
 
-
-function saveTimeTable(data){
-  id=getId();
-  const url = `http://localhost:3000/api/timetable/delete/${id}`;
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      return data;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    console.log("Delete !");
-  sleep(500);
-  createTimeTable(id,data);
-  console.log("Save !");
-  
-}
+function dataRecup(data){
+  jsonTimetable = JSON.parse(data.timeTable);
+ }
 
 
