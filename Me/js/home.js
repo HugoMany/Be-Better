@@ -1,8 +1,10 @@
 
 
 function isLogin() {
-    if (getCookie("id") == null) {
-        document.location.url = document.location = "/Me/login/";
+    if (getCookie("id") == "") {
+        // document.location.url = document.location = "/Me/login/";
+        document.location="/Me/login/";
+
         return false
     }
     else {
@@ -51,6 +53,11 @@ function notify(){
     );
 
 }
+const connected = isLogin();
 
-const helloname = whatIsName();
-const notifyStart=notify();
+delay(5000).then(() =>
+    {
+        const helloname = whatIsName();
+        const notifyStart=notify(); 
+    });
+
