@@ -51,6 +51,7 @@ function affichage(json, start) {
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
+    const nombre = document.getElementById('nb');
     e.preventDefault();
     var query = recipe();
     getRecipe(query, start);

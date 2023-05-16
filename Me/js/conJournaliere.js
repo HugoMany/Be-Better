@@ -24,7 +24,7 @@ async function sendCo(id) {
 
         const result = await response.text();
 
-        console.log(result);
+        // console.log(result);
         // alert("New updated Co.")
 
     } catch (error) {

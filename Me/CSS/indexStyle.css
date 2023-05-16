@@ -161,6 +161,7 @@ Round de profile et de notif en haut del page home
     border: 1px white solid;
     border-radius: 20px;
     background-color: var(--BBwhiteDemi);
+
 }
 
 
@@ -171,6 +172,15 @@ Round de profile et de notif en haut del page home
 #name{
     font-size: 26px;
     width: max-content;
+}
+#lastNight div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#lastNight div span{
+    font-size: 48px;   
 }
 
 span{
@@ -189,4 +199,17 @@ canvas {
 }
 #Sleep .cat{
     width: 50%;
+}
+#updateWeigh{
+    
+    display: flex;
+    width: 50%;
+    padding: 30px 30px 30px 30px;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    height: max-content;
+    border: 1px white solid;
+    border-radius: 20px;
+    background-color: var(--BBwhiteDemi);
 }

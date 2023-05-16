@@ -123,7 +123,7 @@ app.get('/api/user/caract/:id/:newWeigh', (req, res, next) => {
     .then(userCaractModel => {
       res.status(200).json(userCaractModel);
       userCaractModel["allWeigh"].push({ value: req.params.newWeigh, date: Date.now() });
-      console.log(userCaractModel["allWeigh"]);
+      //console.log(userCaractModel["allWeigh"]);
       userCaractModel.save();
     }
     )
@@ -186,8 +186,8 @@ app.get('/api/sport/fitness/:id', (req, res) => {
 app.get('/api/sport/fitness/:level/:muscularGroup', (req, res) => {
   const levelP = req.params.level;
   const muscularGroupP = req.params.muscularGroup;
-  console.log(levelP);
-  console.log(muscularGroupP);
+  //console.log(levelP);
+  //console.log(muscularGroupP);
 
   muscuModel.find({ level: levelP, muscularGroup: muscularGroupP })
     .then(muscuModel => res.status(200).json(muscuModel))
@@ -200,7 +200,7 @@ app.get('/api/', (req, res) => {
   fs.readFile('.docAPI.txt', 'utf8', (err, data) => {
     if (err) {
       // Gère les erreurs s'il y en a
-      console.error(err);
+      //console.error(err);
       res.status(500).send('Erreur serveur');
     } else {
       // Renvoie les données du fichier texte en réponse à la requête
@@ -237,7 +237,7 @@ app.post('/api/timetable/create', async (req, res) => {
       dateOfMonday: req.body.dateOfMonday,
       timeTable: req.body.timeTable,
     });
-    // console.log(req.body.timeTable);
+    // //console.log(req.body.timeTable);
     const savedTimeTableModel = await newTimeTableModel.save();
     // res.status(201).json(savedTimeTableModel);
   } catch (err) {
@@ -254,7 +254,7 @@ app.post('/api/timetable/create', async (req, res) => {
       dateOfMonday: req.body.dateOfMonday,
       timeTable: req.body.timeTable,
     });
-    // console.log(req.body.timeTable);
+    // //console.log(req.body.timeTable);
     const savedTimeTableModel = await newTimeTableModel.save();
     // res.status(201).json(savedTimeTableModel);
   } catch (err) {
@@ -329,8 +329,8 @@ app.get('/api/sport/run', (req, res, next) => {
 app.get('/api/sport/run/:level/:fract', (req, res) => {
   const levelP = req.params.level;
   const fractP = req.params.fract;
-  console.log(levelP);
-  console.log(fractP);
+  //console.log(levelP);
+  //console.log(fractP);
 
   runModel.find({ level: levelP, fract: fractP })
     .then(runModel => res.status(200).json(runModel))
@@ -358,7 +358,7 @@ app.get('/api/sport/swim', (req, res, next) => {
 // Ex: http://localhost:3000/api/sport/swim/1
 app.get('/api/sport/swim/:level', (req, res) => {
   const levelP = req.params.level;
-  console.log(levelP);
+  //console.log(levelP);
 
   swimModel.find({ level: levelP })
     .then(swimModel => res.status(200).json(swimModel))
@@ -386,7 +386,7 @@ app.get('/api/sport/bike', (req, res, next) => {
 // Ex: http://localhost:3000/api/sport/bike/1
 app.get('/api/sport/bike/:level', (req, res) => {
   const levelP = req.params.level;
-  console.log(levelP);
+  //console.log(levelP);
 
   bikeModel.find({ level: levelP })
     .then(bikeModel => res.status(200).json(bikeModel))
@@ -409,7 +409,7 @@ app.get('/api/user/sleep/:id/:newSleep', (req, res, next) => {
     .then(sleepModel => {
       res.status(200).json(sleepModel);
       sleepModel["sleeps"].push({ value: req.params.newSleep, date: Date.now() });
-      console.log(sleepModel["sleeps"]);
+      //console.log(sleepModel["sleeps"]);
       sleepModel.save();
     }
     )
@@ -432,7 +432,7 @@ app.get('/api/user/date/:id/:newDate', (req, res, next) => {
     .then(coJournaliere => {
       res.status(200).json(coJournaliere);
       coJournaliere["date"].push({date: Date.now() });
-      console.log(coJournaliere["date"]);
+      //console.log(coJournaliere["date"]);
       coJournaliere.save();
     }
     )
