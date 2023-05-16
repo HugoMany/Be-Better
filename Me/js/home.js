@@ -33,7 +33,7 @@ async function whatIsName() {
         const result = await response.text();
         const jsonString = result;
         const jsonRet = JSON.parse(jsonString);
-        console.log(jsonRet);
+        // console.log(jsonRet);
         document.getElementById("name").innerHTML+=" "+jsonRet["firstName"]+" welcome back to BeBetter";
         // alert("New updated weight.")
 
@@ -55,7 +55,7 @@ function notify(){
 }
 const connected = isLogin();
 
-delay(5000).then(() =>
+delay(200).then(() =>
     {
         const helloname = whatIsName();
         const notifyStart=notify(); 

@@ -11,7 +11,7 @@ async function getRecipe(query, nombre) {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        // console.log(result);
+        console.log(result);
         affichage(result, nombre);
 
     } catch (error) {
@@ -47,7 +47,7 @@ function affichage(json, nombre) {
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
-    const nombre = document.getElementById('nb');
+    const nombre = document.getElementById('nb').value;
     e.preventDefault();
     var query = recipe();
     getRecipe(query, nombre);

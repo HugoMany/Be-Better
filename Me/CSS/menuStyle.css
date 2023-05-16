@@ -3,7 +3,7 @@ nav{
     position: fixed;
     bottom: 0px;
     left: 0px;
-    height: 65px;
+    height: 85px;
     width: 100vw;
     display: flex;
     flex-direction:row;
@@ -19,7 +19,7 @@ html nav .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
     font-weight: normal;
     font-style: normal;
-    font-size: 65px;
+    font-size: 85px;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
