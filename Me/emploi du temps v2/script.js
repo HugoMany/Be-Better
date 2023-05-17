@@ -110,6 +110,7 @@ function addActivity() {
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
                     deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    ajoutJSON();
                 }
 
                 //Si chevauchement 2 possibilités
@@ -148,6 +149,7 @@ function addActivity() {
 
                         //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
                         deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                        ajoutJSON();
                     }
 
                     //Si on appuie sur deleteNew on n'ajoute simplement pas l'activité
@@ -156,6 +158,7 @@ function addActivity() {
 
                         //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
                         deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                        ajoutJSON();
                     }
                 }            
             }
@@ -285,7 +288,8 @@ function delActivity(){
                     modalSupp.style.display="none";
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));                    
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    ajoutJSON();                   
                 }
             }
         }
