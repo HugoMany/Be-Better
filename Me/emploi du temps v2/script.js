@@ -1,6 +1,6 @@
 //On récupère les données de l'emploie du temps dans la base de donnée
-var jsonTimetable=getTimeTableFromId(getCookie('id'));
-
+//var jsonTimetable=getTimeTableFromId(getCookie('id'));
+var jsonTimetable=[]
 //Si la donnée n'existe pas on crée un tableau
 if(jsonTimetable==undefined){
     jsonTimetable=[]
@@ -17,6 +17,7 @@ const datePlus6 = moment().add(6, 'days');
 var modal = document.getElementById("myModal");
 var modalErr = document.getElementById("myModalErr");
 var modalSupp = document.getElementById("myModalSupp");
+var divPlanning=document.getElementById("planning");
 
 //On remplit les jours dans leur ordre dans la question1
 document.getElementById("day1").innerHTML = currDate.format("dddd");
@@ -109,7 +110,8 @@ function addActivity() {
                     modal.style.display = "none";
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    //divPlanning.remove();
                     ajoutJSON();
                 }
 
@@ -148,7 +150,8 @@ function addActivity() {
                         modalErr.style.display = 'none'
 
                         //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                        deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                        //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                        //divPlanning.remove();
                         ajoutJSON();
                     }
 
@@ -157,7 +160,8 @@ function addActivity() {
                         modalErr.style.display = 'none'
 
                         //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                        deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                        //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                        //divPlanning.remove();
                         ajoutJSON();
                     }
                 }            
@@ -288,8 +292,9 @@ function delActivity(){
                     modalSupp.style.display="none";
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
-                    ajoutJSON();                   
+                    //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    //divPlanning.remove();
+                    ajoutJSON();  
                 }
             }
         }

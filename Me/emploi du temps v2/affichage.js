@@ -41,7 +41,6 @@ class CaseMinute {
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
 var table=undefined
-
 const tailleTabHauteur = 13;
 const tailleTabLargeur = 8;
 const tailleTabHauteur2 = 12;
@@ -310,12 +309,26 @@ const tailleCaseHauteur = planningSize / tailleTabHauteur;
 const tailleCaseLargeur = planningSize / tailleTabLargeur;
 const tailleCaseHauteur2 = tailleCaseHauteur / tailleTabHauteur2;
 const tailleCaseLargeur2 = tailleCaseLargeur / tailleTabLargeur2;
-var planning = document.getElementById("planning");
-planning.style.height=planningSize+"px";
-planning.style.width=planningSize+"px";
-planning.style.display="block"
+// planning.style.height=planningSize+"px";
+// planning.style.width=planningSize+"px";
+// planning.style.display="block"
 
 function drawPlanning(){
+    var planning = document.getElementById("planning");
+    if(planning==undefined){
+        console.log("RIEN FAIRE")
+        //planning.remove();
+    }
+    else{
+        console.log("SUPP")
+        planning.remove();
+    }
+    var planning=document.createElement("div");
+    planning.setAttribute("id","planning");
+    planning.style.height=planningSize+"px";
+    planning.style.width=planningSize+"px";
+    planning.style.display="block"
+    document.getElementById("body").appendChild(planning)
     for(let i in table.tab[0]){
         var heureAff=document.createElement('div');
         heureAff.setAttribute("id",table.tab[0][i]['heure']+"h");
@@ -333,7 +346,6 @@ function drawPlanning(){
     for(let i in table.tab){
         var jour=table.tab[i][0];
         if(jour!=undefined){
-            console.log(jour['jour'])
             var jourAff=document.createElement('div');
             jourAff.setAttribute("id","jour"+i);
             var jourAffName=document.createElement('p');
@@ -358,6 +370,57 @@ function drawPlanning(){
             jourAff.style.left=tailleCaseLargeur*i+"px";
             jourAff.style.height=tailleCaseHauteur+"px";
             jourAff.style.width=tailleCaseLargeur+"px";
+        }
+    }
+
+    for(let x=1;x<tailleTabLargeur;x++){
+        for(let y=1;y<tailleTabHauteur;y++){
+
+            for(let y1=0;y1<tailleTabHauteur2;y1++){
+
+                var actPresence=table.tab[x][y].tab[0][y1];
+                if(actPresence['activite']!=undefined){
+                    var memeAct=0;
+                    if(y1>0){
+                        if(table.tab[x][y].tab[0][y1-1]['activite']==actPresence['activite']){
+                            memeAct=1;
+                        }
+                    }
+                    if(y1==0 && y!=1){
+                        if(table.tab[x][y-1].tab[0][11]['activite']==actPresence['activite']){
+                            memeAct=1;
+                        }
+                    }
+                    if(memeAct==0){
+                        var activityAff=document.createElement("div");
+                        activityAff.setAttribute("class","activityAff");
+                        activityAff.style.position="absolute";
+                        activityAff.style.display="block"
+                        activityAff.style.left=tailleCaseLargeur*x+"px"
+                        activityAff.style.top=tailleCaseHauteur*y+tailleCaseHauteur2*y1+"px";
+                        activityAff.style.width=tailleCaseLargeur+"px";
+                        let indiceY=y;
+                        let indiceY1=y1;
+                        let actHauteur=tailleCaseHauteur2
+                        while(table.tab[x][indiceY].tab[0][indiceY1]['activite']==actPresence['activite']){
+                            indiceY1+=1;
+                            if(indiceY1==12){
+                                indiceY1=0;
+                                indiceY+=1;
+                            }
+                            actHauteur+=tailleCaseHauteur2;
+                        }
+                        activityAff.style.height=actHauteur+"px";
+                        activityAff.style.border="1px solid #888"
+                        activityAffContent=document.createTextNode(actPresence['activite']);
+                        activityAff.appendChild(activityAffContent);
+                        planning.appendChild(activityAff);                        
+                    }
+
+
+                }
+                
+            }
         }
     }
 }
