@@ -14,7 +14,6 @@
 
 
     <input type="button" value="Add an activity" id="addActivity" onclick="addActivity()"> 
-	<input type="button" value="Delete an activity" id="delActivity" onclick="delActivity()"> 
 
     
     <!-- The Modal -->
@@ -121,15 +120,35 @@
 	
 	</div>
 
-	<div id="myModalSupp" class="modal">
+
+	<!-- The Modal -->
+	<div id="myModalModif" class="modal">
 
 		<!-- Modal content -->
-		<div class="modal-content" id="modalSuppContent">
-			<span class="close" id="close2">&times;</span>
+		<div class="modal-content">
+			<span class="close" id="close3">&times;</span>
 			
-			<h3>Quel jour :</h3>
+			<h3>Information on the activity</h3>
+			<p id="dayContent">Day : </p>
+			<p id="nameContent">Acitivity Name : </p>
+			<p id="hdContent">Start time : </p>
+			<p id="hfContent">End time : </p>
+			<button type="submit" class="btn_btn-primary" id="btnEdit">Edit</button>
+			<button type="submit" class="btn_btn-primary" id="btnDelete">Delete the activity</button>
+
+		</div>
+	</div>
+
+	<!-- The Modal -->
+	<div id="myModalEdit" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close" id="close4">&times;</span>
+
+			<h3>Do you want to change on the day of the activity ?</h3>
 			<select name="question1" id="Q01" class="select">
-                <option value="">--Please choose a day--</option>
+                <option value="" id="daySelect"></option>
 				<option value="" id="day01"></option>
 				<option value="" id="day02"></option>
 				<option value="" id="day03"></option>
@@ -138,11 +157,76 @@
 				<option value="" id="day06"></option>
 				<option value="" id="day07"></option>
 			</select>
-			<button type="submit" class="btn_btn-primary" id="btnSupp">Select</button>
-
-
-		</div>
-	
+			<br />
+			<h3>Do you want to change the name of the activity ?</h3>
+			<input type="text" name="question2" id="Q02" />
+			<br />
+			<h3>Do you want to change the start time of the activity ?</h3>
+			<select name="question3" id="Q03" class="select">
+                <option value="" id="hdSelect"></option>
+				<option value="08" id="hd01">08</option>
+				<option value="09" id="hd02">09</option>
+				<option value="10" id="hd03">10</option>
+                <option value="11" id="hd04">11</option>
+				<option value="12" id="hd05">12</option>
+				<option value="13" id="hd06">13</option>
+				<option value="14" id="hd07">14</option>
+				<option value="15" id="hd08">15</option>
+				<option value="16" id="hd09">16</option>
+				<option value="17" id="hd010">17</option>
+				<option value="18" id="hd011">18</option>
+				<option value="19" id="hd012">19</option>
+			</select>
+			<select name="question4" id="Q04" class="select">
+                <option value="" id="mdSelect"></option>
+				<option value="00" id="md01">00</option>
+				<option value="05" id="md02">05</option>
+				<option value="10" id="md03">10</option>
+                <option value="15" id="md04">15</option>
+				<option value="20" id="md05">20</option>
+				<option value="25" id="md06">25</option>
+				<option value="30" id="md07">30</option>
+				<option value="35" id="md08">35</option>
+				<option value="40" id="md09">40</option>
+				<option value="45" id="md010">45</option>
+				<option value="50" id="md011">50</option>
+				<option value="55" id="md012">55</option>
+			</select>
+			<br />
+			<h3>Do you want to change the end time of the activity ?</h3>
+			<select name="question5" id="Q05" class="select">
+				<option value="" id="hfSelect"></option>
+				<option value="08" id="hf01">08</option>
+				<option value="09" id="hf02">09</option>
+				<option value="10" id="hf03">10</option>
+                <option value="11" id="hf04">11</option>
+				<option value="12" id="hf05">12</option>
+				<option value="13" id="hf06">13</option>
+				<option value="14" id="hf07">14</option>
+				<option value="15" id="hf08">15</option>
+				<option value="16" id="hf09">16</option>
+				<option value="17" id="hf010">17</option>
+				<option value="18" id="hf011">18</option>
+				<option value="19" id="hf012">19</option>
+			</select>
+			<select name="question6" id="Q06" class="select">
+				<option value="" id="mfSelect"></option>
+				<option value="00" id="mf01">00</option>
+				<option value="05" id="mf02">05</option>
+				<option value="10" id="mf03">10</option>
+                <option value="15" id="mf04">15</option>
+				<option value="20" id="mf05">20</option>
+				<option value="25" id="mf06">25</option>
+				<option value="30" id="mf07">30</option>
+				<option value="35" id="mf08">35</option>
+				<option value="40" id="mf09">40</option>
+				<option value="45" id="mf010">45</option>
+				<option value="50" id="mf011">50</option>
+				<option value="55" id="mf012">55</option>
+			</select>
+			<br />
+			<button type="submit" class="btn_btn-primary" id="btnEdit2">Edit</button>
+		</div>		
 	</div>
 
 	<script src="script.js"></script>

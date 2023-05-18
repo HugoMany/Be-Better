@@ -316,11 +316,8 @@ const tailleCaseLargeur2 = tailleCaseLargeur / tailleTabLargeur2;
 function drawPlanning(){
     var planning = document.getElementById("planning");
     if(planning==undefined){
-        console.log("RIEN FAIRE")
-        //planning.remove();
     }
     else{
-        console.log("SUPP")
         planning.remove();
     }
     var planning=document.createElement("div");
@@ -413,6 +410,8 @@ function drawPlanning(){
                         activityAff.style.height=actHauteur+"px";
                         activityAff.style.border="1px solid #888"
                         activityAffContent=document.createTextNode(actPresence['activite']);
+                        activityAff.setAttribute("activityName",actPresence['activite']);
+                        activityAff.setAttribute("id",table.tab[x][0]['jour'].format("DDMMYYYY")+actPresence['minute']+table.tab[x][indiceY].tab[0][indiceY1]['minute']+actPresence['activite'])
                         activityAff.appendChild(activityAffContent);
                         planning.appendChild(activityAff);                        
                     }
@@ -423,4 +422,141 @@ function drawPlanning(){
             }
         }
     }
+
+    mvtPlanning()
+}
+
+const modalModif=document.getElementById("myModalModif");
+const modalEdit=document.getElementById("myModalEdit");
+
+function mvtPlanning(){
+
+    var close3 = document.getElementById("close3");
+    close3.onclick = function () {
+        modalModif.style.display = "none";
+
+        document.getElementById("dayContent").innerHTML="Day : "
+        document.getElementById("hdContent").innerHTML="Start time : "
+        document.getElementById("hfContent").innerHTML="End time : "
+        document.getElementById("nameContent").innerHTML="Activity name : "
+    }
+
+    planning.addEventListener("click", function(e){
+        if(e.target.className=="activityAff"){
+            var dayAct=e.target.id.substr(0,8);
+            var hdAct=e.target.id.substr(8,4);
+            var hfAct=e.target.id.substr(12,4);
+            var nameAct=e.target.id.substr(16,e.target.id.length-16)
+            document.getElementById("dayContent").innerHTML+=moment(dayAct,"DDMMYYYY").format('dddd');
+            document.getElementById("hdContent").innerHTML+=e.target.id.substr(8,2)+"h"+e.target.id.substr(10,2)+"min";
+            document.getElementById("hfContent").innerHTML+=e.target.id.substr(12,2)+"h"+e.target.id.substr(14,2)+"min";
+            document.getElementById("nameContent").innerHTML+=nameAct;
+            modalModif.style.display="block"
+            
+            btnEdit=document.getElementById("btnEdit")
+            btnEdit.onclick=function(){
+                editActivity(dayAct,hdAct,hfAct,nameAct);
+            };
+
+            btnDelete=document.getElementById("btnDelete");
+            btnDelete.onclick=function(){
+                delActivity(dayAct,hdAct,hfAct,nameAct);
+            };
+        }
+
+    })
+}
+
+function editActivity(day,hd,hf,name){
+    modalModif.style.display="none"
+
+    modalEdit.style.display="block"
+    var close4 = document.getElementById("close4");
+    close4.onclick = function () {
+        modalEdit.style.display = "none";
+
+        document.getElementById("dayContent").innerHTML="Day : "
+        document.getElementById("hdContent").innerHTML="Start time : "
+        document.getElementById("hfContent").innerHTML="End time : "
+        document.getElementById("nameContent").innerHTML="Activity name : "
+    }
+
+    //On remplit les jours dans leur ordre dans la question1
+    document.getElementById("day01").innerHTML = currDate.format("dddd");
+    document.getElementById("day02").innerHTML = datePlus1.format("dddd");
+    document.getElementById("day03").innerHTML = datePlus2.format("dddd");
+    document.getElementById("day04").innerHTML = datePlus3.format("dddd");
+    document.getElementById("day05").innerHTML = datePlus4.format("dddd");
+    document.getElementById("day06").innerHTML = datePlus5.format("dddd");
+    document.getElementById("day07").innerHTML = datePlus6.format("dddd");
+
+    //On remplit la valeur de chaque date sous un format précis
+    document.getElementById("day01").value = currDate.format("DDMMYYYY");
+    document.getElementById("day02").value = datePlus1.format("DDMMYYYY");
+    document.getElementById("day03").value = datePlus2.format("DDMMYYYY");
+    document.getElementById("day04").value = datePlus3.format("DDMMYYYY");
+    document.getElementById("day05").value = datePlus4.format("DDMMYYYY");
+    document.getElementById("day06").value = datePlus5.format("DDMMYYYY");
+    document.getElementById("day07").value = datePlus6.format("DDMMYYYY");
+
+    document.getElementById("daySelect").innerHTML=moment(day,"DDMMYYYY").format('dddd');
+    document.getElementById("daySelect").value=day;
+    document.getElementById("Q02").value=name
+    document.getElementById("hdSelect").innerHTML=hd.substr(0,2)+"h";
+    document.getElementById("hdSelect").value=hd.substr(0,2);
+    document.getElementById("mdSelect").innerHTML=hd.substr(2,2)+"min";
+    document.getElementById("mdSelect").value=hd.substr(2,2);
+    document.getElementById("hfSelect").innerHTML=hf.substr(0,2)+"h";
+    document.getElementById("hfSelect").value=hf.substr(0,2);
+    document.getElementById("mfSelect").innerHTML=hf.substr(2,2)+"min";
+    document.getElementById("mfSelect").value=hf.substr(2,2);
+
+    var btnEdit2=document.getElementById("btnEdit2");
+    btnEdit2.onclick = function () {
+        var activiteChoisie = document.getElementById("Q02").value;
+        var jourChoisi = document.getElementById("Q01").value
+        var heureDebutChoisie = document.getElementById("Q03").value;
+        var minuteDebutChoisie = document.getElementById("Q04").value;
+        var heureFinChoisie = document.getElementById("Q05").value;
+        var minuteFinChoisie = document.getElementById("Q06").value;
+
+        modalEdit.style.display="none";
+
+        delActivity(day,hd,hf,name);
+        addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDebutChoisie, heureFinChoisie, minuteFinChoisie);
+
+        document.getElementById("Q01").value=day;
+        document.getElementById("Q03").value=hd.substr(0,2);
+        document.getElementById("Q04").value=hd.substr(2,2);
+        document.getElementById("Q05").value=hf.substr(0,2);
+        document.getElementById("Q06").value=hf.substr(2,2);
+    }
+}
+
+function delActivity(day,hd,hf,name){
+    for(let i in jsonTimetable){
+        if(jsonTimetable[i]['day']==day){
+            var allActivite=jsonTimetable[i]['activity'];
+            for(let j in allActivite){
+                if(jsonTimetable[i]['activity'][j]['activityName']==name && jsonTimetable[i]['activity'][j]['activityStart']==hd && jsonTimetable[i]['activity'][j]['activityEnd']==hf){
+                    jsonTimetable[i]['activity'].splice(j,1);
+                                        
+                    //Si suite à la suppression de l'activité il n'y en a plus dans le jour on supprime le jour du json                        
+                    if (allActivite.length == 0) {
+                        jsonTimetable.splice(i, 1)
+                    }
+                }
+            }
+        }
+    }
+    
+    modalModif.style.display="none"
+    document.getElementById("dayContent").innerHTML="Day : "
+    document.getElementById("hdContent").innerHTML="Start time : "
+    document.getElementById("hfContent").innerHTML="End time : "
+    document.getElementById("nameContent").innerHTML="Activity name : "
+
+    //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
+    //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+    ajoutJSON();
 }
