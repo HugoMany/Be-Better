@@ -192,7 +192,6 @@ function ajoutJSON() {
                     var indiceHF=getHour(heureActF);
                     var minuteActF = jsonTimetable[i]['activity'][k]['activityEnd'].substr(2, 2)
                     var indiceMF=getMinute(minuteActF);
-                    tableauPlanning.tab[j][indiceHF].tab[0][indiceMF]['activite']=jsonTimetable[i]['activity'][k]['activityName']
                     while(indiceHD.toString()+indiceMD.toString()!=indiceHF.toString()+indiceMF.toString()){
                         indiceMD+=1
                         if(indiceMD==12){
@@ -201,12 +200,13 @@ function ajoutJSON() {
                         }
                         tableauPlanning.tab[j][indiceHD].tab[0][indiceMD]['activite']=jsonTimetable[i]['activity'][k]['activityName']
                     }
-
+                    tableauPlanning.tab[j][indiceHF].tab[0][indiceMF]['activite']=undefined;
                 }
             }
         }
     }
     table = tableauPlanning
+    drawPlanning()
 }
 
 
@@ -304,11 +304,60 @@ function getMinute(minute){
 ------------------------------------------------------------AFFICHAGE------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-const canvasSize = 700;
-const tailleCaseHauteur = canvasSize / tailleTabHauteur;
-const tailleCaseLargeur = canvasSize / tailleTabLargeur;
+
+const planningSize = 700;
+const tailleCaseHauteur = planningSize / tailleTabHauteur;
+const tailleCaseLargeur = planningSize / tailleTabLargeur;
 const tailleCaseHauteur2 = tailleCaseHauteur / tailleTabHauteur2;
 const tailleCaseLargeur2 = tailleCaseLargeur / tailleTabLargeur2;
+var planning = document.getElementById("planning");
+planning.style.height=planningSize+"px";
+planning.style.width=planningSize+"px";
+planning.style.display="block"
 
+function drawPlanning(){
+    for(let i in table.tab[0]){
+        var heureAff=document.createElement('div');
+        heureAff.setAttribute("id",table.tab[0][i]['heure']+"h");
+        var heureAffContent = document.createTextNode(table.tab[0][i]['heure']+"h");
+        heureAff.appendChild(heureAffContent);
+        planning.appendChild(heureAff);
+        heureAff.style.display="block";
+        heureAff.style.height=tailleCaseHauteur+"px";
+        heureAff.style.width=tailleCaseLargeur+"px";
+        heureAff.style.position="absolute";
+        heureAff.style.lef="0px";
+        heureAff.style.top=tailleCaseHauteur*i+"px";
+    }
+
+    for(let i in table.tab){
+        var jour=table.tab[i][0];
+        if(jour!=undefined){
+            console.log(jour['jour'])
+            var jourAff=document.createElement('div');
+            jourAff.setAttribute("id","jour"+i);
+            var jourAffName=document.createElement('p');
+            jourAffName.setAttribute("id","jourName"+i)
+            var jourAffNameContent=document.createTextNode(jour['jour'].format('dddd'))
+            jourAffName.appendChild(jourAffNameContent);
+            var jourAffDate=document.createElement("p");
+            jourAffDate.setAttribute("id","jourDate"+i);
+            var jourAffDateContent=document.createTextNode(jour['jour'].format("DD")+"/"+jour['jour'].format("MM")+"/"+jour['jour'].format("YYYY"))
+            jourAffDate.appendChild(jourAffDateContent);
+            var jourAffMeteo=document.createElement("p");
+            jourAffMeteo.setAttribute("id","jourMeteo"+i);
+            var jourAffMeteoContent=document.createTextNode(jour['meteo']);
+            jourAffMeteo.appendChild(jourAffMeteoContent);
+            jourAff.appendChild(jourAffName);
+            //jourAff.appendChild(jourAffDate);
+            //jourAff.appendChild(jourAffMeteo);
+            planning.appendChild(jourAff);
+            jourAff.style.display="block";
+            jourAff.style.position="absolute";
+            jourAff.style.top="0px";
+            jourAff.style.left=tailleCaseLargeur*i+"px";
+            jourAff.style.height=tailleCaseHauteur+"px";
+            jourAff.style.width=tailleCaseLargeur+"px";
+        }
+    }
+}
