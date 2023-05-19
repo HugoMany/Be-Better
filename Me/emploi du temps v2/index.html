@@ -23,9 +23,9 @@
 		<div class="modal-content">
 			<span class="close" id="close">&times;</span>
 
-			<h3>Quel jour :</h3>
+			<h3>Which day :</h3>
 			<select name="question1" id="Q1" class="select">
-                <option value="">--Please choose a day--</option>
+                <option value="daySelectDefault">--Please choose a day--</option>
 				<option value="" id="day1"></option>
 				<option value="" id="day2"></option>
 				<option value="" id="day3"></option>
@@ -35,12 +35,12 @@
 				<option value="" id="day7"></option>
 			</select>
 			<br />
-			<h3>Quel activité souhaitez-vous faire ?</h3>
+			<h3>What activity would you like to do?</h3>
 			<input type="text" name="question2" placeholder="exemple: sport" id="Q2" />
 			<br />
-			<h3>Heure de début</h3>
+			<h3>Start time :</h3>
 			<select name="question3" id="Q3" class="select">
-                <option value="">--h</option>
+                <option value="hdSelectDefault">--h</option>
 				<option value="08" id="hd1">08</option>
 				<option value="09" id="hd2">09</option>
 				<option value="10" id="hd3">10</option>
@@ -55,7 +55,7 @@
 				<option value="19" id="hd12">19</option>
 			</select>
 			<select name="question4" id="Q4" class="select">
-                <option value="">--min</option>
+                <option value="mdSelectDefault">--min</option>
 				<option value="00" id="md1">00</option>
 				<option value="05" id="md2">05</option>
 				<option value="10" id="md3">10</option>
@@ -70,9 +70,9 @@
 				<option value="55" id="md12">55</option>
 			</select>
 			<br />
-			<h3>Heure de fin</h3>
+			<h3>End time</h3>
 			<select name="question5" id="Q5" class="select">
-				<option value="">--h</option>
+				<option value="hfSelectDefault">--h</option>
 				<option value="08" id="hf1">08</option>
 				<option value="09" id="hf2">09</option>
 				<option value="10" id="hf3">10</option>
@@ -87,7 +87,7 @@
 				<option value="19" id="hf12">19</option>
 			</select>
 			<select name="question6" id="Q6" class="select">
-				<option value="">--min</option>
+				<option value="mfSelectDefault">--min</option>
 				<option value="00" id="mf1">00</option>
 				<option value="05" id="mf2">05</option>
 				<option value="10" id="mf3">10</option>

@@ -61,6 +61,15 @@ function addActivity() {
         var heureFinChoisie = document.getElementById("Q5").value;
         var minuteFinChoisie = document.getElementById("Q6").value;
 
+        //On réinitialise les valeurs dans le questionnaire
+        document.getElementById("Q2").value="";
+        document.getElementById("Q1").value="daySelectDefault";
+        document.getElementById("Q3").value="hdSelectDefault";
+        document.getElementById("Q4").value="mdSelectDefault";
+        document.getElementById("Q5").value="hfSelectDefault";
+        document.getElementById("Q6").value="mfSelectDefault";
+
+        //Appel de la fonction addToPlanning
         addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDebutChoisie, heureFinChoisie, minuteFinChoisie);
     }
 }
