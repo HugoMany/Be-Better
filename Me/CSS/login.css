@@ -35,3 +35,12 @@ form input{
 a{
     color: var(--BBgray);
 }
+
+@media screen and (max-width: 700px) {
+    html #loginBody{
+        height: max-content;
+    }
+    h1{
+        display: none;
+    }
+}

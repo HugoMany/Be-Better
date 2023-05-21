@@ -8,12 +8,7 @@ html {
     justify-content: center;
 }
 
-body {
-    width: 90vw;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;}
+
 
 h2 {
     text-align: center;
@@ -63,7 +58,7 @@ header{
 }
 
 html body .sousDiv span {
-    font-size: 60px;
+    font-size: 90px;
 }
 
 a {
@@ -141,6 +136,7 @@ Round de profile et de notif en haut del page home
 #nutrition{
     border: 1px white solid;
     border-radius: 20px;
+    padding: 20px;
     background-color: var(--BBwhiteDemi);    
 }
 #bilanSport {
@@ -212,4 +208,18 @@ canvas {
     border: 1px white solid;
     border-radius: 20px;
     background-color: var(--BBwhiteDemi);
+}
+#Sleep{
+    border: 1px white solid;
+    border-radius: 20px;
+    background-color: var(--BBwhiteDemi);
+    height: max-content;
+    padding: 20px;
+}
+
+
+@media screen and (min-width: 700px) {
+    html body{
+        height: max-content;
+    }
 }
