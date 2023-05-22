@@ -58,8 +58,10 @@ function createMyCharts(json2) {
 
     const toMilliseconds = (hrs, min) => ((hrs * 60 * 60 + min * 60) * 1000);
     const toHour = (mills) => ((new Date(mills)).getUTCHours() + ':' + (new Date(mills)).getUTCMinutes());
-
-    //function whenToSleep() {
+    const inputsleep = document.querySelector('#appt')
+    const inputwake = document.querySelector('#appt2')
+    
+    inputsleep.oninput=function () {
 
         const wakeTime = document.getElementById('appt').value;
 
@@ -86,7 +88,7 @@ function createMyCharts(json2) {
 
         document.getElementById("wake").innerHTML = "You should sleep at" + (toHour(time - sleepDuration));
     }
-    function whenToWake() {
+    inputwake.oninput=function() {
 
         const wakeTime = document.getElementById('appt2').value;
 
@@ -112,7 +114,7 @@ function createMyCharts(json2) {
         //  console.log(new Date(time-sleepDuration))
 
         document.getElementById("wake").innerHTML = "You should wake up at" + (toHour(time + sleepDuration));
-    //}
+    }
 }
 
 //console.log(document.getElementById('appt'))
