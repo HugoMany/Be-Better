@@ -234,51 +234,15 @@ app.post('/api/timetable/create', async (req, res) => {
   try {
     const newTimeTableModel = new timeTableModel({
       id: req.body.id,
-      dateOfMonday: req.body.dateOfMonday,
       timeTable: req.body.timeTable,
     });
+    console.log(newTimeTableModel);
     // //console.log(req.body.timeTable);
     const savedTimeTableModel = await newTimeTableModel.save();
     // res.status(201).json(savedTimeTableModel);
   } catch (err) {
     res.status(400).send(err);
   }
-});
-
-
-//Creer
-app.post('/api/timetable/create', async (req, res) => {
-  try {
-    const newTimeTableModel = new timeTableModel({
-      id: req.body.id,
-      dateOfMonday: req.body.dateOfMonday,
-      timeTable: req.body.timeTable,
-    });
-    // //console.log(req.body.timeTable);
-    const savedTimeTableModel = await newTimeTableModel.save();
-    // res.status(201).json(savedTimeTableModel);
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-
-// Modifier
-app.post('/api/timetable/update/:idUser', async (req, res) => {
-  {
-    const timeTable = await timeTableModel.findOne({ id: req.params.idUser });
-    if (!timeTable) {
-      res.status(404).send('Aucun emploi du temps trouvé avec cet ID.');
-      return;
-    }
-    timeTable.dateOfMonday = req.body.dateOfMonday;
-    timeTable.timeTable = req.body.timeTable;
-    const savedTimeTableModel = await timeTable.save();
-    res.status(200).json(savedTimeTableModel);
-  }
-  // } catch (err) {
-  //   res.status(400).send(err);
-  // }
 });
 
 //Read
