@@ -203,7 +203,7 @@ function createTableau(tailleTabHauteur,tailleTabLargeur,tailleTabHauteur2,taill
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
 //On utilise seTimeout pour créer un temporisation sur la fonction ajoutJSON pour pouvoir récupérer le jsonTimetable
-setTimeout(ajoutJSON, 300);
+setTimeout(ajoutJSON, 1000);
 
 //Fonction ajoutJSON qui va utiliser la fonction createTableau pour récupérer un tableau vide et y ajouter les activités du jsonTimetable
 function ajoutJSON() {
@@ -390,7 +390,11 @@ function drawPlanning(){
         heureAff.style.height=tailleCaseHauteur+"px";
         heureAff.style.width=tailleCaseLargeur+"px";
         heureAff.style.position="absolute";
-        heureAff.style.lef="0px";
+        heureAff.style.left="0px";
+        heureAff.style.border="1px solid #000000";
+        heureAff.style.zIndex="0";
+        heureAff.style.textAlign="center";
+        heureAff.style.fontSize="20px"
         //On définit la position de la div par la taille de la case multiplié par l'indice
         heureAff.style.top=tailleCaseHauteur*i+"px";
     }
@@ -415,12 +419,21 @@ function drawPlanning(){
             var jourAffMeteoContent=document.createTextNode(jour['meteo']);
             jourAffMeteo.appendChild(jourAffMeteoContent);
             jourAff.appendChild(jourAffName);
-            //jourAff.appendChild(jourAffDate);
-            //jourAff.appendChild(jourAffMeteo);
+            jourAff.appendChild(jourAffDate);
+            jourAffName.style.fontSize="20px"
+            jourAffDate.style.fontSize="20px"
+            jourAffDate.style.margin="0px"
+            jourAffName.style.margin="0px"
+            jourAffMeteo.style.fontSize="20px"
+            jourAffMeteo.style.margin="0px"
+            jourAff.appendChild(jourAffMeteo);
             planning.appendChild(jourAff);
             jourAff.style.display="block";
             jourAff.style.position="absolute";
             jourAff.style.top="0px";
+            jourAff.style.border="1px solid #000000";
+            jourAff.style.zIndex="0";
+            jourAff.style.textAlign="center";
             //On définit la position de la div par la taille de la case multiplié par l'indice
             jourAff.style.left=tailleCaseLargeur*i+"px";
             jourAff.style.height=tailleCaseHauteur+"px";
@@ -431,6 +444,17 @@ function drawPlanning(){
     //On parcoure les autres cases du tableau
     for(let x=1;x<tailleTabLargeur;x++){
         for(let y=1;y<tailleTabHauteur;y++){
+            var divCase=document.createElement("div")
+            divCase.setAttribute("class","divCase");
+            divCase.style.position="absolute";
+            divCase.style.left=x*tailleCaseLargeur+"px";
+            divCase.style.top=y*tailleCaseHauteur+"px";
+            divCase.style.width=tailleCaseLargeur+"px";
+            divCase.style.height=tailleCaseHauteur+"px";
+            divCase.style.border="0.5px solid #C0C0C0";
+            divCase.style.zIndex="-100";
+            planning.appendChild(divCase);
+
             for(let y1=0;y1<tailleTabHauteur2;y1++){
 
                 var actPresence=table.tab[x][y].tab[0][y1];
@@ -457,6 +481,8 @@ function drawPlanning(){
                         activityAff.style.left=tailleCaseLargeur*x+"px"
                         activityAff.style.top=tailleCaseHauteur*y+tailleCaseHauteur2*y1+"px";
                         activityAff.style.width=tailleCaseLargeur+"px";
+                        activityAff.style.zIndex="0";
+                        activityAff.style.backgroundColor="#C0C0C0";
                         let indiceY=y;
                         let indiceY1=y1;
                         let actHauteur=tailleCaseHauteur2
@@ -474,7 +500,7 @@ function drawPlanning(){
                         //On définit la hauteur de la div comme étant actHauteur comme ça on obtient une div correspondant à la bonne 
                         //hauteur par rapport à la durée de l'activité
                         activityAff.style.height=actHauteur+"px";
-                        activityAff.style.border="1px solid #888"
+                        activityAff.style.border="1px solid #808080"
                         activityAffContent=document.createTextNode(actPresence['activite']);
                         activityAff.setAttribute("activityName",actPresence['activite']);
                         activityAff.setAttribute("id",table.tab[x][0]['jour'].format("DDMMYYYY")+actPresence['minute']+table.tab[x][indiceY].tab[0][indiceY1]['minute']+actPresence['activite'])
