@@ -357,7 +357,7 @@ function getMinute(minute){
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
 //Variable qui définie les différentes tailles des tableaux et des cases pour l'affichage
-const planningSize = 1000;
+const planningSize = 1200;
 const tailleCaseHauteur = planningSize / tailleTabHauteur;
 const tailleCaseLargeur = planningSize / tailleTabLargeur;
 const tailleCaseHauteur2 = tailleCaseHauteur / tailleTabHauteur2;
