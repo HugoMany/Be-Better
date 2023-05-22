@@ -1,26 +1,4 @@
-// const json2 = {
 
-//     "_id": {
-
-//         "$oid": "642445267d6ced485f7eefa9"
-
-//     },
-
-//     "sex": 0,
-
-//     "firstName": "Hugo",
-
-//     "email": "hugo@gmail.com",
-
-//     "tel": "+336123456789",
-
-//     "passw": "coucou",
-
-//     "age": 22,
-
-//     "__v": 0
-
-// };
 async function receiveSleep() {
     const url = '/api/user/oneuser/' + isConnected() + '/';
     const options = {
