@@ -57,7 +57,7 @@ function createTimeTable(idUser, json) {
   const url = "http://127.0.0.1:3000/api/timetable/create";
   const data = {
       id: idUser,
-      timeTable: json,
+      timeTable: JSON.stringify(json),
   };
 
   const options = {

@@ -1,6 +1,6 @@
 //On récupère les données de l'emploie du temps dans la base de donnée
-//var jsonTimetable=getTimeTableFromId(getCookie('id'));
-var jsonTimetable = []
+var jsonTimetable=getTimeTableFromId(getCookie('id'));
+//var jsonTimetable = []
 //Si la donnée n'existe pas on crée un tableau
 if (jsonTimetable == undefined) {
     jsonTimetable = []
@@ -124,7 +124,7 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
                 modal.style.display = "none";
 
                 //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
                 ajoutJSON();
             }
 
@@ -163,7 +163,7 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
                     modalErr.style.display = 'none'
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
                     ajoutJSON();
                 }
 
@@ -172,7 +172,7 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
                     modalErr.style.display = 'none'
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
                     ajoutJSON();
                 }
             }
