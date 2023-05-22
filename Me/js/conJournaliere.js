@@ -1,7 +1,8 @@
-// const id = isConnected();
+const id = isConnected();
 
 async function sendCo(id) {
-    const date = date.now();
+    const date = Date.now();
+    console.log(date);
     // const id = "642445267d6ced485f7eefa9"
     const url = 'http://localhost:3000/api/user/date/' + id + '/' + date;
     console.log(url);
@@ -23,8 +24,8 @@ async function sendCo(id) {
 
         const result = await response.text();
 
-        console.log(result);
-        alert("New updated Co.")
+        // console.log(result);
+        // alert("New updated Co.")
 
     } catch (error) {
 
@@ -34,4 +35,4 @@ async function sendCo(id) {
 
 }
 
-// sendCo(id);
+sendCo(id);

@@ -8,12 +8,7 @@ html {
     justify-content: center;
 }
 
-body {
-    width: 90vw;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;}
+
 
 h2 {
     text-align: center;
@@ -63,7 +58,7 @@ header{
 }
 
 html body .sousDiv span {
-    font-size: 60px;
+    font-size: 90px;
 }
 
 a {
@@ -79,13 +74,13 @@ Round de profile et de notif en haut del page home
 */
 .roundTopTip {
     transition: 0.7s;
-    background-color: white;
+    background-color: rgb(223, 222, 222);
     height: 65px;
     width: 65px;
     border: 0px solid;
     border-radius: 100%;
     /* overflow: hidden; */
-    
+    padding: 5px;
     transform: scale(1);
 }
 
@@ -141,6 +136,7 @@ Round de profile et de notif en haut del page home
 #nutrition{
     border: 1px white solid;
     border-radius: 20px;
+    padding: 20px;
     background-color: var(--BBwhiteDemi);    
 }
 #bilanSport {
@@ -161,6 +157,7 @@ Round de profile et de notif en haut del page home
     border: 1px white solid;
     border-radius: 20px;
     background-color: var(--BBwhiteDemi);
+
 }
 
 
@@ -171,6 +168,15 @@ Round de profile et de notif en haut del page home
 #name{
     font-size: 26px;
     width: max-content;
+}
+#lastNight div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#lastNight div span{
+    font-size: 48px;   
 }
 
 span{
@@ -189,4 +195,33 @@ canvas {
 }
 #Sleep .cat{
     width: 50%;
+}
+#updateWeigh{
+    
+    display: flex;
+    width: 50%;
+    padding: 30px 30px 30px 30px;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    height: max-content;
+    border: 1px white solid;
+    border-radius: 20px;
+    background-color: var(--BBwhiteDemi);
+}
+#Sleep{
+    border: 1px white solid;
+    border-radius: 20px;
+    background-color: var(--BBwhiteDemi);
+    height: max-content;
+    padding: 20px;
+}
+#hoursLast{
+    text-align: justify;
+}
+
+@media screen and (min-width: 700px) {
+    html body{
+        height: max-content;
+    }
 }

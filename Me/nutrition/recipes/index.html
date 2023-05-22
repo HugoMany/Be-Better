@@ -2,19 +2,27 @@
 <html>
 
 <head>
-    <title>Recipe</title>
+    <title>Recipes</title>
+    <link rel="icon" type="image/png" href="/Me/img/LogoBeBetter.png" />
+
     <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" 
+    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/Me/CSS/styleBeBetter.css">
     <link rel="stylesheet" type="text/css" href="/Me/CSS/styleNutrition.css">
-
+    <!-- <link rel="stylesheet" href="/Me/CSS/login.css"> -->
+    <link rel="stylesheet" href="/Me/css/recipes.css">
+    <script src="/Me/nutrition/recipes/strongForNumber.js"></script>
 </head>
 
-<body>
+<body id="loginBody">
     <h1>Recipe</h1>
     <form>
-      <label for="aliment">Aliment :</label>
-      <input type="text" id="aliment" name="aliment"><br>
+      <label for="aliment">Search about some recipes :</label>
+      <input type="text" id="aliment" name="aliment" value="Chicken"><br>
+      <input type="button" id="more" value = "show more" onclick="showMore()">
       <input type="submit" value="Ajouter" id="btn">
+      <input type="button" value="generatePDF" onclick="generatePDF()">
     </form>
     <div id="resultats"></div>
     <script src="script.js"></script>

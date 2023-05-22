@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-    --BBDblue:  rgba(35, 54, 82, 1);
-    --BBblue:  rgba(10, 96, 135, 1);
-    --BBwhite: rgba(255, 255, 255, 1); 
+    --BBDblue:  #233652;
+    --BBblue:  #0a6087;
+    --BBwhite: #ffffff; 
     --BBgray: rgb(250, 252, 248);
-    --BBorange:rgba(242, 89, 68, 1);
+    --BBorange:#f25944;
     --BBwhiteDemi:rgba(10, 96, 135, 0.5);
 
 

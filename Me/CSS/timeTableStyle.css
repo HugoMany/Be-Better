@@ -1,0 +1,15 @@
+html body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 15px;
+}
+#addActivity{
+    background-color: var(--BBDblue);
+    border: solid 1px black;
+    padding: 20px;
+    border-radius: 25px;
+    color: white;
+    margin: 20px;
+}

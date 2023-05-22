@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>ME</title>
+    <title>Be Better</title>
+    <link rel="icon" type="image/png" href="/Me/img/LogoBeBetter.png" />
+
     <link rel="stylesheet" type="text/css" href="./CSS/styleBeBetter.css">
     <link rel="stylesheet" type="text/css" href="./CSS/indexStyle.css">
     <link rel="stylesheet" href="./CSS/menuStyle.css">
@@ -10,9 +12,11 @@
     <script src="./js/cookie.js"></script>
     <script src="./js/menu.js"></script>
     <script src="./js/transition.js"></script>
+    <script src="./js/conJournaliere.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
+    <script src="js/weight.js"></script>
+    </head>
 
 <div id="animStart">
     <img src="img/logo.png">
@@ -118,7 +122,7 @@
             </a>
         </div>
         <div class="sousSec" id="mealGen">
-            <a href="./nutrition/recipe/">
+            <a href="./nutrition/recipes/">
                 <div class="sousDiv">
                     <span class="material-symbols-outlined">
                         set_meal
@@ -134,6 +138,8 @@
             <a href="#" onclick="transition('../Me/weightChange/')"><span class="material-symbols-outlined">
                     balance
                 </span>
+                <div id="poid">Current weight :</div>
+                <div id="BMI">Current Body Mass Index :</div>
                 Update your weight
             </a>
         </div>
@@ -144,18 +150,21 @@
     <h2> Sleep</h2>
 
     <section id="Sleep">
-    <div class="cat">
+    <div class="cat" id="hoursLast">
         <p>Your last night is about : -- hours
         </p>        
-    <h3>Charts of your last day of sleeping</h3>
+    <!-- <h3>Charts of your last day of sleeping</h3> -->
     </div>
 
-    <div class="cat" id="Last night">
-        <div> <span class="material-symbols-outlined">
-            bedtime
-        </span>
-            What about your last night ? Submit your last night and analystis it !
-        </div>
+    <div class="cat" id="lastNight">
+        <a href="#" onclick="transition('/Me/Sleep/')">
+            <div> <span class="material-symbols-outlined">
+                bedtime
+            </span>
+                What about your last night ? Submit your last night and analystis it !
+            </div>
+        </a>
+        
     </div>
 
     </section>
@@ -178,13 +187,11 @@
             </span></a>
     </nav>
     <!-- Script  -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
 
 
     </script>
-    <script src="./js/graphicWeight.js"></script>
 </body>
 
 </html>

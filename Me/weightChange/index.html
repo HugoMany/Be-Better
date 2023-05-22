@@ -2,16 +2,21 @@
 <html>
 
 <head>
-    <title>Form</title>
+    <title>Weight Submit</title>
+    <link rel="icon" type="image/png" href="/Me/img/LogoBeBetter.png" />
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="../CSS/styleBeBetter.css">
     <link rel="stylesheet" href="../CSS/login.css">
     <script src="../js/cookie.js"></script>
+    
 </head>
 
 <body id="loginBody">
     <h1>Be BeTTeR</h1>
     <!-- The Modal -->
+
+
 
         <form>
             <label for="poids">Weight (in kg) :</label>
@@ -19,8 +24,16 @@
             <br><br>
             <input type="submit" value="Send" id="submit">
         </form>
-
+        <h2> Weight evolution</h2>
+        <hr>
+         <div id="weightCharts">
+            <canvas id="myChart"></canvas>
+        </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/graphicWeight.js"></script>
+
+
 </body>
 
 </html>

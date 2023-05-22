@@ -152,22 +152,47 @@ function finishExercise() {
 
 //Fonction qui va s'activer quand l'utilisateur va appuyer sur le bouton Generate PDF et qui va télécharger un document pdf contenant
 //le programme 
+// function generatePdf() {
+//     //nom du fichier | file name
+//     var nom_fichier = prompt("Nom du fichier PDF :");
+//     //generer le pdf
+//     var element = document.getElementById('programPage');
+//     var opt = {
+//         margin: 1,
+//         filename: `${nom_fichier}.pdf`,
+//         image:        { type: 'jpeg', quality: 0.98 },
+//         html2canvas:  { scale: 2 },
+//         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+//       };
+//     if (nom_fichier != null) {
+//         html2pdf().set(opt).from(element).save()
+//     } else {
+//         alert("Veuillez choisir un nom ")
+//     }
+// }
+
 function generatePdf() {
-    //nom du fichier | file name
     var nom_fichier = prompt("Nom du fichier PDF :");
-    //generer le pdf
-    var element = document.getElementById('programPage');
-    var opt = {
-        margin: 1,
-        filename: `${nom_fichier}.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-    if (nom_fichier != null) {
-        html2pdf().set(opt).from(element).save()
-    } else {
-        alert("Veuillez choisir un nom ")
+    const doc = new jsPDF();
+    var txt = document.getElementById("programPage").innerText;
+
+    var lignes = doc.splitTextToSize(txt, 180);
+    var ligneIndex = 0;
+    var pageHeight = doc.internal.pageSize.getHeight();
+
+    while (ligneIndex < lignes.length) {
+        if (ligneIndex !== 0) {
+            doc.addPage();
+        }
+
+        var pageLignes = lignes.slice(ligneIndex, ligneIndex + pageHeight / 10);
+        for (var i = 0; i < pageLignes.length; i++) {
+            doc.text(pageLignes[i], 10, 10 + (i * 10));
+        }
+
+        ligneIndex += pageLignes.length;
     }
+
+    doc.save(nom_fichier + ".pdf");
 }
 

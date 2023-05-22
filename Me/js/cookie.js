@@ -30,16 +30,13 @@ function disconnect(){
     return "";
   }
 
-function isConnected(){
-  if(getCookie("id")==""){
-    if(document.location!="http://127.0.0.1:5500/Me/login/"){
-      document.location="/Me/login/";
+  function isConnected(){
+    if(getCookie("id")==""){
+      return false;
     }
-    return false;
+    else{
+      return getCookie("id");
+    }
   }
-  else{
-    return getCookie("id");
-  }
-}
-
-const varIsConnected = isConnected();
+  
+  window.onafterprint = isConnected();

@@ -1,8 +1,10 @@
 
 
 function isLogin() {
-    if (getCookie("id") == null) {
-        document.location.url = document.location = "/Me/login/";
+    if (getCookie("id") == "") {
+        // document.location.url = document.location = "/Me/login/";
+        document.location="/Me/login/";
+
         return false
     }
     else {
@@ -31,7 +33,7 @@ async function whatIsName() {
         const result = await response.text();
         const jsonString = result;
         const jsonRet = JSON.parse(jsonString);
-        console.log(jsonRet);
+        // console.log(jsonRet);
         document.getElementById("name").innerHTML+=" "+jsonRet["firstName"]+" welcome back to BeBetter";
         // alert("New updated weight.")
 
@@ -51,6 +53,11 @@ function notify(){
     );
 
 }
+const connected = isLogin();
 
-const helloname = whatIsName();
-const notifyStart=notify();
+delay(200).then(() =>
+    {
+        const helloname = whatIsName();
+        const notifyStart=notify(); 
+    });
+

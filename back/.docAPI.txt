@@ -12,10 +12,9 @@
 <br>
 <h2>User:</h2><br>
 <h3>Profile</h3><br>
-/api/user/ POST Creer un utilisateur<br>
+/api/user/create POST Creer un utilisateur<br>
 <br>
-/api/user/:sex/:firstName/:email/:tel/:passw/:age/ GET Creer un utilisateur<br>
-<br>
+<!-- /api/user/:sex/:firstName/:email/:tel/:passw/:age/ GET Creer un utilisateur<br> -->
 /api/user/oneuser/:id GET Recupere un utilisateur<br>
 <br>
 /api/user/alluser/ GET Recupere tout les utilisateur<br>
@@ -28,7 +27,7 @@
 /api/user/caract/:id/:newWeigh Ajout d'une nouvelle mesure de poid avec date et poid ajouter en pushback des autres mesures<br>
 <br>
 /api/user/caract/:id GET retourne les caractéristique d'un personne!
-<br>
+<br><br>
 <hr>
 <h2>Sport:</h2><br>
 <br>
@@ -66,3 +65,20 @@
 /api/timetable/update/:idUser POST Actualisation de la timeTable<br>
 <br>
 /api/timetable/one/:idUser GET Recupere la time table d'un utilisateurs<br>
+<hr>
+<br>
+<h2>Co Journaliere</h2><br>
+
+<br>
+/api/user/date/:id/ GET Recupere toutes les dates de connexion d'un utilisateur<br>
+<br>
+/api/user/date/:id/:Newdate GET ajoute une nouvelle connexion à l'utilisateur<br>
+
+
+<hr>
+
+<br>
+<h2>Sleep</h2><br>
+/api/user/sleep/:id GET Recupere toutes les dates de connexion d'un utilisateur<br>
+<br>
+/api/user/date/:id/ GET ajoute une nouvelle nuit à l'utilsateur<br>
