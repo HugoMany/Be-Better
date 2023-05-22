@@ -203,7 +203,7 @@ function createTableau(tailleTabHauteur,tailleTabLargeur,tailleTabHauteur2,taill
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
 //On utilise seTimeout pour créer un temporisation sur la fonction ajoutJSON pour pouvoir récupérer le jsonTimetable
-setTimeout(ajoutJSON, 1000);
+setTimeout(ajoutJSON, 300);
 
 //Fonction ajoutJSON qui va utiliser la fonction createTableau pour récupérer un tableau vide et y ajouter les activités du jsonTimetable
 function ajoutJSON() {
