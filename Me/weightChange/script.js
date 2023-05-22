@@ -23,7 +23,6 @@ document.querySelector('form').addEventListener('submit', function (e) {
 });
 
 async function sendWeight(query) {
-    const id = "642445267d6ced485f7eefa9"
     const url = 'http://localhost:3000/api/user/caract/' + id + '/' + query;
 
     const options = {
