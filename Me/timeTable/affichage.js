@@ -207,8 +207,7 @@ setTimeout(ajoutJSON, 300);
 
 //Fonction ajoutJSON qui va utiliser la fonction createTableau pour récupérer un tableau vide et y ajouter les activités du jsonTimetable
 function ajoutJSON() {
-    var dataparse=JSON.parse(jsonTimetable)
-    console.log(dataparse)
+    var dataparse=jsonTimetable;
     //On utilise la fonction createTableau pour récupérer un tableau vierge et on le stock dans la variable tableauPlanning
     var tableauPlanning=createTableau(tailleTabHauteur,tailleTabLargeur,tailleTabHauteur2,tailleTabLargeur2,array,array2);
     //On parcoure le jsonTimetable et le tableauPlanning et si on voit un jour du json qui est présent dans le tableau ça signifie qu'on
@@ -216,7 +215,6 @@ function ajoutJSON() {
     for (let i in dataparse) {
         for (let j = 1; j < tailleTabLargeur; j++) {
             if (dataparse[i]['day'] == tableauPlanning.tab[j][0]['jour'].format("DDMMYYYY")) {
-                console.log(tableauPlanning.tab[j][0]['jour'].format("DDMMYYYY"))
                 //Pour chacune des activités présentent on va :
                 for (let k in dataparse[i]['activity']) {
                     //Récupérer l'heure de début d'activité
@@ -615,7 +613,7 @@ function editActivity(day,hd,hf,name){
 
 //Fonction qui va supprimer une activité et prend en paramètre le jour, l'heure de début et de fin ainsi que le nom de l'activité
 function delActivity(day,hd,hf,name){
-    var dataparse=JSON.parse(jsonTimetable)
+    var dataparse=jsonTimetable
     //On parcoure le json
     for(let i in dataparse){
         //On trouve le jour correspondant à day dans le json
@@ -636,7 +634,7 @@ function delActivity(day,hd,hf,name){
             }
         }
     }
-    jsonTimetable=JSON.stringify(dataparse);
+    //jsonTimetable=JSON.stringify(dataparse);
     //On réinitialise le modal
     modalModif.style.display="none"
     document.getElementById("dayContent").innerHTML="Day : "
@@ -644,7 +642,8 @@ function delActivity(day,hd,hf,name){
     document.getElementById("hfContent").innerHTML="End time : "
     document.getElementById("nameContent").innerHTML="Activity name : "
 
+    jsonTimetable=dataparse
     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-    //deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+    deleteTimeTableFromId(getCookie('id'),jsonTimetable);
     ajoutJSON();
 }
