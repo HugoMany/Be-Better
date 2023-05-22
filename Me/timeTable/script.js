@@ -1,9 +1,11 @@
 //On récupère les données de l'emploie du temps dans la base de donnée
-var jsonTimetable=getTimeTableFromId(getCookie('id'));
+if(getTimeTableFromId(getCookie('id'))!=undefined){
+    var jsonTimetable=getTimeTableFromId(getCookie('id'));
+}
 //var jsonTimetable = []
 //Si la donnée n'existe pas on crée un tableau
 if (jsonTimetable == undefined) {
-    jsonTimetable = []
+    var jsonTimetable = []
 }
 
 const currDate = moment(); // get current date
@@ -77,36 +79,37 @@ function addActivity() {
 function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDebutChoisie, heureFinChoisie, minuteFinChoisie) {
     //On vérifie si l'utilisateur a entré toutes les infos
     if (jourChoisi != "" && activiteChoisie != "" && heureDebutChoisie != "" && minuteDebutChoisie != "" && heureFinChoisie != "" && minuteFinChoisie != "") {
+        var dataparse=JSON.parse(jsonTimetable)
         //On va vérifier si les heures sont cohérentes 
         var debutActivite = heureDebutChoisie + minuteDebutChoisie;
         var finActivite = heureFinChoisie + minuteFinChoisie;
         if (finActivite > debutActivite) {
 
             var errPresence = 0;
-
+            console.log(dataparse)
             //On vérifie si le jour est déjà présent dans le json
-            for (let i in jsonTimetable) {
-                if (jsonTimetable[i]["day"] == jourChoisi) {
+            for (let i in dataparse) {
+                if (dataparse[i]["day"] == jourChoisi) {
                     var index = i;
                     errPresence += 1;
                 }
             }
-
+            console.log(errPresence)
             //S'il n'est pas présent on peut l'ajouter
             if (errPresence == 0) {
-                jsonTimetable.push({ day: jourChoisi, activity: [] })
+                dataparse.push({ day: jourChoisi, activity: [] })
             }
 
             //On cherche l'index du jour correspondant
             if (index == undefined) {
-                index = jsonTimetable.length - 1;
+                index = dataparse.length - 1;
             }
 
             //On cherche les erreurs de chevauchement dans le planning
             var errAccu = [];
-            for (let j in jsonTimetable[index]['activity']) {
-                var hd = jsonTimetable[index]['activity'][j]['activityStart']
-                var hf = jsonTimetable[index]['activity'][j]['activityEnd']
+            for (let j in dataparse[index]['activity']) {
+                var hd = dataparse[index]['activity'][j]['activityStart']
+                var hf = dataparse[index]['activity'][j]['activityEnd']
 
                 //3 cas de chevauchements d'activités
                 if ((debutActivite >= hd && debutActivite < hf) || (finActivite > hd && finActivite <= hf) || (hd >= debutActivite && hf <= finActivite)) {
@@ -118,13 +121,13 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
             //Si aucun cas de chevauchement dans les activités
             if (errAccu.length == 0) {
                 //On ajoute l'activité au json au jour correspondant
-                jsonTimetable[index]['activity'].push({ activityName: activiteChoisie, activityStart: debutActivite, activityEnd: finActivite });
+                dataparse[index]['activity'].push({ activityName: activiteChoisie, activityStart: debutActivite, activityEnd: finActivite });
 
                 // on ferme la fenêtre
                 modal.style.display = "none";
 
                 //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                deleteTimeTableFromId(getCookie('id'),JSON.stringify(dataparse));
                 ajoutJSON();
             }
 
@@ -138,12 +141,12 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
 
                 var btnDeleteOld = document.getElementById("btnDeleteOld")
                 if (errAccu.length == 1) {
-                    btnDeleteOld.textContent = "Delete old activity : " + jsonTimetable[index]['activity'][errAccu[0]]['activityName'];
+                    btnDeleteOld.textContent = "Delete old activity : " + dataparse[index]['activity'][errAccu[0]]['activityName'];
                 }
                 if (errAccu.length > 1) {
-                    btnDeleteOld.textContent = "Delete old activities : " + jsonTimetable[index]['activity'][errAccu[0]]['activityName'];
+                    btnDeleteOld.textContent = "Delete old activities : " + dataparse[index]['activity'][errAccu[0]]['activityName'];
                     for (let k = 1; k < errAccu.length; k++) {
-                        btnDeleteOld.textContent += " / " + jsonTimetable[index]['activity'][errAccu[k]]['activityName']
+                        btnDeleteOld.textContent += " / " + dataparse[index]['activity'][errAccu[k]]['activityName']
                     }
                 }
 
@@ -152,18 +155,18 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
                 //Si appuie sur le bouton deleteOld on supprime la/les ancienne(s) activité(s) et on ajoute la nouvelle
                 btnDeleteOld.onclick = function () {
                     if (errAccu.length == 1) {
-                        jsonTimetable[index]['activity'].splice(errAccu[0], 1)
+                        dataparse[index]['activity'].splice(errAccu[0], 1)
                     }
                     if (errAccu.length > 1) {
                         for (let k = 0; k < errAccu.length; k++) {
-                            jsonTimetable[index]['activity'].splice(errAccu[0], 1)
+                            dataparse[index]['activity'].splice(errAccu[0], 1)
                         }
                     }
-                    jsonTimetable[index]['activity'].push({ activityName: activiteChoisie, activityStart: debutActivite, activityEnd: finActivite })
+                    dataparse[index]['activity'].push({ activityName: activiteChoisie, activityStart: debutActivite, activityEnd: finActivite })
                     modalErr.style.display = 'none'
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(dataparse));
                     ajoutJSON();
                 }
 
@@ -172,7 +175,7 @@ function addToPlanning(activiteChoisie, jourChoisi, heureDebutChoisie, minuteDeb
                     modalErr.style.display = 'none'
 
                     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
-                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(jsonTimetable));
+                    deleteTimeTableFromId(getCookie('id'),JSON.stringify(dataparse));
                     ajoutJSON();
                 }
             }

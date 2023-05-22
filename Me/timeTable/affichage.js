@@ -207,31 +207,34 @@ setTimeout(ajoutJSON, 300);
 
 //Fonction ajoutJSON qui va utiliser la fonction createTableau pour récupérer un tableau vide et y ajouter les activités du jsonTimetable
 function ajoutJSON() {
+    var dataparse=JSON.parse(jsonTimetable)
+    console.log(dataparse)
     //On utilise la fonction createTableau pour récupérer un tableau vierge et on le stock dans la variable tableauPlanning
     var tableauPlanning=createTableau(tailleTabHauteur,tailleTabLargeur,tailleTabHauteur2,tailleTabLargeur2,array,array2);
     //On parcoure le jsonTimetable et le tableauPlanning et si on voit un jour du json qui est présent dans le tableau ça signifie qu'on
     //peut ajouter les activités de ce jour du json dans le tableau
-    for (let i in jsonTimetable) {
+    for (let i in dataparse) {
         for (let j = 1; j < tailleTabLargeur; j++) {
-            if (jsonTimetable[i]['day'] == tableauPlanning.tab[j][0]['jour'].format("DDMMYYYY")) {
+            if (dataparse[i]['day'] == tableauPlanning.tab[j][0]['jour'].format("DDMMYYYY")) {
+                console.log(tableauPlanning.tab[j][0]['jour'].format("DDMMYYYY"))
                 //Pour chacune des activités présentent on va :
-                for (let k in jsonTimetable[i]['activity']) {
+                for (let k in dataparse[i]['activity']) {
                     //Récupérer l'heure de début d'activité
-                    var heureActD = jsonTimetable[i]['activity'][k]['activityStart'].substr(0, 2)
+                    var heureActD = dataparse[i]['activity'][k]['activityStart'].substr(0, 2)
                     //Grâce à cette heure on va utiliser la fonction getHour définie en dessous qui va récupérer l'indice correspondant
                     //à cette heure pour le tableau
                     var indiceHD=getHour(heureActD);
                     //On récupère la minute de début d'activité
-                    var minuteActD = jsonTimetable[i]['activity'][k]['activityStart'].substr(2, 2)
+                    var minuteActD = dataparse[i]['activity'][k]['activityStart'].substr(2, 2)
                     //Grâce à cette minute on va utiliser la fonction getMinute définie en dessous qui va récupérer l'indice correspondant
                     //à cette heure pour le tableau
                     var indiceMD=getMinute(minuteActD);
                     //On se rend à la case du tableau correspondant aux indices obtenus et on ajoute le nom de l'activité à cette case
-                    tableauPlanning.tab[j][indiceHD].tab[0][indiceMD]['activite']=jsonTimetable[i]['activity'][k]['activityName']
+                    tableauPlanning.tab[j][indiceHD].tab[0][indiceMD]['activite']=dataparse[i]['activity'][k]['activityName']
                     //On fait pareil pour l'heure et la minute de fin
-                    var heureActF = jsonTimetable[i]['activity'][k]['activityEnd'].substr(0, 2)
+                    var heureActF = dataparse[i]['activity'][k]['activityEnd'].substr(0, 2)
                     var indiceHF=getHour(heureActF);
-                    var minuteActF = jsonTimetable[i]['activity'][k]['activityEnd'].substr(2, 2)
+                    var minuteActF = dataparse[i]['activity'][k]['activityEnd'].substr(2, 2)
                     var indiceMF=getMinute(minuteActF);
                     
                     //On va parcourir chaque case du tableau entre les indices de l'heure de début et les indices de l'heure de fin et 
@@ -242,7 +245,7 @@ function ajoutJSON() {
                             indiceMD=0;
                             indiceHD+=1
                         }
-                        tableauPlanning.tab[j][indiceHD].tab[0][indiceMD]['activite']=jsonTimetable[i]['activity'][k]['activityName']
+                        tableauPlanning.tab[j][indiceHD].tab[0][indiceMD]['activite']=dataparse[i]['activity'][k]['activityName']
                     }
                     tableauPlanning.tab[j][indiceHF].tab[0][indiceMF]['activite']=undefined;
                 }
@@ -612,27 +615,28 @@ function editActivity(day,hd,hf,name){
 
 //Fonction qui va supprimer une activité et prend en paramètre le jour, l'heure de début et de fin ainsi que le nom de l'activité
 function delActivity(day,hd,hf,name){
+    var dataparse=JSON.parse(jsonTimetable)
     //On parcoure le json
-    for(let i in jsonTimetable){
+    for(let i in dataparse){
         //On trouve le jour correspondant à day dans le json
-        if(jsonTimetable[i]['day']==day){
+        if(dataparse[i]['day']==day){
             //On parcoure l'ensemble des activités
-            var allActivite=jsonTimetable[i]['activity'];
+            var allActivite=dataparse[i]['activity'];
             //On trouve l'activité correspondante au nom et aux heures entrés en paramètres
             for(let j in allActivite){
-                if(jsonTimetable[i]['activity'][j]['activityName']==name && jsonTimetable[i]['activity'][j]['activityStart']==hd && jsonTimetable[i]['activity'][j]['activityEnd']==hf){
+                if(dataparse[i]['activity'][j]['activityName']==name && dataparse[i]['activity'][j]['activityStart']==hd && dataparse[i]['activity'][j]['activityEnd']==hf){
                     //On supprime l'activité correspondante du json
-                    jsonTimetable[i]['activity'].splice(j,1);
+                    dataparse[i]['activity'].splice(j,1);
                                         
                     //Si suite à la suppression de l'activité il n'y en a plus dans le jour on supprime le jour du json                        
                     if (allActivite.length == 0) {
-                        jsonTimetable.splice(i, 1)
+                        dataparse.splice(i, 1)
                     }
                 }
             }
         }
     }
-    
+    jsonTimetable=JSON.stringify(dataparse);
     //On réinitialise le modal
     modalModif.style.display="none"
     document.getElementById("dayContent").innerHTML="Day : "
