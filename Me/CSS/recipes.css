@@ -19,7 +19,12 @@ form{
     justify-content: flex-end;
 }
 form label, form input{
+    border: 2px solid var(--BBwhite);
+    border-radius: 30px;
+    background-color: var(--BBwhite);
+    padding: 15px;
     width: 100%;
+    margin: 10px;
 }
 form input{
     padding: 5px;

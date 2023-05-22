@@ -48,6 +48,8 @@ registerBtn.addEventListener('click', (event) => {
       console.log(data);
       createSleepTable(data["_id"]);
       createLastCoTable(data["_id"]);
+      createCaract(data["_id"]);
+      // delay(700).then(() =>location.href = "/Me/");
 
       // document.location="/me/login/"
     })
@@ -58,7 +60,9 @@ registerBtn.addEventListener('click', (event) => {
 
 });
 
-
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
 function createSleepTable(id) {
   let url = `http://localhost:3000/api/user/sleep/${id}`
   fetch(url,
@@ -83,6 +87,29 @@ function createSleepTable(id) {
     });
 
 }
+function createCaract(id) {
+  let url = `http://localhost:3000/api/user/caract/${id}/1/0/175/`
+  fetch(url,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Caract table created for " + id);
+
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
 function createLastCoTable(id) {
   let url = `http://localhost:3000/api/user/date/${id}`
   fetch(url, {
