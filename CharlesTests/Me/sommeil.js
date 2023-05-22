@@ -38,7 +38,7 @@ function whenToSleep(){
          sleepDuration=toMilliseconds(10,00);
         //  console.log(sleepDuration)
     }
-    else if ((json2["age"]>11) && (json["age"]<=19 )){ 
+    else if ((json2["age"]>11) && (json2["age"]<=19 )){ 
         sleepDuration=toMilliseconds(9,00);
         // console.log(sleepDuration)
     }
@@ -65,7 +65,7 @@ function whenToWake(){
          sleepDuration=toMilliseconds(10,00);
         //  console.log(sleepDuration)
     }
-    else if ((json2["age"]>11) && (json["age"]<=19 )){ 
+    else if ((json2["age"]>11) && (json2["age"]<=19 )){ 
         sleepDuration=toMilliseconds(9,00);
         // console.log(sleepDuration)
     }

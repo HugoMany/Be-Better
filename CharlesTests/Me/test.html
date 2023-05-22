@@ -1,22 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
+<!-- <script src='/Me/js/cookie.js'></script> -->
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet">
-	
-    <title>truc</title>
-    <script src ="notify.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet">
+  <style>
+    div {
+      background-color: black;
+      color: lightgray;
+      margin-right: 2cm;
+      margin-left: 2cm;
+    }
+
+    ;
+  </style>
+  <title>truc</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.0/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>async function getAge(id) {
+      const url = 'http://localhost:3000/api/user/oneuser/' + id;
+      console.log(url);
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        var json = JSON.parse(result);
+        console.log(json)
+        var age = json["age"];
+        var name = json["firstName"];
+
+        document.getElementById('age').innerHTML = age
+        //getApport(id, age);
+      } catch (error) {
+        console.error(error);
+      }
+
+
+    }
+  </script>
+
+
 <body>
 
+  </head>
+  <div class="elem">
+    <h2>Age</h2>
+
+    <div id="age"></div>
+    <h2>name</h2>
+
+    <div id="name"></div>
+
+    <script>
+      //getAge();
+
+    </script>
+
+    <div class="html">
+      <h2>Lorem ipsum dolor sit amet.</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi illo cumque ea velit, earum explicabo commodi
+        ipsa
+        voluptatem quidem dolores laborum eaque itaque nihil at eveniet similique fugit enim consequuntur, officia
+        nostrum
+        nemo! Nam voluptate corporis
+        error aut nobis repellendus illo pariatur accusantium non quas dolores nihil dignissimos quam quisquam natus
+        nostrum
+        nesciunt officia temporibus doloremque, dolor iste! Aspernatur ad ratione perspiciatis sequi consequuntur aut
+        nulla
+        itaque consequatur.
+        Aliquam fugit distinctio debitis deleniti, nisi nemo eius a, facilis dolorem tempora iusto laboriosam dicta
+        beatae.
+        Nisi, quisquam. Ducimus facere rerum veniam, reprehenderit labore expedita! Amet fuga, quia dicta excepturi
+        iusto
+        cumque.
+      </p>
+
+    </div>
+    <button onclick="convert()">Convert me to jpg image</button>
+
+  </div>
+  <div class="result">
 
 
-      
-      <!--<script>
-      btn.addEventListener('click', () => {
-        let promise = Notification.requestPermission()
-        // wait for permission
-      })</script>-->
+    <hr>
+    <p class="result"></p>
+     <button id="share" type="button">Share your images!</button>
+    <output id="output"></output>
+
+
+  </div>
+  <!-- Adding a button to trigger the PDF download event -->
+  <h1>Share a file</h1>
+  <!-- Adding a script to listen for the button click event and to convert the HTML element to a PDF and download it -->
+  <script>
+    // Get the div element and the result container
+    const div = document.querySelector(".html");
+    const result = document.querySelector(".result");
+
+    // Function that converts the div to an image
+    function convert() {
+      html2canvas(div).then(function (canvas) {
+        // Add the canvas element to the result container
+        result.appendChild(canvas);
+
+        // Get the canvas element and convert it to a data URI
+        let cvs = document.querySelector("canvas");
+        let dataURI = cvs.toDataURL("image/jpeg");
+
+        // Get the link element to download the image and update its properties
+        let downloadLink = document.querySelector(".result>a");
+        downloadLink.href = dataURI;
+        downloadLink.download = "progress.jpg";
+
+        // Log the data URI to the console
+        console.log(dataURI);
+      });
+
+      // Show the result container
+      result.style.display = "block";
+    }
+  </script>
+
+  
+
+
+
+
+
+  <script>
+    const shareData = new File(["progress"], document.querySelector(".result>a"), { type: "image/jpg", });
+
+    const btn = document.querySelector("#share");
+    const resultPara = document.querySelector(".result");
+
+    // Share must be triggered by "user activation"
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.share(shareData);
+        resultPara.textContent = "MDN shared successfully";
+      } catch (err) {
+        resultPara.textContent = `Error: ${err}`;
+      }
+    }); 
+  </script>
+
+
 
 </body>
-
