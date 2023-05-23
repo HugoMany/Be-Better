@@ -21,8 +21,9 @@
 //     "__v": 0
 
 // };
+receiveSleep()
 async function receiveSleep() {
-    const url = 'http://localhost:3000/api/user/date/' + isConnected() + '/';
+    const url = 'http://localhost:3000/api/user/sleep/' + isConnected() + '/';
     const options = {
   
         method: 'GET',
