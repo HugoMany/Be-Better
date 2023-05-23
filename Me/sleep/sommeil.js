@@ -1,4 +1,4 @@
-
+receiveSleep()
 async function receiveSleep() {
     const url = '/api/user/oneuser/' + isConnected() + '/';
     const options = {
