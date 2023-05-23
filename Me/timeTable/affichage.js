@@ -512,7 +512,10 @@ function drawPlanning(){
         }
     }
     //On appelle la fonction mvtPlanning définit plus bas pour gérer les différents évenements click dans le planning
-    mvtPlanning()
+    mvtPlanning();
+
+    //On appelle la fonction conseilHorraire qui va conseiller à l'utilisateur des horraires pour faire du sport
+    conseilHorraire();
 }
 
 const modalModif=document.getElementById("myModalModif");
@@ -672,4 +675,63 @@ function delActivity(day,hd,hf,name){
     //On supprime dans la base de donnée pour ajouter sa nouvelle version après modification
     deleteTimeTableFromId(getCookie('id'),jsonTimetable);
     ajoutJSON();
+}
+
+function conseilHorraire(){
+    var allSports=["SPORT","SPORTS","MUSCU","MUSCULATION","NATATION","NAGE","COURSE","COURIR","VELO","TENNIS","FOOT","FOOTBALL","HAND","HANDBALL","BASKET","BASKETBALL","RUGBY","BADMINTON","PETANQUE","TENNIS DE TABLE"]
+    var indiceJson=undefined
+    for(let i in jsonTimetable){
+        if(jsonTimetable[i]["day"]==moment().format("DDMMYYYY")){
+            indiceJson=i;
+        }
+    }
+    if(indiceJson!=undefined){
+        var sportPres=0;
+        for(let j in allSports){
+            for(let k in jsonTimetable[indiceJson]["activity"]){
+                if(allSports[j]==jsonTimetable[indiceJson]["activity"][k]["activityName"].toUpperCase()){
+                    sportPres+=1;
+                }
+            }
+        }
+        if(sportPres!=0){
+            console.log("ACTIVITE SPORTIVE");
+        }
+        else{
+            var heureRef=0800;
+            var ecartHeureRef=9999999;
+            var indiceRef=undefined;
+            var ordreIndice=new Array(jsonTimetable[indiceJson]["activity"].length);
+            var indiceArray=0
+            while(indiceArray!=jsonTimetable[indiceJson]["activity"].length){
+                var ecartHeureRef=9999999;
+                var indiceRef=undefined;
+                for(let k in jsonTimetable[indiceJson]["activity"]){
+                    if((jsonTimetable[indiceJson]["activity"][k]["activityStart"]-heureRef)<=ecartHeureRef && jsonTimetable[indiceJson]["activity"][k]["activityStart"]-heureRef>=0){
+                        indiceRef=k
+                        ecartHeureRef=jsonTimetable[indiceJson]["activity"][indiceRef]["activityStart"]-heureRef;
+                    }
+                }
+                heureRef=jsonTimetable[indiceJson]["activity"][indiceRef]["activityEnd"];
+                ordreIndice[indiceArray]=indiceRef;
+                indiceArray++;
+            }
+
+            var heureCompare=0800;
+            var plusGrandEcart=99999;
+            var plusGrandDebut=undefined;
+            var plusGrandFin=undefined;
+
+            for(let l in ordreIndice){
+                if(l==0){
+                    
+                }
+                console.log(jsonTimetable[indiceJson]["activity"][ordreIndice[l]])
+            }
+        }        
+    }
+    else{
+        console.log("PAS D'ACTIVITES SPORTIVES")
+    }
+
 }

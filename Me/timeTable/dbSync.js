@@ -67,7 +67,6 @@ function createTimeTable(idUser, json) {
       },
       body: JSON.stringify(data),
   };
-  console.log(options);
   fetch(url, options)
       .then(response => {
           // Vérification du code de réponse HTTP
