@@ -203,7 +203,7 @@ function createTableau(tailleTabHauteur,tailleTabLargeur,tailleTabHauteur2,taill
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
 //On utilise seTimeout pour créer un temporisation sur la fonction ajoutJSON pour pouvoir récupérer le jsonTimetable
-setTimeout(ajoutJSON, 300);
+setTimeout(ajoutJSON, 1000);
 
 //Fonction ajoutJSON qui va utiliser la fonction createTableau pour récupérer un tableau vide et y ajouter les activités du jsonTimetable
 function ajoutJSON() {
@@ -678,7 +678,14 @@ function delActivity(day,hd,hf,name){
 }
 
 function conseilHorraire(){
-    var allSports=["SPORT","SPORTS","MUSCU","MUSCULATION","NATATION","NAGE","COURSE","COURIR","VELO","TENNIS","FOOT","FOOTBALL","HAND","HANDBALL","BASKET","BASKETBALL","RUGBY","BADMINTON","PETANQUE","TENNIS DE TABLE"]
+    var conseilSport=document.getElementById("conseilSport")
+    if(conseilSport!=undefined){
+        conseilSport.remove();
+    }
+    conseilSport=document.createElement("div");
+    conseilSport.setAttribute("id","conseilSport");
+
+    var allSports=["GYM","SPORT","SPORTS","MUSCU","MUSCULATION","NATATION","NAGE","COURSE","COURIR","VELO","TENNIS","FOOT","FOOTBALL","HAND","HANDBALL","BASKET","BASKETBALL","RUGBY","BADMINTON","PETANQUE","TENNIS DE TABLE"]
     var indiceJson=undefined
     for(let i in jsonTimetable){
         if(jsonTimetable[i]["day"]==moment().format("DDMMYYYY")){
@@ -695,7 +702,7 @@ function conseilHorraire(){
             }
         }
         if(sportPres!=0){
-            console.log("ACTIVITE SPORTIVE");
+            var conseilSportContent=document.createTextNode("I think it's going to be a good day for you, plus you're planning to do some sport - good luck!")
         }
         else{
             var heureRef=0800;
@@ -718,20 +725,29 @@ function conseilHorraire(){
             }
 
             var heureCompare=0800;
-            var plusGrandEcart=99999;
+            var plusGrandEcart=0;
             var plusGrandDebut=undefined;
             var plusGrandFin=undefined;
 
             for(let l in ordreIndice){
-                if(l==0){
-                    
+                if((jsonTimetable[indiceJson]["activity"][ordreIndice[l]]["activityStart"]-heureCompare)>=plusGrandEcart){
+                    plusGrandEcart=jsonTimetable[indiceJson]["activity"][ordreIndice[l]]["activityStart"]-heureCompare;
+                    plusGrandDebut=heureCompare;
+                    plusGrandFin=jsonTimetable[indiceJson]["activity"][ordreIndice[l]]["activityStart"]
                 }
-                console.log(jsonTimetable[indiceJson]["activity"][ordreIndice[l]])
+                heureCompare=jsonTimetable[indiceJson]["activity"][ordreIndice[l]]["activityEnd"]
             }
+
+            var conseilSportContent=document.createTextNode("You have not done any sport today and according to your schedule you have a free time from "+plusGrandDebut.substr(0,2)+"h"+plusGrandDebut.substr(2,2)+" to "+plusGrandFin.substr(0,2)+"h"+plusGrandFin.substr(2,2)+". Why not try to do some exercise during this time, even if it is only for a short time !")
+
+
         }        
     }
     else{
-        console.log("PAS D'ACTIVITES SPORTIVES")
+        var conseilSportContent=document.createTextNode("You have not done any sport today and according to your schedule you have not planned anything today. Why not try to do some exercise during this time, even if it is only for a short time !")
     }
+
+    conseilSport.appendChild(conseilSportContent);
+    body.appendChild(conseilSport);
 
 }
