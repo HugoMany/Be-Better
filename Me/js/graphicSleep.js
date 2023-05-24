@@ -59,9 +59,8 @@ console.log(id)
 
 // }
 
-async function receiveSleep() {
+async function receiveSleep(id) {
   const url = 'http://localhost:3000/api/user/sleep/' + id + '/getSleep';
-  console.log(url);
   const options = {
 
     method: 'GET',
@@ -78,16 +77,20 @@ async function receiveSleep() {
     const response = await fetch(url, options);
 
     const result = await response.text();
-    const jsonString = result;
-    const jsonRet = JSON.parse(jsonString);
-    console.log(jsonString);
-    createMyCharts2(jsonRet);
-    console.log(jsonRet);
+    console.log(result);
+    
+    createMyCharts2(JSON.parse(result));
+
+    // const jsonString = result;
+    // const jsonRet = JSON.parse(jsonString);
+    // console.log(jsonString);
+    // createMyCharts2(jsonRet);
+    // console.log(jsonRet);
 
 
   } catch (error) {
 
-    console.error(error);
+    console.log(error);
 
   }
 
@@ -124,4 +127,4 @@ function createMyCharts2(json) {
   });
 }
 
-const started = receiveSleep();
+const started = receiveSleep(id);

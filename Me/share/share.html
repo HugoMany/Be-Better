@@ -3,70 +3,53 @@
 <!-- <script src='/Me/js/cookie.js'></script> -->
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet">
-  <style>
-    html{
-    overflow: hidden;
-}
-#container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
-    overflow: hidden;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet">
+    <script src="../js/cookie.js"></script>
+    <script src="../js/graphicWeight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        
 
-.card {
-    position: absolute;
-    width: 300px;
-    height: 400px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px #aaa;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.5s ease;
-}
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            overflow: hidden;
+        }
 
-.card img {
-    width: 100%;
-    height: 80%;
-    object-fit: cover;
-}
+        .card {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px #aaa;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
 
-.card h2 {
-    margin: 10px;
-}
+        .html{
+            margin: 50px;
+        }
 
-.card.like {
-    transform: translateX(300px) rotate(-15deg);
-}
-
-.card.dislike {
-    transform: translateX(-300px) rotate(15deg);
-}
-
-.bouton{
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgba(46, 45, 104, 0.658);
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(42, 72, 108, 0.525);
-}
-  </style>
-  <title>truc</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.0/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
+        img{
+            padding: 50px;
+            
+        }
+        .user{
+            background-color: lightblue ;
+        }
+    </style>
+    <title>truc</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.0/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
   // async function getAge(id) {
   //     const url = 'http://localhost:3000/api/user/oneuser/' + id;
   //     console.log(url);
@@ -92,65 +75,55 @@
 
 
   //   }
-  </script>
+    </script>
 
 
 <body>
 
-  </head>
-  <div class="elem">
-    <h2>Age</h2>
-
-    <div id="age"></div>
-    <h2>name</h2>
-
-    <div id="name"></div>
-
-    <script>
-      //getAge();
-
-    </script>
-
+    </head>
     <div class="html">
-      <h2>Lorem ipsum dolor sit amet.</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi illo cumque ea velit, earum explicabo commodi
-        ipsa
-        voluptatem quidem dolores laborum eaque itaque nihil at eveniet similique fugit enim consequuntur, officia
-        nostrum
-        nemo! Nam voluptate corporis
-        error aut nobis repellendus illo pariatur accusantium non quas dolores nihil dignissimos quam quisquam natus
-        nostrum
-        nesciunt officia temporibus doloremque, dolor iste! Aspernatur ad ratione perspiciatis sequi consequuntur aut
-        nulla
-        itaque consequatur.
-        Aliquam fugit distinctio debitis deleniti, nisi nemo eius a, facilis dolorem tempora iusto laboriosam dicta
-        beatae.
-        Nisi, quisquam. Ducimus facere rerum veniam, reprehenderit labore expedita! Amet fuga, quia dicta excepturi
-        iusto
-        cumque.
-      </p>
+        <img src="../img/LogoBeBetter.png" width="80" height="80" >
+        <div class="user">
+            <br>
+            <p></p><p id="name">Name :</p>
+            
+            <p></p><p id="age">Age :</p>
+            <br>
+        </div>
+        <div class="evolution">
+            <div id="weightCharts">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div>
+
+            
+
+
+            
+
+        </div>
+        
 
     </div>
     <button onclick="convert()">Convert me to jpg image</button>
-
-  </div>
-  <div class="result">
+    <div class="result">
 
 
-    <hr>
-    <p class="result"></p>
-    <button id="share" type="button">Share your images!</button>
-    <output id="output"></output>
+        <hr>
+        <p class="result"></p>
+        <button id="share" type="button">Share your images!</button>
+        
+        <output id="output"></output>
 
 
-  </div>
-  <!-- Adding a button to trigger the PDF download event -->
-  
-  <!-- Adding a script to listen for the button click event and to convert the HTML element to a PDF and download it -->
-  <script src="share.js">
-    
-  </script>
+    </div>
+    <!-- Adding a button to trigger the PDF download event -->
+
+    <!-- Adding a script to listen for the button click event and to convert the HTML element to a PDF and download it -->
+    <script src="share.js">
+
+    </script>
 
 
 </body>

@@ -1,6 +1,6 @@
 
 
-whenToSleep()
+// whenToSleep()
 async function whenToSleep() {
     url="http://localhost:3000/api/user/oneuser/" + isConnected();
     fetch(url, {
