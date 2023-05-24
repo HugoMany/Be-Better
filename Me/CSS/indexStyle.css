@@ -133,6 +133,9 @@ Round de profile et de notif en haut del page home
     justify-content: center;
 
 }
+#sportGenerator h3{
+    text-align: center;
+}
 #nutrition{
     border: 1px white solid;
     border-radius: 20px;
