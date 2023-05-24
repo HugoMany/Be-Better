@@ -95,6 +95,14 @@ Round de profile et de notif en haut del page home
     font-size: 65px;
     height: auto;
 }
+.roundTopTip div{
+    background-color: var(--BBwhiteDemi);
+    width: max-content;
+    padding: 5px;
+}
+.roundTopTip p{
+    margin: 5px;
+}
 #notif{
     transition: 1s;
 }
