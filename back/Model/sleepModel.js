@@ -3,7 +3,7 @@ const sleepModel = mongoose.Schema(
     {
         idUser: { type: String, require: true },
         sleeps: [{
-            value: Number, //in h
+            value: String, //in h
             date: String, // DD/MM/YYYY
         }],
     });
