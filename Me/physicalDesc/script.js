@@ -36,6 +36,5 @@ btn.onclick = function () {
     data = [];
     data.push({ "nom": nom, "prenom": prenom, "username": username, "email": email, "telephone": telephone, "password": password });
     data = JSON.stringify(data);
-    console.log(data);
     modal.style.display = "none";
 }

@@ -2,7 +2,6 @@
 async function login() {
     const email = document.getElementById("emailLogin").value;
     const passw = document.getElementById("passwordLogin").value;
-    console.log("Email : " + email + " Pass :" + passw);
     const url = `http://localhost:3000/api/user/login`;
 
     let xhr = new XMLHttpRequest();

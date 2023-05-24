@@ -38,7 +38,6 @@ function printCartOnHome(json){
     let bmi = (weight)/(((height/100))^2)
     bmi = Math.round(bmi);
     elementBMI.innerHTML+= " <b>"+bmi+"</b>";
-    // console.log(json);
 }
 
 delay(200).then(() =>

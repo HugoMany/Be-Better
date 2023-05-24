@@ -27,7 +27,6 @@ registerBtn.addEventListener('click', (event) => {
       passw: password,
       age: age
     };
-    console.log(JSON.stringify(newUser));
     const url = `http://localhost:3000/api/user/create`;
     const options = {
       method: "POST",
@@ -42,11 +41,9 @@ registerBtn.addEventListener('click', (event) => {
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-        console.log()
         return response.json();
       })
       .then(data => {
-        console.log(data);
         createSleepTable(data["_id"]);
         createLastCoTable(data["_id"]);
         createCaract(data["_id"]);

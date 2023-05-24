@@ -24,7 +24,6 @@ function initcard() {
 }
 
 function touchStart() {
-    console.log("touchStart");
     if (isTouchDevice) {
         startX = event.touches[0].clientX;
         currentX = startX;
@@ -53,7 +52,6 @@ function Move() {
     if (currentX - startX < 150 && currentX - startX > -150) {
         activeCard.style.transform = "translateX(" + (currentX - startX) + "px) rotate(" + ((currentX - startX) / 10) + "deg)";
     }
-    console.log("Move");
 }
 
 function touchEnd() {
@@ -64,7 +62,6 @@ function touchEnd() {
 }
 
 function endTransition() {
-    console.log(currentX - startX);
     if ((currentX - startX) < 100 && (currentX - startX) > -100) {
         activeCard.style.transform = "translateX(" + 0 + "px) rotate(" + 0 + "deg)";
     }
@@ -158,17 +155,14 @@ function repas() {
         poids3 = 100;
     }*/
     //var query = poids1 + "g " + aliment1 + ", " + poids2 + "g " + aliment2 + ", " + poids3 + "g " + aliment3;
-    console.log(query)
     if(query!=undefined){
         query=query.substring(0, query.length - 2);
-        console.log(query);
         return query;        
     }
 
 }
 
 function affichage(json) {
-    console.log(json);
     const data = JSON.parse(json);
     let calories = data[0].calories;
     let sugar = data[0].sugar_g;
@@ -180,7 +174,6 @@ function affichage(json) {
         fiber += data[i].fiber_g;
         protein += data[i].protein_g;
     }
-    console.log(calories,protein,fiber,sugar)
     document.getElementById("cal").innerHTML += calories.toFixed(2);
     document.getElementById("prot").innerHTML += protein.toFixed(2);
     document.getElementById("fib").innerHTML += fiber.toFixed(2);
@@ -190,7 +183,6 @@ function affichage(json) {
 function calculCalorie(){
     event.preventDefault();
     var query = repas();
-    console.log(query);
     getNutritionData(query);
     id = isConnected()
     getAge(id)
@@ -213,12 +205,9 @@ async function getApport(id, age) {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        console.log(result);
         var json = JSON.parse(result);
-        console.log(json);
         var size_ = json["allWeigh"].length;
         var poids_ = json["allWeigh"][size_ - 1]["value"];
-        console.log(poids_)
         var taille_ = json["height"];
         var sexe_ = json["sexe"];
         if (sexe_ == 0) {
@@ -236,7 +225,6 @@ async function getApport(id, age) {
 
 async function getAge(id) {
     const url = 'http://localhost:3000/api/user/oneuser/' + id;
-    console.log(url);
     const options = {
 
         method: 'GET',
@@ -253,7 +241,6 @@ async function getAge(id) {
         const response = await fetch(url, options);
         const result = await response.text();
         var json = JSON.parse(result);
-        console.log(json)
         var age = json["age"];
         getApport(id, age);
     } catch (error) {

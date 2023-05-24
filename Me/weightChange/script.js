@@ -13,7 +13,6 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     var query = Poids();
 
-    console.log(query); // Afficher le journal dans la console pour tester
     if(query<20||query>300){
         alert("Putting on the right weight");
     }
@@ -44,7 +43,6 @@ async function sendWeight(query) {
 
         const result = await response.text();
 
-        console.log(result);
         alert("New updated weight.")
 
     } catch (error) {
@@ -57,7 +55,6 @@ async function sendWeight(query) {
 
 // submit.addEventListener('click', (event) => {
 //     // const poid=document.getElementById("poids").value;
-//     // console.log(poid);
 //     poid = 33
 //     const id = "642445267d6ced485f7eefa9"
 //     const url = `http://localhost:3000/api/user/caract/${id}/${poid}`;
@@ -74,7 +71,6 @@ async function sendWeight(query) {
 //             return response.json();
 //         })
 //         .then(data => {
-//             console.log(data);
 //             alert('User enregistré avec succès!');
 //         })
 //         .catch(error => {

@@ -13,8 +13,6 @@ function initCard(){
 }
 
 function newCard(theme, question) {
-    console.log(theme);
-    console.log(question);
     let container = document.getElementById("container");
     let cards = container.querySelectorAll(".card");
     let content = container.innerHTML;
@@ -26,7 +24,6 @@ function newCard(theme, question) {
     init();
 }
 function touchStart() {
-    console.log("touchStart");
     if (isTouchDevice) {
         startX = event.touches[0].clientX;
         currentX=startX;
@@ -55,7 +52,6 @@ function Move() {
     if (currentX - startX < 150 && currentX - startX > -150) {
         activeCard.style.transform = "translateX(" + (currentX - startX) + "px) rotate(" + ((currentX - startX) / 10) + "deg)";
     }
-    console.log("Move");
 }
 
 function touchEnd() {
@@ -63,11 +59,9 @@ function touchEnd() {
     document.removeEventListener("touchmove", Move);
 
     endTransition();
-    console.log("touchend");
 }
 
 function endTransition() {
-    console.log(currentX - startX);
     if ((currentX - startX) < 100 && (currentX - startX) > -100) {
         activeCard.style.transform = "translateX(" + 0 + "px) rotate(" + 0 + "deg)";
     }

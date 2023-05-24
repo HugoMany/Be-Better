@@ -79,7 +79,6 @@ function viewMeteo(){
                                 break;
                             default:
                                 var descriptionContent = document.createTextNode("");
-                                console.log("PAS OK",descriptionText)
                                 break;
                         }
                         description.appendChild(descriptionContent);

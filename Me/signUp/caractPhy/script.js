@@ -5,7 +5,6 @@ btn.addEventListener('click', (event) => {
     event.preventDefault();
     const weigh = document.getElementById("weigh").value;
     const height = document.getElementById("height").value;
-    console.log(weigh, height);
     if(height!="" && weigh!=""){
       let url = 'http://localhost:3000/api/user/caract/' + id + '/' + 0 + ' /' + weigh + '/' + height;
       const options = {
@@ -26,11 +25,9 @@ btn.addEventListener('click', (event) => {
             if (!response.ok) {
               throw new Error(response.statusText);
             }
-            console.log()
             return response.json();
           })
           .then(data => {
-              console.log(data);
             delay(1000).then(() =>location.href = "/Me/login/");
       
             // document.location="/me/login/"

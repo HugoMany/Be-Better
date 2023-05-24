@@ -1,7 +1,6 @@
 // import Chart from 'chart.js/auto';
 async function receiveSleep() {
   const url = 'http://localhost:3000/api/user/sleeps/' + isConnected() + '/';
-  console.log(url);
   const options = {
 
       method: 'GET',
@@ -21,7 +20,6 @@ async function receiveSleep() {
       const jsonString = result;
       const jsonRet = JSON.parse(jsonString);
       createMyCharts(jsonRet);
-      console.log(jsonRet);
       // alert("New updated weight.")
 
   } catch (error) {
