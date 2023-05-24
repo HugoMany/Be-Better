@@ -50,10 +50,10 @@ function convert() {
     html2canvas(div).then(function (canvas) {
         // Add the canvas element to the result container
         result.appendChild(canvas);
-        
+        document.getElementsByTagName("canvas")[1].id="canvasToShare";
 
         // Get the canvas element and convert it to a data URI
-        let cvs = document.querySelector("canvas")[1];
+        let cvs = document.querySelector("#canvasToShare");
         let dataURI = cvs.toDataURL("image/jpeg");
         
         // Créez un nouveau fichier Blob à partir du data URI
@@ -73,17 +73,19 @@ function convert() {
         resultPara.style.display="none";
         btn.style.visibility="visible";
         // Share must be triggered by "user activation"
-        btn.addEventListener("click", async () => {
-            try {
+
+         navigator.share(shareData);
+        // btn.addEventListener("click", async () => {
+        //     try {
                 
 
-                await navigator.share(shareData);
+        //         await navigator.share(shareData);
                 
-                resultPara.textContent = "shared successfully";
-            } catch (err) {
-                resultPara.textContent = `Error: ${err}`;
-            }
-        });
+        //         resultPara.textContent = "shared successfully";
+        //     } catch (err) {
+        //         resultPara.textContent = `Error: ${err}`;
+        //     }
+        // });
     });
 
     // Show the result container
