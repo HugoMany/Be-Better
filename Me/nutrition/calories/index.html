@@ -3,15 +3,26 @@
 
 <head>
   <title>Calcul Calories</title>
-  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-  <!--<link rel="stylesheet" type="text/css" href="/Me/CSS/styleBeBetter.css">
-  <link rel="stylesheet" type="text/css" href="/Me/CSS/styleNutrition.css">-->
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="/Me/CSS/styleBeBetter.css">
+  <link rel="stylesheet" type="text/css" href="/Me/CSS/styleNutrition.css">
+  <script src="./js/menu.js"></script>
+  <script src="/me/js/transition.js"></script>
+  <link rel="stylesheet" href="/me/css/animStart.css">
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
   <script src="/Me/js/cookie.js"></script>
 </head>
 
+<div id="animStart">
+  <img src="/Me/img/LogoBeBetter.png">
+
+</div>
+<div id="animEnd">
+  <img src="/Me/img/LogoBeBetter.png">
+</div>
+
 <body>
-  <h3>CALORIE CACULATION</h3>
+  <h1>Calorie Calculation</h1>
   <div id="container">
     <div class="card" id="card-6">
       <div id="form">
@@ -92,6 +103,27 @@
       <div id="apport_neccesaire">Necessary input for you : </div>
     </div>
     <script src="script.js"></script>
+
+    <link rel="stylesheet" href="/Me/CSS/menuStyle.css">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <nav id="menu">
+        <a href="#" onclick="transition('/Me/timetable/')"><span class="material-symbols-outlined">
+                event
+            </span></a>
+        <a href="#" onclick="transition('/Me/nutrition')"><span id="currentPage" class="material-symbols-outlined">
+                restaurant
+            </span></a>
+        <a href="#" onclick="transition('/Me/')"><span class="material-symbols-outlined">
+                home
+            </span></a>
+        <a href="#" onclick="transition('/Me/sleepSub/')"><span class="material-symbols-outlined">
+                hotel
+            </span></a>
+        <a href="#" onclick="transition('/Me/sport/indexSport.html')"><span class="material-symbols-outlined">
+                sprint
+            </span></a>
+    </nav>
 </body>
 
 </html>
