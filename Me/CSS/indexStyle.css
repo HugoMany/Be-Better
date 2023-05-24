@@ -98,10 +98,12 @@ Round de profile et de notif en haut del page home
 .roundTopTip div{
     background-color: var(--BBwhiteDemi);
     width: max-content;
-    padding: 5px;
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 20px;
 }
 .roundTopTip p{
-    margin: 5px;
+    margin: 0px;
 }
 #notif{
     transition: 1s;
