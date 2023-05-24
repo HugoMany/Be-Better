@@ -355,9 +355,10 @@ function getMinute(minute){
 -------------------------------------------------------------------------------------------------------------------------------------*/
 
 //Variable qui définie les différentes tailles des tableaux et des cases pour l'affichage
-const planningSize = 900;
-const tailleCaseHauteur = (planningSize / tailleTabHauteur)*1.8;
-const tailleCaseLargeur = planningSize / tailleTabLargeur;
+const planningSizeHauteur = window.innerHeight*0.7;
+const planningSizeLargeur = window.innerWidth;
+const tailleCaseHauteur = (planningSizeHauteur / tailleTabHauteur);
+const tailleCaseLargeur = planningSizeLargeur / tailleTabLargeur;
 const tailleCaseHauteur2 = tailleCaseHauteur / tailleTabHauteur2;
 const tailleCaseLargeur2 = tailleCaseLargeur / tailleTabLargeur2;
 
@@ -375,8 +376,8 @@ function drawPlanning(){
     //On crée exactement le même élément
     var planning=document.createElement("div");
     planning.setAttribute("id","planning");
-    planning.style.height=planningSize+"px";
-    planning.style.width=planningSize+"px";
+    planning.style.height=planningSizeHauteur+"px";
+    planning.style.width=planningSizeLargeur+"px";
     planning.style.display="block"
     document.getElementById("body").appendChild(planning)
     //On parcoure table.tab[0] qui va enfaite nous donner les heures et on va les afficher
@@ -396,7 +397,7 @@ function drawPlanning(){
         heureAff.style.textAlign="center";
         heureAff.style.fontSize="20px"
         //On définit la position de la div par la taille de la case multiplié par l'indice
-        heureAff.style.top=tailleCaseHauteur*i+"px";
+        heureAff.style.top=window.innerHeight*0.1+tailleCaseHauteur*i+"px";
     }
     
     //On parcoure table.tab qui va enfaite nous donner les jours et on va les afficher   
@@ -430,7 +431,7 @@ function drawPlanning(){
             planning.appendChild(jourAff);
             jourAff.style.display="block";
             jourAff.style.position="absolute";
-            jourAff.style.top="0px";
+            jourAff.style.top=window.innerHeight*0.1+"px";
             jourAff.style.border="1px solid #000000";
             jourAff.style.zIndex="0";
             jourAff.style.textAlign="center";
@@ -448,7 +449,7 @@ function drawPlanning(){
             divCase.setAttribute("class","divCase");
             divCase.style.position="absolute";
             divCase.style.left=x*tailleCaseLargeur+"px";
-            divCase.style.top=y*tailleCaseHauteur+"px";
+            divCase.style.top=window.innerHeight*0.1+y*tailleCaseHauteur+"px";
             divCase.style.width=tailleCaseLargeur+"px";
             divCase.style.height=tailleCaseHauteur+"px";
             divCase.style.border="0.5px solid #C0C0C0";
@@ -479,7 +480,7 @@ function drawPlanning(){
                         activityAff.style.position="absolute";
                         activityAff.style.display="block"
                         activityAff.style.left=tailleCaseLargeur*x+"px"
-                        activityAff.style.top=tailleCaseHauteur*y+tailleCaseHauteur2*y1+"px";
+                        activityAff.style.top=window.innerHeight*0.1+tailleCaseHauteur*y+tailleCaseHauteur2*y1+"px";
                         activityAff.style.width=tailleCaseLargeur+"px";
                         activityAff.style.zIndex="0";
                         activityAff.style.backgroundColor="#C0C0C0";
@@ -749,5 +750,27 @@ function conseilHorraire(){
 
     conseilSport.appendChild(conseilSportContent);
     body.appendChild(conseilSport);
+    style();
 
 }
+
+var addActivity2=document.getElementById("addActivity");
+addActivity2.style.width=window.innerWidth*0.45+"px";
+addActivity2.style.position="absolute";
+addActivity2.style.top=window.innerHeight*0.81+"px";
+addActivity2.style.left=window.innerWidth*0.03+"px";
+
+
+
+function style(){
+    var conseilSport=document.getElementById("conseilSport")
+    conseilSport.style["width"]=window.innerWidth*0.45+"px";
+    conseilSport.style["height"]=window.innerHeight*0.15+"px";
+    conseilSport.style["position"]="absolute";
+    conseilSport.style["top"]=window.innerHeight*0.81+"px";
+    conseilSport.style["left"]=window.innerWidth*0.53+"px"   
+    conseilSport.style["fontSize"]="25px"
+}
+
+
+
