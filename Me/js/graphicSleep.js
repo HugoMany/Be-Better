@@ -21,88 +21,89 @@
 //     "__v": 0
 
 // };
-receiveSleep()
+
 const id = isConnected()
-async function receiveSleep() {
-    url='http://localhost:3000/api/user/getSleep/' + id;
-    console.log(isConnected());
-    const options = {
-
-        method: 'GET',
-  
-        headers: {
-  
-            'Content-Type': 'application/json'
-  
-        }
-  
-    };
-    try {
-  
-        const response = await fetch(url, options);
-  
-        const result = await response.text();
-        const jsonString = result;
-        const jsonRet = JSON.parse(jsonString);
-        console.log(json)
-        createMyCharts2(jsonRet);
-        console.log(jsonRet);
-        // alert("New updated weight.")
-  
-    } catch (error) {
-  
-        console.error(error);
-  
-    }
-  
-
-
-}
-
-// const started  =receiveSleep();
+console.log(id)
 // async function receiveSleep() {
-//     const url = 'http://localhost:3000/api/user/sleep/' + isConnected() + '/';
+//     url='http://localhost:3000/api/user/sleep/' + id + '/getSleep';
+//     console.log(isConnected());
 //     const options = {
-  
+
 //         method: 'GET',
-  
+
 //         headers: {
-  
+
 //             'Content-Type': 'application/json'
-  
+
 //         }
-  
+
 //     };
 //     try {
-  
+
 //         const response = await fetch(url, options);
-  
+
 //         const result = await response.text();
 //         const jsonString = result;
 //         const jsonRet = JSON.parse(jsonString);
-//         createMyCharts(jsonRet);
+//         console.log(json)
+//         createMyCharts2(jsonRet);
 //         console.log(jsonRet);
-        
-  
-//     } catch (error) {
-  
-//         console.error(error);
-  
-//     }
-  
-//   }
-function createMyCharts2(json){ 
-const ctx = document.getElementById('myChart');
 
-  
-new Chart(ctx, {
-  
+//     } catch (error) {
+
+//         console.error(error);
+
+//     }
+
+
+
+// }
+
+async function receiveSleep() {
+  const url = 'http://localhost:3000/api/user/sleep/' + id + '/getSleep';
+  console.log(url);
+  const options = {
+
+    method: 'GET',
+
+    headers: {
+
+      'Content-Type': 'application/json'
+
+    }
+
+  };
+  try {
+
+    const response = await fetch(url, options);
+
+    const result = await response.text();
+    const jsonString = result;
+    const jsonRet = JSON.parse(jsonString);
+    console.log(jsonString);
+    createMyCharts(jsonRet);
+    console.log(jsonRet);
+
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+}
+function createMyCharts2(json) {
+  const ctx = document.getElementById('myChart');
+
+
+  new Chart(ctx, {
+
     type: 'bar',
     data: {
-        labels: json ["sleeps"].map(row=>new Date(parseInt(row.date)).toLocaleDateString('en-US', {  month: 'short', day: 'numeric', year: 'numeric' })),
-        datasets: [{
-            label: 'evolution du sommeil',
-            data: json ["sleeps"].map(row=>row.value),
+      labels: json["sleeps"].map(row => new Date(parseInt(row.date)).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })),
+      datasets: [{
+        label: 'evolution du sommeil',
+        data: json["sleeps"].map(row => row.value),
         borderWidth: 1
       }]
     },
@@ -123,4 +124,4 @@ new Chart(ctx, {
   });
 }
 
-receiveSleep()
+const started = receiveSleep();
