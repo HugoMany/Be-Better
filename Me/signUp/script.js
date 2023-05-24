@@ -17,46 +17,52 @@ registerBtn.addEventListener('click', (event) => {
   const password = document.querySelector('#password').value;
   const age = document.querySelector('#age').value;
 
-  //http://localhost:3000/api/user/0/bgdu59/hugo@gmail.com/0650281177/helloworld/19
-  const newUser = {
-    sex: sexeN,
-    firstName: prenom,
-    email: email,
-    tel: telephone,
-    passw: password,
-    age: age
-  };
-  console.log(JSON.stringify(newUser));
-  const url = `http://localhost:3000/api/user/create`;
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(newUser)
-  };
-  fetch(url, options)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      console.log()
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      createSleepTable(data["_id"]);
-      createLastCoTable(data["_id"]);
-      createCaract(data["_id"]);
-      delay(1000).then(() =>location.href = "/Me/signUp/caractPhy/index.html?id="+data["_id"]);
+  if(prenom!="" && email!="" && telephone!="" && password!="" && age!=""){
+    //http://localhost:3000/api/user/0/bgdu59/hugo@gmail.com/0650281177/helloworld/19
+    const newUser = {
+      sex: sexeN,
+      firstName: prenom,
+      email: email,
+      tel: telephone,
+      passw: password,
+      age: age
+    };
+    console.log(JSON.stringify(newUser));
+    const url = `http://localhost:3000/api/user/create`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newUser)
+    };
+    fetch(url, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        console.log()
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        createSleepTable(data["_id"]);
+        createLastCoTable(data["_id"]);
+        createCaract(data["_id"]);
+        delay(1000).then(() =>location.href = "/Me/signUp/caractPhy/index.html?id="+data["_id"]);
 
-      // document.location="/me/login/"
-    })
-    .catch(error => {
-      console.error(error);
-      alert('Erreur lors de l\'enregistrement de l\'utilisateur!');
-    });
+        // document.location="/me/login/"
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Please enter valid information');
+      });    
+  }
+  else{
+    alert("Please fill in all the necessary information to create your account")
+  }
+
 
 });
 
