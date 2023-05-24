@@ -50,15 +50,15 @@ function sleeptime(json2) {
         let sleepDuration
 
         if (json2["age"] <= 11) {
-            sleepDuration = toMilliseconds(10, 0);
+            sleepDuration = toMilliseconds(10, 00);
             //  console.log(sleepDuration)
         }
         else if ((json2["age"] > 11) && (json2["age"] <= 19)) {
-            sleepDuration = toMilliseconds(9, 0);
+            sleepDuration = toMilliseconds(9, 00);
             // console.log(sleepDuration)
         }
         else { //if (json2["age"]>20 )
-            sleepDuration = toMilliseconds(8, 0);
+            sleepDuration = toMilliseconds(8, 00);
             // console.log(sleepDuration)
         }
         //  console.log(new Date(time))
@@ -77,15 +77,15 @@ function sleeptime(json2) {
         let sleepDuration
 
         if (json2["age"] <= 11) {
-            sleepDuration = toMilliseconds(10, 0);
+            sleepDuration = toMilliseconds(10, 00);
             //  console.log(sleepDuration)
         }
         else if ((json2["age"] > 11) && (json2["age"] <= 19)) {
-            sleepDuration = toMilliseconds(9, 0);
+            sleepDuration = toMilliseconds(9, 00);
             // console.log(sleepDuration)
         }
         else { //if (json2["age"]>20 )
-            sleepDuration = toMilliseconds(8, 0);
+            sleepDuration = toMilliseconds(8, 00);
             // console.log(sleepDuration)
         }
         //  console.log(new Date(time))
