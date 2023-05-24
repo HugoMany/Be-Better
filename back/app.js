@@ -385,6 +385,7 @@ app.get('/api/user/sleep/:id', (req, res, next) => {
   sleepModel.findOne({ idUser: req.params.id })
     .then(sleepModel => {
       res.status(201).json(sleepModel);
+      console.log(res);
     }).catch(
       error => res.status(401).json({ error })
     );

@@ -94,66 +94,17 @@
 
     <hr>
     <p class="result"></p>
-     <button id="share" type="button">Share your images!</button>
+    <button id="share" type="button">Share your images!</button>
     <output id="output"></output>
 
 
   </div>
   <!-- Adding a button to trigger the PDF download event -->
-  <h1>Share a file</h1>
-  <!-- Adding a script to listen for the button click event and to convert the HTML element to a PDF and download it -->
-  <script>
-    // Get the div element and the result container
-    const div = document.querySelector(".html");
-    const result = document.querySelector(".result");
-
-    // Function that converts the div to an image
-    function convert() {
-      html2canvas(div).then(function (canvas) {
-        // Add the canvas element to the result container
-        result.appendChild(canvas);
-
-        // Get the canvas element and convert it to a data URI
-        let cvs = document.querySelector("canvas");
-        let dataURI = cvs.toDataURL("image/jpeg");
-
-        // Get the link element to download the image and update its properties
-        let downloadLink = document.querySelector(".result>a");
-        downloadLink.href = dataURI;
-        downloadLink.download = "progress.jpg";
-
-        // Log the data URI to the console
-        console.log(dataURI);
-      });
-
-      // Show the result container
-      result.style.display = "block";
-    }
-  </script>
-
   
-
-
-
-
-
-  <script>
-    const shareData = new File(["progress"], document.querySelector(".result>a"), { type: "image/jpg", });
-
-    const btn = document.querySelector("#share");
-    const resultPara = document.querySelector(".result");
-
-    // Share must be triggered by "user activation"
-    btn.addEventListener("click", async () => {
-      try {
-        await navigator.share(shareData);
-        resultPara.textContent = "MDN shared successfully";
-      } catch (err) {
-        resultPara.textContent = `Error: ${err}`;
-      }
-    }); 
+  <!-- Adding a script to listen for the button click event and to convert the HTML element to a PDF and download it -->
+  <script src="share.js">
+    
   </script>
-
 
 
 </body>

@@ -1,5 +1,5 @@
 var btn = document.getElementById("button");
-const id = isConnected();
+const id = document.location.search.substring(4,document.location.search.length);
 
 btn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -20,12 +20,24 @@ btn.addEventListener('click', (event) => {
     };
     try {
 
-        const response = fetch(url, options);
-
-        const result = response.text;
-
-        console.log(result);
-        alert("Create poids et taille")
+        fetch(url, options)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          console.log()
+          return response.json();
+        })
+        .then(data => {
+            console.log(data);
+          delay(1000).then(() =>location.href = "/Me/login/");
+    
+          // document.location="/me/login/"
+        })
+        .catch(error => {
+          console.error(error);
+          alert('Erreur lors de l\'enregistrement de l\'utilisateur!');
+        });
 
     } catch (error) {
 
