@@ -49,7 +49,7 @@ registerBtn.addEventListener('click', (event) => {
       createSleepTable(data["_id"]);
       createLastCoTable(data["_id"]);
       createCaract(data["_id"]);
-      // delay(700).then(() =>location.href = "/Me/");
+      delay(1000).then(() =>location.href = "/Me/signUp/caractPhy/index.html?id="+data["_id"]);
 
       // document.location="/me/login/"
     })
