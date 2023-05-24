@@ -27,7 +27,6 @@ registerBtn.addEventListener('click', (event) => {
       passw: password,
       age: age
     };
-    console.log(JSON.stringify(newUser));
     const url = `http://localhost:3000/api/user/create`;
     const options = {
       method: "POST",
@@ -42,14 +41,12 @@ registerBtn.addEventListener('click', (event) => {
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-        console.log()
         return response.json();
       })
       .then(data => {
-        console.log(data);
         createSleepTable(data["_id"]);
         createLastCoTable(data["_id"]);
-        createCaract(data["_id"]);
+        // createCaract(data["_id"]);
         delay(1000).then(() =>location.href = "/Me/signUp/caractPhy/index.html?id="+data["_id"]);
 
         // document.location="/me/login/"
@@ -93,29 +90,29 @@ function createSleepTable(id) {
     });
 
 }
-function createCaract(id) {
-  let url = `http://localhost:3000/api/user/caract/${id}/1/0/175/`
-  fetch(url,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log("Caract table created for " + id);
+// function createCaract(id) {
+//   let url = `http://localhost:3000/api/user/caract/${id}/1/0/175/`
+//   fetch(url,
+//     {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(response.statusText);
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log("Caract table created for " + id);
 
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  }
+//     })
+//     .catch(error => {
+//       console.error(error);
+//     });
+//   }
 function createLastCoTable(id) {
   let url = `http://localhost:3000/api/user/date/${id}`
   fetch(url, {

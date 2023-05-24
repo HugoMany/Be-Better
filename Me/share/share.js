@@ -33,8 +33,6 @@ async function UserInfo() {
  function dataToShare(json){
     var age = json["age"];
         var name = json["firstName"];
-        console.log(age)
-        console.log(name)
         document.getElementById('age').innerHTML = document.getElementById('age').innerHTML+age
         document.getElementById('name').innerHTML = document.getElementById('name').innerHTML+name
  }
@@ -70,7 +68,6 @@ function convert() {
         };
         
         // Log the data URI to the console
-        console.log(dataURI);
         const btn = document.querySelector("#share");
         const resultPara=document.querySelector('#hiddenOnclick')
         resultPara.style.display="none";

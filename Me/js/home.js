@@ -33,7 +33,6 @@ async function whatIsName() {
         const result = await response.text();
         const jsonString = result;
         const jsonRet = JSON.parse(jsonString);
-        // console.log(jsonRet);
         document.getElementById("name").innerHTML+=" <b>"+jsonRet["firstName"]+"</b> welcome back to BeBetter";
         // alert("New updated weight.")
 

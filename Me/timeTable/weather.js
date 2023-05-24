@@ -17,19 +17,17 @@ function WMOtoString(wmo) {
 }
 
 
-function actuWeather(day,dayStr){
-    for (let i = 0; i < weatherWLocResult["daily"]["time"].length; i++){
-        const element = weatherWLocResult["daily"]["time"][i];
-        if(element==day){
-            document.getElementById(dayStr).innerHTML+="<br>"+WMOtoString(weatherWLocResult["daily"]["weathercode"][i]);
-        }
-    }
+function actuWeather(i,dayStr){
+    // console.log(i);
+    // console.log(dayStr);
+    document.getElementById(dayStr).innerHTML=WMOtoString(weatherWLocResult["daily"]["weathercode"][i-1]);
+
 }
 
 function weather(latitude,longitude) {
     //
     //hourly=temperature_2m,precipitation_probability,precipitation,weathercode&timeformat=unixtime&past_days=7
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode&past_days=7&timezone=auto`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode&timezone=auto`;
     return fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -59,7 +57,7 @@ function geoLocalisation(){
         const longitude = position.coords.longitude;
         weather(latitude,longitude)
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             weatherWLocResult=response;
             allActuWeather();
             return response;
@@ -89,16 +87,17 @@ function geoLocalisation(){
 
 
 
-const weatherWLoc = geoLocalisation();
+delay(1200).then(() => geoLocalisation() );
 
 function allActuWeather(){
-    actuWeather(monday,"monday");
-    actuWeather(tuesday,"tuesday");
-    actuWeather(wednesday,"wednesday");
-    actuWeather(thursday,"thursday");
-    actuWeather(friday,"friday");
-    actuWeather(saturday,"saturday");
-    actuWeather(sunday,"sunday");
+    actuWeather(1,"jourMeteo1");
+    actuWeather(2,"jourMeteo2");
+    actuWeather(3,"jourMeteo3");
+    actuWeather(4,"jourMeteo4");
+    actuWeather(5,"jourMeteo5");
+    actuWeather(6,"jourMeteo6");
+    actuWeather(7,"jourMeteo7");
+
 }
 
 

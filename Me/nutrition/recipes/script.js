@@ -15,7 +15,6 @@ async function getRecipe(query, start) {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        console.log(result);
         affichage(result, start);
 
     } catch (error) {
@@ -29,7 +28,6 @@ function recipe() {
 }
 
 function affichage(json, start) {
-    //console.log(json);
     const data = JSON.parse(json);
     let titles = "";
     let ingr = "";
@@ -51,17 +49,14 @@ function affichage(json, start) {
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
-    console.log("OK")
     var body=document.getElementById("loginBody")
     var resultats=document.getElementById("resultats");
     if(resultats!=undefined){
         resultats.remove()
     }
-    console.log("OK")
     resultats=document.createElement("div");
     resultats.setAttribute("id","resultats");
     body.appendChild(resultats)
-    const nombre = document.getElementById('nb');
     e.preventDefault();
     var query = recipe();
     getRecipe(query, start);

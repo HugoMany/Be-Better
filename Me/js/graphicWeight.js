@@ -21,7 +21,6 @@ async function receiveWeight() {
       const jsonString = result;
       const jsonRet = JSON.parse(jsonString);
       createMyCharts(jsonRet);
-      console.log(jsonRet);
       // alert("New updated weight.")
 
   } catch (error) {
