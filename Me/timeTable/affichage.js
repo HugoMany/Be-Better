@@ -417,8 +417,8 @@ function drawPlanning(){
             jourAffDate.appendChild(jourAffDateContent);
             var jourAffMeteo=document.createElement("p");
             jourAffMeteo.setAttribute("id","jourMeteo"+i);
-            var jourAffMeteoContent=document.createTextNode(jour['meteo']);
-            jourAffMeteo.appendChild(jourAffMeteoContent);
+            // var jourAffMeteoContent=document.createTextNode(jour['meteo']);
+            // jourAffMeteo.appendChild(jourAffMeteoContent);
             jourAff.appendChild(jourAffName);
             jourAff.appendChild(jourAffDate);
             jourAffName.style.fontSize="20px"
