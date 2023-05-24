@@ -60,7 +60,7 @@ console.log(id)
 // }
 
 async function receiveSleep(id) {
-  const url = 'http://localhost:3000/api/user/sleep/' + id + '/getSleep';
+  const url = 'http://localhost:3000/api/user/sleep/getSleep/' + id;
   const options = {
 
     method: 'GET',
