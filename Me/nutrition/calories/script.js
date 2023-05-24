@@ -12,11 +12,7 @@ var query;
 //
 var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
-if (isTouchDevice) {
-    console.log("L'utilisateur est sur un appareil tactile.");
-} else {
-    console.log("L'utilisateur est sur un PC ou un appareil non tactile.");
-}
+
 //
 function initcard() {
     activeCard.addEventListener("touchstart", touchStart);
