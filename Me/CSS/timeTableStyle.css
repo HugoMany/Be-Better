@@ -12,8 +12,9 @@ html body{
     padding: 50px;
     border-radius: 25px;
     color: white;
-    margin: 20px;
+    margin: 50px;
     position: absolute;
     bottom: 200px;
     font-size: 48px;
+    width: -webkit-fill-available;
 }

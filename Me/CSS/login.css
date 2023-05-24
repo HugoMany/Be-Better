@@ -1,8 +1,8 @@
 *{
-    font-size: 32px;
+    font-size: 40px;
 }
 html h1{
-    top:200px;
+    top:150px;
     width: 100%;
     position: absolute;
 }
@@ -13,6 +13,7 @@ html h1{
     align-content: center;
     align-items: center;
     justify-content: center;
+
 }
 
 form{
