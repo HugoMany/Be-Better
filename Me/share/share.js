@@ -3,8 +3,8 @@ const div = document.querySelector(".html");
 const result = document.querySelector(".result");
 
 
-whenToSleep()
-async function whenToSleep() {
+UserInfo()
+async function UserInfo() {
     url="http://localhost:3000/api/user/oneuser/" + isConnected();
     fetch(url, {
         method: 'GET',
@@ -21,7 +21,7 @@ async function whenToSleep() {
 
         })
         .then(data => {
-            sleeptime(data)
+            dataToShare(data)
         })
         .catch(error => {
             console.error(error);
@@ -30,7 +30,13 @@ async function whenToSleep() {
 
 
 }
-
+ function UserInfo(){
+    var age = json["age"];
+        var name = json["firstName"];
+        console.log(age)
+        console.log(name)
+        document.getElementById('age').innerHTML = age
+ }
 
 
 // Function that converts the div to an image
