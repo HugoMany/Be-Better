@@ -9,6 +9,7 @@
     <script src="../js/cookie.js"></script>
     <script src="../js/graphicWeight.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
     <style>
         html {
@@ -18,6 +19,7 @@
             flex-wrap: nowrap;
             flex-direction: row;
             justify-content: center;
+            background-color: rgb(250, 252, 248);
         }
 
         #container {
@@ -140,11 +142,11 @@
 
 
     </div>
-    <button id="hiddenOnclick" onclick="convert()">Convert me to jpg image</button>
+    <button id="hiddenOnclick" onclick="convert()">Share my progress</button>
     <div class="result">
 
 
-        <button id="share" type="button">Go Home</button>
+        <button id="share" onclick="transition('/Me/')">Go Home</button>
 
         <output id="output"></output>
 

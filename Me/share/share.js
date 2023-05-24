@@ -112,3 +112,18 @@ function dataURItoBlob(dataURI) {
     return blob;
 }
 
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
+function transition(url){
+    scroll(0,0)
+    //document.getElementById("animEnd").style.opacity="1"
+    //document.getElementById("animEnd").style["z-index"]="50"
+    document.getElementsByTagName("html")[0].style.overflowY="hidden"
+  
+    delay(500).then(() =>location.href = url);
+  
+  
+  }
