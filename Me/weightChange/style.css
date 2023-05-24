@@ -1,9 +1,19 @@
-html canvas{
+html #weightCharts{
     width: 850px;
     border: 2px solid var(--BBwhite);
     border-radius: 30px;
     background-color: var(--BBwhiteDemi);
-    /* padding: 50px; */
+    padding: 33px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+html #weightCharts span{
+    font-size: 72px;
+    text-align: center;
+    padding: 15px;
 }
 h2{
     margin-top: 150px;
