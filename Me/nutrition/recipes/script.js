@@ -57,7 +57,6 @@ document.querySelector('form').addEventListener('submit', function (e) {
     resultats=document.createElement("div");
     resultats.setAttribute("id","resultats");
     body.appendChild(resultats)
-    const nombre = document.getElementById('nb');
     e.preventDefault();
     var query = recipe();
     getRecipe(query, start);
