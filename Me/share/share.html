@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!-- <script src='/Me/js/cookie.js'></script> -->
+
 
 <head>
     <meta charset="utf-8">
@@ -9,9 +9,16 @@
     <script src="../js/cookie.js"></script>
     <script src="../js/graphicWeight.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <style>
-        
+        html {
+            color: #233652;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+        }
 
         #container {
             display: flex;
@@ -21,28 +28,76 @@
             overflow: hidden;
         }
 
-        .card {
-            position: absolute;
+
+        .html {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 20%;
+            margin-left: 40%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
+
+        .user {
+            background-color: lightblue;
             width: 300px;
-            height: 400px;
-            background-color: #fff;
-            box-shadow: 0px 0px 10px #aaa;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.5s ease;
+            border-radius: 8px;
+            flex: 50%;
+            display: flex;
+            flex-wrap: wrap;
         }
 
-        .html{
-            margin: 50px;
+        #weightCharts {
+            margin-left: 20px;
+            margin-right: 20px;
+            /* width : 300px; */
+            height: 180px;
+            display: flex;
         }
 
-        img{
-            padding: 50px;
+        #name {
+            margin-left: 30px;
+        }
+
+        #age {
+            margin-left: 30px;
+        }
+
+        #output {
+            width: 50%
+        }
+
+        .result canvas {
+
+            visibility: hidden;
+
+        }
+
+        button {
             
+            
+            margin-left: 10%;
+            width:80%;
+            background-color: lightblue;
+            border-radius: 8px;
+            color: #233652;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border:0px solid black;
         }
-        .user{
-            background-color: lightblue ;
+        #share{
+            visibility: hidden;
         }
+        /* #hiddenOnclick{
+            margin-top:5px;
+        } */
     </style>
     <title>truc</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.0/html2canvas.min.js"></script>
@@ -50,31 +105,7 @@
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-  // async function getAge(id) {
-  //     const url = 'http://localhost:3000/api/user/oneuser/' + id;
-  //     console.log(url);
-  //     const options = {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     };
-  //     try {
-  //       const response = await fetch(url, options);
-  //       const result = await response.text();
-  //       var json = JSON.parse(result);
-  //       console.log(json)
-  //       var age = json["age"];
-  //       var name = json["firstName"];
 
-  //       document.getElementById('age').innerHTML = age
-  //       //getApport(id, age);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-
-
-  //   }
     </script>
 
 
@@ -82,38 +113,39 @@
 
     </head>
     <div class="html">
-        <img src="../img/LogoBeBetter.png" width="80" height="80" >
+        <img src="../img/LogoBeBetter.png" width="80" height="80">
         <div class="user">
             <br>
-            <p></p><p id="name">Name :</p>
-            
-            <p></p><p id="age">Age :</p>
+            <p></p>
+            <p id="name">Name :</p>
+
+            <p></p>
+            <p id="age">Age :</p>
             <br>
-        </div>
-        <div class="evolution">
+
             <div id="weightCharts">
                 <canvas id="myChart"></canvas>
             </div>
+
         </div>
+
         <div>
 
-            
 
 
-            
+
+
 
         </div>
-        
+
 
     </div>
-    <button onclick="convert()">Convert me to jpg image</button>
+    <button id="hiddenOnclick" onclick="convert()">Convert me to jpg image</button>
     <div class="result">
 
 
-        <hr>
-        <p class="result"></p>
         <button id="share" type="button">Share your images!</button>
-        
+
         <output id="output"></output>
 
 

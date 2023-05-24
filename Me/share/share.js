@@ -39,16 +39,25 @@ async function UserInfo() {
         document.getElementById('name').innerHTML = document.getElementById('name').innerHTML+name
  }
 
-
+//  document.getElementById("hiddenOnclick").addEventListener(
+//     "click",
+//     () => {
+        
+//     },
+//     false
+//   );
 // Function that converts the div to an image
 function convert() {
+    
     html2canvas(div).then(function (canvas) {
         // Add the canvas element to the result container
         result.appendChild(canvas);
+        
 
         // Get the canvas element and convert it to a data URI
-        let cvs = document.querySelector("canvas");
+        let cvs = document.querySelector("canvas")[1];
         let dataURI = cvs.toDataURL("image/jpeg");
+        
         // Créez un nouveau fichier Blob à partir du data URI
         let blob = dataURItoBlob(dataURI);
 
@@ -59,17 +68,21 @@ function convert() {
         const shareData = {
             files: [file],
         };
-
+        
         // Log the data URI to the console
         console.log(dataURI);
         const btn = document.querySelector("#share");
-        const resultPara = document.querySelector(".result");
-
+        const resultPara=document.querySelector('#hiddenOnclick')
+        resultPara.style.display="none";
+        btn.style.visibility="visible";
         // Share must be triggered by "user activation"
         btn.addEventListener("click", async () => {
             try {
+                
+
                 await navigator.share(shareData);
-                resultPara.textContent = "MDN shared successfully";
+                
+                resultPara.textContent = "shared successfully";
             } catch (err) {
                 resultPara.textContent = `Error: ${err}`;
             }
