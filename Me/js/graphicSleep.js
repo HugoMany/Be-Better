@@ -81,7 +81,7 @@ async function receiveSleep() {
     const jsonString = result;
     const jsonRet = JSON.parse(jsonString);
     console.log(jsonString);
-    createMyCharts(jsonRet);
+    createMyCharts2(jsonRet);
     console.log(jsonRet);
 
 
