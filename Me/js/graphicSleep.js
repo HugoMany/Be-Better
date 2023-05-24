@@ -41,9 +41,13 @@ function createMyCharts(json){
       type: 'line',
       data: {
           labels: json ["sleeps"].map(row=>new Date(parseInt(row.date)).toLocaleDateString('en-US', {  month: 'short', day: 'numeric', year: 'numeric' })),
-          datasets: [{
+       
+          //[new Date(json["sleeps"][(json["sleeps"].length)-6]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),new Date(json["sleeps"][(json["sleeps"].length)-5]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),new Date(json["sleeps"][(json["sleeps"].length)-4]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),new Date(json["sleeps"][(json["sleeps"].length)-3]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),new Date (json["sleeps"][(json["sleeps"].length)-2]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),new Date(json["sleeps"][(json["sleeps"].length)-1]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),new Date(json["sleeps"][(json["sleeps"].length)]["date"]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })],
+             datasets: [{
               label: 'kg',
               data: json ["sleeps"].map(row=>row.value),
+              //[json["sleeps"][(json["sleeps"].length)-6].value,json["sleeps"][(json["sleeps"].length)-5].value,json["sleeps"][(json["sleeps"].length)-4].value,json["sleeps"][(json["sleeps"].length)-3].value,json["sleeps"][(json["sleeps"].length)-2].value,json["sleeps"][(json["sleeps"].length)-1].value,json["sleeps"][(json["sleeps"].length)].value],
+              
           borderWidth: 1
           }]
     },
