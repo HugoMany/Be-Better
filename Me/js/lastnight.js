@@ -1,5 +1,5 @@
 async function receiveLastNight() {
-    const url = 'http://localhost:3000/api/user/sleep/' + isConnected() + '/getSleep/';
+    const url = 'http://localhost:3000/api/user/sleeps/' + isConnected();
     const options = {
   
         method: 'GET',
