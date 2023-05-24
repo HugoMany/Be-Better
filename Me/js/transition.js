@@ -29,4 +29,4 @@ function animStart(){
     delay(1000).then(() => document.getElementsByTagName("html")[0].style.overflowY="visible")
 
 }
-const start= animStart()
+animStart()

@@ -51,6 +51,16 @@ function affichage(json, start) {
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
+    console.log("OK")
+    var body=document.getElementById("loginBody")
+    var resultats=document.getElementById("resultats");
+    if(resultats!=undefined){
+        resultats.remove()
+    }
+    console.log("OK")
+    resultats=document.createElement("div");
+    resultats.setAttribute("id","resultats");
+    body.appendChild(resultats)
     const nombre = document.getElementById('nb');
     e.preventDefault();
     var query = recipe();
