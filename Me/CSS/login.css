@@ -2,7 +2,7 @@
     font-size: 40px;
 }
 html h1{
-    top:150px;
+    top:100px;
     width: 100%;
     position: absolute;
 }
@@ -35,6 +35,18 @@ form input{
 }
 a{
     color: var(--BBgray);
+}
+button{
+    background-color: var(--BBDblue);
+    border: solid 1px black;
+    padding: 20px;
+    border-radius: 25px;
+    color: white;
+    margin: 20px;
+    /* position: absolute; */
+    /* bottom: 200px; */
+    font-size: 48px;
+    width: -webkit-fill-available;
 }
 
 @media screen and (max-width: 700px) {

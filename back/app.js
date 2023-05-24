@@ -381,7 +381,7 @@ app.get('/api/user/sleep/:id/:newSleep', (req, res, next) => {
 
 });
 
-app.get('/api/user/getSleep/:id', (req, res, next) => {
+app.get('/api/user/sleep/:id/getSleep', (req, res, next) => {
   sleepModel.findOne({ idUser: req.params.id })
     .then(sleepModel => {
       res.status(201).json(sleepModel);

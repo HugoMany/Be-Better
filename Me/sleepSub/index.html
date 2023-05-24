@@ -8,9 +8,25 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="/Me/CSS/styleBeBetter.css">
     <link rel="stylesheet" href="/Me/CSS/login.css">
+    <link rel="stylesheet" href="/Me/CSS/animStart.css">
 
     <script src="/Me/js/cookie.js"></script>
+    <script src="/Me/js/transition.js"></script>
+    <link rel="stylesheet" href="/Me/CSS/animStart.css">
+    <style>
+      html body a{
+        color: var(--BBDblue);
+      }
+    </style>
 </head>
+
+<div id="animStart">
+    <img src="/Me/img/LogoBeBetter.png">
+  
+  </div>
+<div id="animEnd">
+    <img src="/Me/img/LogoBeBetter.png">
+</div>
 
 <body id="loginBody">
     <h1>Be BeTTeR</h1>
@@ -24,6 +40,27 @@
         </form>
 
     <script src="script.js"></script>
+
+    <link rel="stylesheet" href="/Me/CSS/menuStyle.css">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <nav id="menu">
+      <a href="#" onclick="transition('/Me/timetable/')"><span class="material-symbols-outlined">
+          event
+        </span></a>
+      <a href="#" onclick="transition('/Me/nutrition')"><span  class="material-symbols-outlined">
+          restaurant
+        </span></a>
+      <a href="#" onclick="transition('/Me/')"><span class="material-symbols-outlined">
+          home
+        </span></a>
+      <a href="#" onclick="transition('/Me/sleepSub/')"><span id="currentPage" class="material-symbols-outlined">
+          hotel
+        </span></a>
+      <a href="#" onclick="transition('/Me/sport/indexSport.html')"><span class="material-symbols-outlined">
+          sprint
+        </span></a>
+    </nav>
 </body>
 
 </html>
