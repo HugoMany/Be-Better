@@ -40,7 +40,7 @@ function createMyCharts(json){
     
       type: 'line',
       data: {
-          labels: json ["allWeigh"].map(row=>new Date(parseInt(row.date)).toLocaleDateString('en-US', {  month: 'short', day: 'numeric', year: 'numeric' })),
+          labels: json ["allWeigh"].map(row=>new Date(parseInt(row.date)).toLocaleDateString('en-US', {  month: 'short', day: 'numeric' })),
           datasets: [{
               label: 'kg',
               data: json ["allWeigh"].map(row=>row.value),

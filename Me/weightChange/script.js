@@ -15,11 +15,13 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     console.log(query); // Afficher le journal dans la console pour tester
     if(query<20||query>300){
-        alert("rentrer un poid correct");
+        alert("Putting on the right weight");
     }
     else{
         sendWeight(query);
     }
+    delay(200).then(() =>  document.location.reload() )
+
 });
 
 async function sendWeight(query) {
