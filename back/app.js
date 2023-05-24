@@ -84,19 +84,6 @@ app.post('/api/user/login/', async (req, res) => {
 Get
 
 */
-// app.get('/api/user/:sex/:firstName/:email/:tel/:passw/:age/', (req, res, next) => {
-//   const user = new userModel({
-//     sex: req.params.sex,
-//     firstName: req.params.firstName,
-//     email: req.params.email,
-//     tel: req.params.tel,
-//     passw: req.params.passw,
-//     age: req.params.age,
-//   });
-//   user.save()
-//     .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
-//     .catch(error => res.status(400).json({ error }));
-// });
 
 /* 
  
@@ -139,17 +126,41 @@ app.get('/api/user/caract/:id', (req, res, next) => {
     );
 });
 
-// app.get('/api/user/caract/create/:id/', (req, res, next) => {
-//   const caractUser = new userCaractModel({
-//     idUser: req.params.id,
-//     sexe: req.params.sexe,
-//     allWeigh: [{ value: req.params.newWeigh, date: Date.now() }],
-//     height: req.params.height,
-//   });
-//   caractUser.save()
-//     .then(() => res.status(201).json({ message: 'Caractéristique de l"utilisateur ' + req.params.id + ' ont bien été enregistré' }))
-//     .catch(error => res.status(400).json({ error }));
-// });
+app.get('/api/user/sleep/:id/', (req, res, next) => {
+  const sleep = new sleepModel({
+    idUser: req.params.id,
+    sleeps: [{ value: 8, date: Date.now() }]
+  });
+  sleep.save()
+    .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
+    .catch(error => res.status(400).json({ error }));
+});
+
+app.get('/api/user/sleep/create/:id/:newSleep', (req, res, next) => {
+  // console.log(req);
+  sleepModel.findOne({ idUser: req.params.id })
+    .then(sleepModel => {
+      res.status(200).json(sleepModel);
+      sleepModel["sleeps"].push({ value: req.params.newSleep, date: Date.now() });
+      // console.log(req.params.newSleep);
+      // console.log(sleepModel);
+      sleepModel.save();
+    }
+    )
+    .catch(error => res.status(404).json({ error }));
+});
+
+app.get('/api/user/sleeps/:id', (req, res, next) => {
+  sleepModel.findOne({ idUser: req.params.id })
+    .then(sleepModel => {
+      res.status(201).json(sleepModel);
+    }).catch(
+      error => res.status(401).json({ error })
+    );
+});
+
+
+
 
 // Creation Programme sport
 app.get('/api/sport/fitness', (req, res, next) => {
@@ -236,7 +247,7 @@ app.post('/api/timetable/create', async (req, res) => {
       id: req.body.id,
       timeTable: req.body.timeTable,
     });
-    console.log(newTimeTableModel);
+    // console.log(newTimeTableModel);
     // //console.log(req.body.timeTable);
     const savedTimeTableModel = await newTimeTableModel.save();
     // res.status(201).json(savedTimeTableModel);
@@ -356,39 +367,6 @@ app.get('/api/sport/bike/:level', (req, res) => {
     .then(bikeModel => res.status(200).json(bikeModel))
     .catch(error => res.status(404).json({ error }));
   // res.send(`Les paramètres sont ${levelP});
-});
-
-app.get('/api/user/sleep/:id/', (req, res, next) => {
-  const sleep = new sleepModel({
-    idUser: req.params.id,
-    sleeps: [{ value: 8, date: Date.now() }]
-  });
-  sleep.save()
-    .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
-    .catch(error => res.status(400).json({ error }));
-});
-
-app.get('/api/user/sleep/:id/:newSleep', (req, res, next) => {
-  sleepModel.findOne({ idUser: req.params.id })
-    .then(sleepModel => {
-      res.status(200).json(sleepModel);
-      sleepModel["sleeps"].push({ value: req.params.newSleep, date: Date.now() });
-      //console.log(sleepModel["sleeps"]);
-      sleepModel.save();
-    }
-    )
-    .catch(error => res.status(404).json({ error }));
-
-});
-
-app.get('/api/user/sleep/:id/getSleep', (req, res, next) => {
-  sleepModel.findOne({ idUser: req.params.id })
-    .then(sleepModel => {
-      res.status(201).json(sleepModel);
-      console.log(res);
-    }).catch(
-      error => res.status(401).json({ error })
-    );
 });
 
 app.get('/api/user/date/:id/', (req, res, next) => {

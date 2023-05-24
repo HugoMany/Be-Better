@@ -1,9 +1,9 @@
 var submit = document.getElementById('submit');
 const id = isConnected();
 
-function Dodo() {
-    var dodo = document.getElementById("dodo").value;
-    return dodo;
+function Sleep() {
+    var poid = document.getElementById("sleep").value;
+    return poid;
 }
 
 
@@ -11,22 +11,22 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     e.preventDefault();
 
-    var query = Dodo();
-
+    var query = Sleep();
     console.log(query);
-    if(query>24){
+
+    console.log(query); // Afficher le journal dans la console pour tester
+    if(query<0||query>24){
         alert("rentrer un dodo correct");
     }
     else{
-        sendDodo(query, id);
+        sendSleep(query);
     }
 });
 
-async function sendDodo(query , id) {
-    // const id = "642445267d6ced485f7eefa9"
-    const url = 'http://localhost:3000/api/user/sleep/' + id + '/' + query;
+async function sendSleep(query) {
+    console.log(query);
+    const url = 'http://localhost:3000/api/user/sleep/create/' + id + '/' + query;
     console.log(url);
-
     const options = {
 
         method: 'GET',
@@ -45,7 +45,9 @@ async function sendDodo(query , id) {
         const result = await response.text();
 
         console.log(result);
-        alert("New updated dodo.")
+        alert("New updated sleep.")
+        delay(500).then(() =>document.location.reload());
+
 
     } catch (error) {
 
