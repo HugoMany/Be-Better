@@ -8,6 +8,7 @@ let morning = document.getElementById("morning");
 let noon = document.getElementById("noon");
 let evening = document.getElementById("evening");
 let result = document.getElementById("result");
+var query;
 //
 var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
@@ -78,6 +79,7 @@ function endTransition() {
             }
             else{
                 activeCard.style.transform = "translateX(" + window.innerWidth + "px) rotate(" + (window.innerWidth - startX) / 10 + "deg)";
+                query+= activeCard.children[0].children[5].value + "g "+activeCard.children[0].children[2].value+", "
                 activeCard.addEventListener("transitionend", right);  
             }
         }
@@ -101,7 +103,7 @@ function left(){
     else {
         cardNumber--;
         activeCard = cards[cardNumber];
-        activeCard.hidden= true;
+        activeCard.style.display= "none";
         nextCard();
     }
 }
@@ -139,6 +141,7 @@ async function getNutritionData(query) {
 }
 
 function repas() {
+    /*
     var aliment1 = document.getElementById("aliment1").value;
     var poids1 = document.getElementById("poids1").value;
     var aliment2 = document.getElementById("aliment2").value;
@@ -153,9 +156,15 @@ function repas() {
     }
     if (poids3 == 0) {
         poids3 = 100;
+    }*/
+    //var query = poids1 + "g " + aliment1 + ", " + poids2 + "g " + aliment2 + ", " + poids3 + "g " + aliment3;
+    console.log(query)
+    if(query!=undefined){
+        query=query.substring(0, query.length - 2);
+        console.log(query);
+        return query;        
     }
-    var query = poids1 + "g " + aliment1 + ", " + poids2 + "g " + aliment2 + ", " + poids3 + "g " + aliment3;
-    return query;
+
 }
 
 function affichage(json) {
@@ -171,6 +180,7 @@ function affichage(json) {
         fiber += data[i].fiber_g;
         protein += data[i].protein_g;
     }
+    console.log(calories,protein,fiber,sugar)
     document.getElementById("cal").innerHTML += calories.toFixed(2);
     document.getElementById("prot").innerHTML += protein.toFixed(2);
     document.getElementById("fib").innerHTML += fiber.toFixed(2);
@@ -218,7 +228,7 @@ async function getApport(id, age) {
             var apport = 10 * poids_ + 6.25 * taille_ - 5 * age - 161;
         }
 
-        document.getElementById("apport_neccesaire").innerHTML += apport * 1.3;
+        document.getElementById("apport_neccesaire").innerHTML += Math.round(apport * 1.3);
     } catch (error) {
         console.error(error);
     }

@@ -2,54 +2,62 @@
 <html>
 
 <head>
-  <title>Calories calculator</title>
-  <link rel="icon" type="image/png" href="/Me/img/LogoBeBetter.png" />
-
+  <title>Calcul Calories</title>
   <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
   <!--<link rel="stylesheet" type="text/css" href="/Me/CSS/styleBeBetter.css">
   <link rel="stylesheet" type="text/css" href="/Me/CSS/styleNutrition.css">-->
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="/Me/js/cookie.js"></script>
-  <link rel="stylesheet" href="/me/CSS/styleBeBetter.css">
 </head>
 
 <body>
+  <h3>CALORIE CACULATION</h3>
   <div id="container">
     <div class="card" id="card-6">
+      <div id="form">
       <h2>Evening</h2>
-      <label for="aliment">Food :</label>
-        <input type="text" id="aliment3" name="aliment"><br>
-        <label for="poids">Weight (in gr) :</label>
-        <input type="text" id="poids3" name="poids"><br>
+      <label for="aliment">Feed :</label>
+      <input type="text" id="aliment3" name="aliment"><br>
+      <label for="poids">Weight (in grams) :</label>
+      <input type="text" id="poids3" name="poids"><br>
     </div>
+    </div>
+
     <div class="card" id="card-5">
       <img src="https://source.unsplash.com/random/800x800/?diner">
       <h2>Did you have dinner ?</h2>
     </div>
+
     <div class="card" id="card-4">
+      <div id="form">
       <h2>Lunch</h2>
-      <label for="aliment">Food :</label>
-        <input type="text" id="aliment2" name="aliment"><br>
-        <label for="poids">Weight (in gr) :</label>
-        <input type="text" id="poids2" name="poids"><br>
+      <label for="aliment">Feed :</label>
+      <input type="text" id="aliment2" name="aliment"><br>
+      <label for="poids">Weight (in grams) :</label>
+      <input type="text" id="poids2" name="poids"><br>
     </div>
+    </div>
+
     <div class="card" id="card-3">
       <img src="https://source.unsplash.com/random/800x800/?lunch">
       <h2>Did you have lunch?</h2>
     </div>
+
     <div class="card" id="card-2">
       <div id="form">
-      <h2>Breakfirst</h2>
-      <label for="aliment">Food :</label>
+        <h2>Breakfirst</h2>
+        <label for="aliment">Feed :</label>
         <input type="text" id="aliment1" name="aliment"><br>
-        <label for="poids">Weight (in gr) :</label>
+        <label for="poids">Weight (in grams) :</label>
         <input type="text" id="poids1" name="poids"><br>
       </div>
     </div>
+
     <div class="card" id="card-1">
       <img src="https://source.unsplash.com/random/800x800/?breakfirst">
       <h2>Did you eat this morning?</h2>
     </div>
+
     <!--
     <form id="form">
       <div id="morning">
@@ -75,13 +83,13 @@
         <input type="submit" value="Ajouter" id="btn">
       </div>
     </form>-->
-  
+
     <div id="result">
-      <div id="cal">calories total : </div>
-      <div id="prot">protein total : </div>
-      <div id="fib">fiber total : </div>
-      <div id="sug">sugar total : </div>
-      <div id="apport_neccesaire">apport néccesaire : </div>
+      <div id="cal">Total Calories : </div>
+      <div id="prot">Total protein (in grams) : </div>
+      <div id="fib">Total fiber (in grams): </div>
+      <div id="sug">Total sugar (in grams): </div>
+      <div id="apport_neccesaire">Necessary input for you : </div>
     </div>
     <script src="script.js"></script>
 </body>
