@@ -1,36 +1,37 @@
-receiveSleep()
-async function receiveSleep() {
-    const url = '/api/user/oneuser/' + isConnected() + '/';
-    const options = {
 
+
+whenToSleep()
+async function whenToSleep() {
+    url="http://localhost:3000/api/user/oneuser/" + isConnected();
+    fetch(url, {
         method: 'GET',
-
         headers: {
-
             'Content-Type': 'application/json'
-
         }
+    })
 
-    };
-    try {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            return response.json();
 
-        const response = await fetch(url, options);
+        })
+        .then(data => {
+            sleeptime(data)
+        })
+        .catch(error => {
+            console.error(error);
+            
+        });
 
-        const result = await response.text();
-        const jsonString = result;
-        const jsonRet = JSON.parse(jsonString);
-        createMyCharts(jsonRet);
-        console.log(jsonRet);
-
-
-    } catch (error) {
-
-        console.error(error);
-
-    }
 
 }
-function createMyCharts(json2) {
+
+
+
+function sleeptime(json2) {
+    // console.log("truc")
     const ctx = document.getElementById('myChart');
 
 
@@ -64,7 +65,7 @@ function createMyCharts(json2) {
         //  console.log(toHour(time))
         //  console.log(new Date(time-sleepDuration))
 
-        document.getElementById("wake").innerHTML = "You should sleep at" + (toHour(time - sleepDuration));
+        document.getElementById("wake").innerHTML = "You should sleep at " + (toHour(time - sleepDuration));
     }
     inputwake.oninput=function() {
 
@@ -91,8 +92,7 @@ function createMyCharts(json2) {
         //  console.log(toHour(time))
         //  console.log(new Date(time-sleepDuration))
 
-        document.getElementById("wake").innerHTML = "You should wake up at" + (toHour(time + sleepDuration));
+        document.getElementById("wake").innerHTML = "You should wake up at " + (toHour(time + sleepDuration));
     }
 }
 
-//console.log(document.getElementById('appt'))
