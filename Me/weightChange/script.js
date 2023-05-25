@@ -52,29 +52,3 @@ async function sendWeight(query) {
     }
 
 }
-
-// submit.addEventListener('click', (event) => {
-//     // const poid=document.getElementById("poids").value;
-//     poid = 33
-//     const id = "642445267d6ced485f7eefa9"
-//     const url = `http://localhost:3000/api/user/caract/${id}/${poid}`;
-//     fetch(url, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(response.statusText);
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             alert('User enregistré avec succès!');
-//         })
-//         .catch(error => {
-//             console.error(error);
-//             alert('Erreur lors de l\'enregistrement de l\'utilisateur!');
-//         });
-// });
